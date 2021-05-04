@@ -1,12 +1,13 @@
 import './App.css';
 import {Home} from './Home';
-import {Event} from './Event';
-import {Gift} from './Gift';
-import {Clothes} from './Clothes';
-import {HomeStay} from './HomeStay';
-import {Foody} from './Foody';
-import {Navigation} from './Navigation';
-import {FirstNav} from './FirstNav';
+import {Event} from './Entity/Event';
+import {Gift} from './Entity/Gift';
+import {Clothes} from './Entity/Clothes';
+import {HomeStay} from './Entity/HomeStay';
+import {Foody} from './Entity/Foody';
+import {Navigation} from './Component/Navigation';
+import {FooterPage} from './Component/FooterPage';
+import {FirstNav} from './Component/FirstNav';
 
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
@@ -26,7 +27,8 @@ function App() {
           <Route path="/clothes" component={Clothes}/>
           <Route path="/gift" component={Gift}/>
         </Switch>
-      
+
+        <FooterPage/>
       </div>
     </BrowserRouter>
   );
