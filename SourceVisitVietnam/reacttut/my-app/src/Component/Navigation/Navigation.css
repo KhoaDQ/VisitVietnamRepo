@@ -1,0 +1,26 @@
+.Navigation{
+    position: fixed;
+    top:30px;
+    left:0;
+    right:0;
+    height: 46px;
+    z-index: 1;
+}
+
+.Navigation .Navigation-Navbar{
+    height: 40px;
+}
+
+.Navigation .Navigation-Search{
+    height: 40px;
+}
+
+.Navigation .Navigation-Search .Form{
+    height: 28px;
+    margin-right: 10px !important;
+    padding: 2px !important;
+}
+
+.Navigation .Navigation-Search .Btn{
+    height: 30px;
+}

@@ -1,0 +1,14 @@
+.FirstNav{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    height: 45px;
+    z-index: 1;
+    width: 100%;
+}
+
+.FirstNav-bar{
+    width: 100%;
+    padding: 0 px !important;
+}

@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.6.0",
     "material-ui-pickers": "^2.2.4",
+    "materialize-css": "^1.0.0-rc.2",
     "mdb-ui-kit": "^3.5.0",
     "mdbreact": "^5.0.2",
     "node-fetch": "^2.6.1",

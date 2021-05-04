@@ -5,7 +5,7 @@ import { Component } from "react";
 export class FooterPage extends Component {
     render(){
         return (
-            <MDBFooter color="green" className="font-small pt-4 mt-4">
+            <MDBFooter color="green" className="font-small">
             <MDBContainer fluid className="text-center text-md-left bg-info">
                 <MDBRow>
                 <MDBCol md="6" className="">
