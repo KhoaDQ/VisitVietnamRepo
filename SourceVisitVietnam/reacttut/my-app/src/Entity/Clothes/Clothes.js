@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import {Table} from 'react-bootstrap';
+import '../../assets/css/base.css';
 
 export class Clothes extends Component{
     render(){
