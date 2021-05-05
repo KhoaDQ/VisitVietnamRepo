@@ -11,22 +11,22 @@ export class Navigation extends Component{
             <Navbar bg="info" className="Navigation-Navbar">
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
-                        <NavLink className="d-inline mx-2 bg-info text-white text-uppercase" to="/">
+                        <NavLink className="d-inline mx-5 bg-info text-white text-uppercase font-weight-bold" to="/">
                             Home
                         </NavLink>
-                        <NavLink className="d-inline mx-2 bg-info text-white text-uppercase" to="/event">
+                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/event">
                             Event
                         </NavLink>
-                        <NavLink className="d-inline mx-2 bg-info text-white text-uppercase" to="/foody">
+                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/foody">
                             Foody
                         </NavLink>
-                        <NavLink className="d-inline mx-2 bg-info text-white text-uppercase" to="/homestay">
+                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/homestay">
                             HomeStay
                         </NavLink>
-                        <NavLink className="d-inline mx-2 bg-info text-white text-uppercase" to="/clothes">
+                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/clothes">
                             Clothes
                         </NavLink>
-                        <NavLink className="d-inline mx-2 bg-info text-white text-uppercase" to="/gift">
+                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/gift">
                             Gift
                         </NavLink>
                     </Nav>

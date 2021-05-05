@@ -1,0 +1,100 @@
+/* Common */
+
+.Container__Content{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Highlight */
+.Content__Highlight .Line{
+    margin-top: 50px;
+    width: 100px;
+    height: 15px;
+    background-color: red;
+}
+
+.Header{
+    font-weight: 800;
+    font-size:xx-large;
+    text-transform: uppercase;
+}
+
+/* Event Highlight list */
+.member-list{
+    margin-top: 32px;
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-bottom: 32px;
+}
+
+.member-item{
+    width: 33.33333%;
+}
+.member-img{
+    width: 100%;
+    display: block;
+    height: 250px;
+}
+
+.member-img:hover{
+    opacity:0.8;
+}
+
+.item-content{
+    background-color: #fff;
+    padding: 16px;
+    font-size: 15px;
+}
+
+.item-header{
+    font-weight: 600;
+}
+
+.item-header:hover{
+    color: red;
+}
+
+.item-title{
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+.item-description{
+    margin-top: 15px;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.item-date{
+margin-top: 15px;
+color: #757575;
+}
+
+/* Event-Year */
+.Content__Event-Year{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Content__Event-Year .Line{
+    margin-top: 50px;
+    width: 100px;
+    height: 15px;
+    background-color:#ffc107;
+}
+
+/* Event-Day */
+.Content__Event-Day{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Content__Event-Day .Line{
+    margin-top: 50px;
+    width: 100px;
+    height: 15px;
+    background-color: #28a745;
+}
