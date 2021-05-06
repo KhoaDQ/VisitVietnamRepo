@@ -1,7 +1,7 @@
 ﻿--create database VisitVietnamDB
 go
 
---use VisitVietnamDB
+use VisitVietnamDB
 go
 
 --
@@ -190,3 +190,25 @@ select * from PlaceEvent
 
 select * from Event
 
+-- Query
+
+SELECT DATEDIFF(DD, '2018-04-10','2018-03-31')
+
+SELECT
+    *
+FROM
+    dbo.Event
+WHERE
+	DATEDIFF(DD, GETDATE(), StartDate)>=0
+ORDER BY
+     DATEDIFF(DD, GETDATE(), StartDate)
+OFFSET 0 ROWS 
+FETCH NEXT 6 ROWS ONLY;
+
+SELECT
+	DATEDIFF(DD, GETDATE(), StartDate),
+    Name
+FROM
+    dbo.Event
+ORDER BY
+     DATEDIFF(DD, GETDATE(), StartDate)

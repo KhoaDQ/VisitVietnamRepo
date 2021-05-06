@@ -163,5 +163,89 @@ namespace VisitVietnamAPI.Controllers
                 return new JsonResult("anonymous.png");
             }
         }
+
+        // Add need query
+        [Route("Get4EventUpcoming")]
+        public JsonResult Get4EventUpcoming()
+        {
+            string query = @"SELECT*
+                             FROM dbo.Event
+                             WHERE
+	                            DATEDIFF(DD, GETDATE(), StartDate)>=0
+                            ORDER BY
+                                DATEDIFF(DD, GETDATE(), StartDate)
+                            OFFSET 0 ROWS 
+                            FETCH NEXT 4 ROWS ONLY;";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllEventYear")]
+        public JsonResult GetAllEventYear()
+        {
+            string query = @"SELECT * FROM dbo.Event WHERE Type = 'Traditional'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllEventDay")]
+        public JsonResult GetAllEventDay()
+        {
+            string query = @"SELECT * FROM dbo.Event WHERE Type <> 'Traditional'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
     }
 }

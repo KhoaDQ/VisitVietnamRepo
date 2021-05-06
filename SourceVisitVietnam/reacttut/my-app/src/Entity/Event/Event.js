@@ -10,8 +10,14 @@ export class Event extends Component{
     
     constructor(props){
         super(props);
-        this.state={events:[], addModalShow:false, editModalShow:false}
+        this.state={events:[], eventsUpcoming:[], eventsYear:[], eventsDay:[],
+            addModalShow:false, editModalShow:false, 
+            Event_Year_visible:3, Event_Day_visible:3}
+        this.loadMoreY = this.loadMoreY.bind(this);
+        this.loadMoreD = this.loadMoreD.bind(this);
     }
+
+    ImageSrc = process.env.REACT_APP_PHOTOPATH;
 
     refreshList(){
         fetch(process.env.REACT_APP_API+'event')
@@ -23,12 +29,48 @@ export class Event extends Component{
         )
     }
 
+    get4EventUpcoming(){
+        fetch(process.env.REACT_APP_API+'event/Get4EventUpcoming')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({eventsUpcoming:data})
+            }
+        )
+    }
+
+    getAllEventYear(){
+        fetch(process.env.REACT_APP_API+'event/GetAllEventYear')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({eventsYear:data})
+            }
+        )
+    }
+
+    getAllEventDay(){
+        fetch(process.env.REACT_APP_API+'event/GetAllEventDay')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({eventsDay:data})
+            }
+        )
+    }
+
     componentDidMount(){
         this.refreshList();
+        this.get4EventUpcoming();
+        this.getAllEventDay();
+        this.getAllEventYear();
     }
 
     componentDidUpdate(){
         this.refreshList();
+        this.get4EventUpcoming();
+        this.getAllEventYear();
+        this.getAllEventDay();
     }
 
     deleteEvent(eventId){
@@ -41,12 +83,28 @@ export class Event extends Component{
         }
     }
 
+    // Function
+    loadMoreY(){
+        this.setState((old)=>{
+            return {Event_Year_visible:old.Event_Year_visible+3};
+        })
+    }
+
+    loadMoreD(){
+        this.setState((old)=>{
+            return {Event_Day_visible:old.Event_Day_visible+3};
+        })
+    }
+    
+
     render(){
-        const {events,Id,Name,Type,Description,PicFileName,Details,StartDate,EndDate,Status}=this.state;
+        
+        const {eventsDay,eventsYear,eventsUpcoming,events,
+            Id,Name,Type,Description,PicFileName,Details,StartDate,EndDate,Status}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
-        let ModalClose=()=>this.setState({ModalShow:false});
         return(
+            
             <div className="Container">
                 <div className="Admin">
                     <Table className="mt-4" striped bordered hover size="sm">
@@ -135,46 +193,20 @@ export class Event extends Component{
                             <div className="Header text-danger">Highlight</div>
                         </div>
                         <div className="row member-list">
-                            <div class="col-sm-3 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
+                            {eventsUpcoming.map(event=>
+                            <div class="col-sm-3 member-item">                                
+                                <div key={event.Id}>
+                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
+                                    <div className="item-content">
+                                        <div className="item-header">{event.Name}</div>
+                                        {/* <div className="item-title"></div> */}
+                                        <div className="item-description">{event.Description}</div>
+                                        <div className="item-date">Start date: {event.StartDate}</div>
+                                        <div className="item-date">End date: {event.EndDate}</div>
+                                    </div> 
+                                </div>                                                               
                             </div>
-                            <div class="col-sm-3 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-3 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-3 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
+                            )}
                         </div>
                     </div>
 
@@ -184,139 +216,53 @@ export class Event extends Component{
                             <div className="Header text-warning">Annual Event</div>
                         </div>
                         <div className="row member-list">
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>                            
+                            {eventsYear.slice(0,this.state.Event_Year_visible).map(event=>
+                                <div class="col-sm-4 member-item">                                
+                                    <div key={event.Id}>
+                                        <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
+                                        <div className="item-content">
+                                            <div className="item-header">{event.Name}</div>
+                                            {/* <div className="item-title"></div> */}
+                                            <div className="item-description">{event.Description}</div>
+                                            <div className="item-date">Start date: {event.StartDate}</div>
+                                            <div className="item-date">End date: {event.EndDate}</div>
+                                        </div> 
+                                    </div>                                                               
+                                </div>
+                            )}                    
                         </div>
-                        <div className="row member-list">
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
+                        <div className="Load-Mores col-md-12">
+                            {this.state.Event_Year_visible < this.state.eventsYear.length &&
+                            <Button onClick={this.loadMoreY}>Load more</Button>}
                         </div>
                     </div>
 
                     <div className="Content__Event-Day">
-                    <div className="Highlight">
+                        <div className="Highlight">
                             <div className="Line"></div>
                             <div className="Header text-success">Event</div>
                         </div>
+
                         <div className="row member-list">
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
+                        {eventsDay.slice(0,this.state.Event_Day_visible).map(event=>
+                            <div class="col-sm-4 member-item">                                
+                                <div key={event.Id}>
+                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
+                                    <div className="item-content">
+                                        <div className="item-header">{event.Name}</div>
+                                        {/* <div className="item-title"></div> */}
+                                        <div className="item-description">{event.Description}</div>
+                                        <div className="item-date">Start date: {event.StartDate}</div>
+                                        <div className="item-date">End date: {event.EndDate}</div>
+                                    </div> 
+                                </div>                                                               
                             </div>
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div className="row member-list">
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
-                            <div class="col-sm-4 member-item">
-                                <img src="./public-img/background-vietnam.jpg" alt="Xuan Phuong" class="member-img"/>
-                                <div className="item-content">
-                                    <div className="item-header">HEADER</div>
-                                    <div className="item-title">Title</div>
-                                    <div className="item-description">Description</div>
-                                    <div className="item-date">Start date:</div>
-                                    <div className="item-date">End date</div>
-                                </div>                                
-                            </div>
+                        )}                    
                         </div>
+
+                        <div className="Load-Mores col-md-12">
+                            {this.state.Event_Day_visible < this.state.eventsDay.length &&
+                            <Button onClick={this.loadMoreD}>Load more</Button>}
                         </div>
                     </div>
 
@@ -328,3 +274,4 @@ export class Event extends Component{
         )
     }
 }
+
