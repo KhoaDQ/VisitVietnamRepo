@@ -66,13 +66,6 @@ export class Event extends Component{
         this.getAllEventYear();
     }
 
-    componentDidUpdate(){
-        this.refreshList();
-        this.get4EventUpcoming();
-        this.getAllEventYear();
-        this.getAllEventDay();
-    }
-
     deleteEvent(eventId){
         if(window.confirm('Are you sure?')){
             fetch(process.env.REACT_APP_API+'event/'+eventId,{
@@ -80,6 +73,9 @@ export class Event extends Component{
                 header:{'Accept':'application/json',
                 'Content-Type':'application/json'}
             })
+            setTimeout(() => {
+                this.refreshList();
+             }, 100);
         }
     }
 
@@ -106,6 +102,7 @@ export class Event extends Component{
         return(
             
             <div className="Container">
+                
                 <div className="Admin">
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
@@ -156,7 +153,7 @@ export class Event extends Component{
                                             </Button>
 
                                             <EditEventModal show={this.state.editModalShow} 
-                                            onHide={editModalClose}
+                                            onHide={()=>{editModalClose(); this.refreshList();}}
                                             Id={Id}
                                             Name={Name}
                                             Type={Type}
@@ -180,7 +177,7 @@ export class Event extends Component{
                         </Button>
 
                         <AddEventModal show={this.state.addModalShow} 
-                        onHide={addModalClose}/>
+                        onHide={()=>{this.refreshList(); addModalClose();}}/>
                     </ButtonToolbar>
                 </div>
 
@@ -199,7 +196,6 @@ export class Event extends Component{
                                     <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
                                     <div className="item-content">
                                         <div className="item-header">{event.Name}</div>
-                                        {/* <div className="item-title"></div> */}
                                         <div className="item-description">{event.Description}</div>
                                         <div className="item-date">Start date: {event.StartDate}</div>
                                         <div className="item-date">End date: {event.EndDate}</div>
@@ -222,7 +218,6 @@ export class Event extends Component{
                                         <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
                                         <div className="item-content">
                                             <div className="item-header">{event.Name}</div>
-                                            {/* <div className="item-title"></div> */}
                                             <div className="item-description">{event.Description}</div>
                                             <div className="item-date">Start date: {event.StartDate}</div>
                                             <div className="item-date">End date: {event.EndDate}</div>
@@ -231,11 +226,13 @@ export class Event extends Component{
                                 </div>
                             )}                    
                         </div>
-                        <div className="Load-Mores col-md-12">
+                        <div className="col-md-12 Contain-Load-Mores">
                             {this.state.Event_Year_visible < this.state.eventsYear.length &&
-                            <Button onClick={this.loadMoreY}>Load more</Button>}
+                            <Button className="Load-Mores" onClick={this.loadMoreY}>Load more</Button>}
                         </div>
                     </div>
+
+                    <div className="clear"></div>
 
                     <div className="Content__Event-Day">
                         <div className="Highlight">
@@ -250,7 +247,6 @@ export class Event extends Component{
                                     <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
                                     <div className="item-content">
                                         <div className="item-header">{event.Name}</div>
-                                        {/* <div className="item-title"></div> */}
                                         <div className="item-description">{event.Description}</div>
                                         <div className="item-date">Start date: {event.StartDate}</div>
                                         <div className="item-date">End date: {event.EndDate}</div>
@@ -260,15 +256,19 @@ export class Event extends Component{
                         )}                    
                         </div>
 
-                        <div className="Load-Mores col-md-12">
+                        <div className="col-md-12 Contain-Load-Mores">
                             {this.state.Event_Day_visible < this.state.eventsDay.length &&
-                            <Button onClick={this.loadMoreD}>Load more</Button>}
+                            <Button className="Load-Mores" onClick={this.loadMoreD}>Load more</Button>}
                         </div>
                     </div>
+
+                    <div className="clear"></div>
 
                     <div className="Content__Best-Of-Year">
 
                     </div>
+
+                    <div className="clear"></div>
                 </div>
             </div>
         )

@@ -1,4 +1,15 @@
 /* Common */
+.Contain-Load-Mores{
+    margin: 0 0 !important;
+    padding: 0 0 !important;
+}
+
+.Load-Mores{
+    width: 50%;
+    float: right;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
 .Container__Content{
     width: 80%;
@@ -85,6 +96,11 @@ color: #757575;
     background-color:#ffc107;
 }
 
+.Content__Event-Year .Load-Mores{
+    margin-bottom: 50px !important;
+    background-color:#ffc107 !important;
+}
+
 /* Event-Day */
 .Content__Event-Day{
     width: 80%;
@@ -97,4 +113,9 @@ color: #757575;
     width: 100px;
     height: 15px;
     background-color: #28a745;
+}
+
+.Content__Event-Day .Load-Mores{
+    margin-bottom: 50px !important;
+    background-color: #28a745 !important;
 }

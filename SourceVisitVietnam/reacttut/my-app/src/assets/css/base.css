@@ -1,6 +1,14 @@
+.html{
+    scroll-behavior: smooth;
+}
+
 .Admin{
     /* display: none; */
     background-color: #fff;
+}
+
+.clear{
+    clear: both;
 }
 
 .full-width{

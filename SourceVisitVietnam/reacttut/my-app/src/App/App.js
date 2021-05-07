@@ -4,7 +4,7 @@ import {Event} from '../Entity/Event/Event';
 import {Gift} from '../Entity/Gift/Gift';
 import {Clothes} from '../Entity/Clothes/Clothes';
 import {HomeStay} from '../Entity/HomeStay/HomeStay';
-import {Foody} from '../Entity/Foody/Foody';
+import {Foody} from '../Entity/Foody/Foody.js';
 import {Navigation} from '../Component/Navigation/Navigation';
 import {FooterPage} from '../Component/FooterPage/FooterPage';
 import {FirstNav} from '../Component/FirstNav/FirstNav';

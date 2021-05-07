@@ -80,16 +80,16 @@ namespace VisitVietnamAPI.Controllers
 
         [HttpPut]
 
-        public JsonResult Put(Gift g)
+        public JsonResult Put(HomeStay h)
         {
-            string query = @"UPDATE Gift SET
-                            Name = '" + g.Name + "', " +
-                            "Type='" + g.Type + "'," +
-                            "Price='" + g.Price + "'," +
-                            "Note='" + g.Note + "'," +
-                            "PicFileName='" + g.PicFileName + "'," +
-                            "PlaceId='" + g.PlaceId + "' " +
-                            "WHERE Id = '" + g.Id + "';";
+            string query = @"UPDATE HomeStay SET
+                            Description = '" + h.Description + "', " +
+                            "Type='" + h.Type + "'," +
+                            "AvgPrice='" + h.AvgPrice + "'," +
+                            "Comment='" + h.Comment + "'," +
+                            "Star='" + h.Star + "'," +
+                            "PicFileName='" + h.PicFileName + "' " +
+                            "WHERE PlaceId = '" + h.PlaceId + "';";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
@@ -115,7 +115,7 @@ namespace VisitVietnamAPI.Controllers
 
         public JsonResult Delete(int id)
         {
-            string query = @"DELETE FROM HomeStay WHERE Id = '" + id + "';";
+            string query = @"DELETE FROM HomeStay WHERE PlaceId = '" + id + "';";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
