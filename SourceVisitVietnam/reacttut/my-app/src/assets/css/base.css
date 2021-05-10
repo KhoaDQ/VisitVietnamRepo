@@ -3,12 +3,23 @@
 }
 
 .Admin{
-    /* display: none; */
+    display: none;
     background-color: #fff;
+}
+
+
+.Container__Content{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .clear{
     clear: both;
+}
+
+.hide-item{
+    display: none;
 }
 
 .full-width{
@@ -33,4 +44,57 @@
 
 .Banner{
     width: 100%;
+}
+
+.Circle-Icon{
+    background: black;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.Container .Container__Content .border-bottom {
+    background-color: #000 !important;
+    height: 1px;
+    width: 100% !important;
+    max-width: 1220px;
+    margin: 17px auto 0;
+    clear: both;
+    border-bottom: 2px solid #000 !important;
+}
+
+.Container__Content .member-item .item-content{
+    border-radius: 16px;
+}
+
+.border-img{
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+}
+
+.member-item{
+    width: 32%;
+}
+
+.member-img:hover{
+    transform: translateY(-2px);
+}
+
+.Container__Content .item-slogan{
+    margin-top: 8px;
+    color: #757575;
+}
+
+.Container__Content .item-overview{
+    margin-top: 15px;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.Container__Content .Content__Mall .member-item-content{
+    min-height: 520px;
 }

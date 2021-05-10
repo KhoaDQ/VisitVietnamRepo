@@ -9,7 +9,6 @@ constructor(props){
     this.handleFileSelected=this.handleFileSelected.bind(this);
 }
 
-event
 PhotoFileName = "anonymous.png";
 ImageSrc = process.env.REACT_APP_PHOTOPATH+this.PhotoFileName;
 

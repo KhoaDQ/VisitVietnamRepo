@@ -1,3 +1,81 @@
 .cssok{
     display: block;
 }
+
+.Foody .Container__background{
+    background: url('../../assets/img/backgoundfoody.jpg');
+    background-size: cover;
+    scroll-behavior: smooth;
+}
+
+
+/* Begin : Nav */
+#nav{
+    display: inline-block;
+}
+
+#nav, .subnav{
+    list-style-type: none;
+}
+
+#nav li{
+    position: relative;
+}
+
+#nav > li{
+    display: inline-block;
+}
+
+#nav > li > a{
+    text-transform: uppercase;
+    color: #000;
+}
+
+#nav li a{
+    
+    text-decoration: none;
+    line-height: 46px;
+    padding: 0 24px;
+    display: block;
+    font-weight: 800;
+    min-width: 150px;
+}
+
+#nav .subnav li:hover,
+#nav > li:hover > a{
+    color: #000!important;
+    background-color: #ccc!important;
+}
+
+#nav li:hover a{
+    
+}
+
+#nav li:hover .subnav{
+    display: block;
+}
+
+#nav .nav-arrow-down{
+    font-size: 14px;
+}
+
+#nav .subnav{
+    min-width: 160px;
+    top: 100%;
+    left: 0;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+#nav .subnav a{
+    padding: 0 12px;
+    line-height: 38px;
+    color: #000;
+}
+
+ul{
+    padding-inline-start: 0;
+}
+/* End : Nav */

@@ -22,7 +22,7 @@ export class FirstNav extends Component{
                 </Navbar.Brand>
 
                 <Nav>
-                    <NavLink className="d-inline bg-dark text-white p-0" to="/contact">
+                    <NavLink className="d-inline bg-dark text-white p-0 Contact" to="/contact">
                         Contact
                     </NavLink>
                 </Nav>

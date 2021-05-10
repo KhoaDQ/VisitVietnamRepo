@@ -1,0 +1,1 @@
+Use antd package to get collapse box (hide or show content box)
