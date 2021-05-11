@@ -162,5 +162,105 @@ namespace VisitVietnamAPI.Controllers
                 return new JsonResult("anonymous.png");
             }
         }
+
+        [Route("GetAllPlacesFoody")]
+        public JsonResult GetAllPlacesShoppingGifts()
+        {
+            string query = @"Select * from Place where Type='Foody'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllFood")]
+        public JsonResult GetAllFood()
+        {
+            string query = @"Select * from Foody where Type NOT IN ('Drink','Cake') AND MiniType NOT IN ('Drink','Cake')";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllDrink")]
+        public JsonResult GetAllDrink()
+        {
+            string query = @"Select * from Foody where Type='Drink' OR MiniType='Drink'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllCake")]
+        public JsonResult GetAllCake()
+        {
+            string query = @"Select * from Foody where Type='Cake' OR MiniType='Cake'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
     }
 }

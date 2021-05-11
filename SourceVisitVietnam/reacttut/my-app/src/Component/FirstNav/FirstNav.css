@@ -6,9 +6,24 @@
     height: 45px;
     z-index: 1;
     width: 100%;
+
 }
 
 .FirstNav-bar{
     width: 100%;
     padding: 0 px !important;
+    display: inline-flex;
+    justify-content: space-between !important;
+}
+
+.FirstNav .Contact{
+    padding-top: 4px !important;
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+    height: 30px;
+    text-align: center !important;
+}
+
+.FirstNav .Contact:hover{
+    background-color: red !important;
 }

@@ -1,0 +1,70 @@
+#slider{
+    background: url('../../assets/img/background-vietnam.jpg') top center / cover no-repeat;
+    /* height: 800px; */
+    padding-top: 30%;
+    position: relative;
+}
+
+#slider .text-content{
+    position: absolute;
+    bottom: 47px;
+    color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+#slider .text-heading{
+    font-weight: 500;
+    font-size: 24px;
+    text-transform: uppercase;
+
+}
+#slider .text-desc{
+    font-size: 15px;
+}
+
+
+.Mall{
+    margin-top: 20px;
+}
+
+.Container__background{
+    background: url('../../assets/img/backgroundshopping.jpg');
+    background-size: cover;
+}
+
+.Container__Content .member-item .item-content{
+    background-color: #fff;
+    color: #000;
+}
+
+.Container__Content .member-item-content{
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.Container__Content .Content__Brand .member-item-content,
+.Container__Content .Content__Product .member-item-content{
+    min-height: 370px;
+}
+
+
+.Container__Content .Content__Mall .Mall{
+    display: inline-block;
+}
+
+.Container .Header{
+    margin: 12px;
+    bottom: 0;
+    vertical-align:bottom;
+    font-size: 28px;
+    text-transform: none;
+}
+
+.Container__Content .Load-Mores{
+    width: 5%;
+    border-radius: 10px;
+    background-color: black !important;
+    color: #fff;
+}

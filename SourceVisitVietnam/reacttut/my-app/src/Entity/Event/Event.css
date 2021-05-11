@@ -11,11 +11,6 @@
     padding: 0 !important;
 }
 
-.Container__Content{
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 /* Highlight */
 .Content__Highlight .Line{
@@ -33,15 +28,12 @@
 
 /* Event Highlight list */
 .member-list{
-    margin-top: 32px;
+    margin-top: 12px;
     margin-left: -8px;
     margin-right: -8px;
     padding-bottom: 32px;
 }
 
-.member-item{
-    width: 33.33333%;
-}
 .member-img{
     width: 100%;
     display: block;

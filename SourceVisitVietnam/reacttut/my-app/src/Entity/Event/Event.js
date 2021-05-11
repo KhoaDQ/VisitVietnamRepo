@@ -19,6 +19,7 @@ export class Event extends Component{
 
     ImageSrc = process.env.REACT_APP_PHOTOPATH;
 
+    // Call API
     refreshList(){
         fetch(process.env.REACT_APP_API+'event')
         .then(response=>response.json())
@@ -60,6 +61,7 @@ export class Event extends Component{
     }
 
     componentDidMount(){
+        window.scrollTo(0, 0);
         this.refreshList();
         this.get4EventUpcoming();
         this.getAllEventDay();
@@ -181,7 +183,12 @@ export class Event extends Component{
                     </ButtonToolbar>
                 </div>
 
-                <img src="./public-img/background-vietnam.jpg" className="Banner"></img>
+                <div id="slider" className="Banner">
+                    <div className="text-content">
+                        <div className="text-heading">Event</div>
+                        <div className="text-desc">Description</div>
+                    </div>
+                </div>
 
                 <div className="Container__Content">
                     <div className="Content__Highlight">

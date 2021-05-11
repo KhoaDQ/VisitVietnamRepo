@@ -8,25 +8,25 @@ export class Navigation extends Component{
     render(){
         return(
             <div className="Navigation">
-            <Navbar bg="info" className="Navigation-Navbar">
-                <Navbar.Collapse id="basic-navbar-nav">
+            <Navbar bg="light" className="Navigation-Navbar pt-0 pb-0">
+                <Navbar.Collapse id="basic-navbar-nav" className="route-button">
                     <Nav>
-                        <NavLink className="d-inline mx-5 bg-info text-white text-uppercase font-weight-bold" to="/">
+                        <NavLink className="d-inline px-5 bg-light text-dark text-uppercase font-weight-bold btn" to="/">
                             Home
                         </NavLink>
-                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/event">
+                        <NavLink className="d-inline px-3 bg-light text-dark text-uppercase font-weight-bold btn" to="/event">
                             Event
                         </NavLink>
-                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/foody">
+                        <NavLink className="d-inline px-3 bg-light text-dark text-uppercase font-weight-bold btn" to="/foody">
                             Foody
                         </NavLink>
-                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/homestay">
+                        <NavLink className="d-inline px-3 bg-light text-dark text-uppercase font-weight-bold btn" to="/homestay">
                             HomeStay
                         </NavLink>
-                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/clothes">
+                        <NavLink className="d-inline px-3 bg-light text-dark text-uppercase font-weight-bold btn" to="/clothes">
                             Clothes
                         </NavLink>
-                        <NavLink className="d-inline mx-3 bg-info text-white text-uppercase font-weight-bold" to="/gift">
+                        <NavLink className="d-inline px-3 bg-light text-dark text-uppercase font-weight-bold btn" to="/gift">
                             Gift
                         </NavLink>
                     </Nav>

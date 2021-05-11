@@ -162,5 +162,58 @@ namespace VisitVietnamAPI.Controllers
                 return new JsonResult("anonymous.png");
             }
         }
+
+        // Add need query
+        [Route("GetAllPlacesShoppingClothes")]
+        public JsonResult GetAllPlacesShoppingClothes()
+        {
+            string query = @"Select * from Place where Type='ShoppingClothes'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllClothesIsBrand")]
+        public JsonResult GetAllClothesIsBrand()
+        {
+            string query = @"Select * from Clothes where Type='Brand'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        
     }
 }

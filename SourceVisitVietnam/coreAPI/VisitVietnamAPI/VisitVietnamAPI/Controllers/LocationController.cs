@@ -161,5 +161,57 @@ namespace VisitVietnamAPI.Controllers
                 return new JsonResult("anonymous.png");
             }
         }
+
+        [Route("GetAllLocationById/{id}")]
+
+        public JsonResult GetAllLocationById(int id)
+        {
+            string query = @"Select * from Location where PlaceId='" + id + "'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllLocation")]
+
+        public JsonResult GetAllLocation()
+        {
+            string query = @"Select * from Location";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
     }
 }
