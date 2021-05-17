@@ -128,7 +128,7 @@ export class Clothes extends Component{
         let editModalClose=()=>this.setState({editModalShow:false});
         return(
             
-            <div className="Container">
+            <div className="Container Clothes">
                 
                 <div className="Admin">
                     <Table className="mt-4" striped bordered hover size="sm">
@@ -281,9 +281,6 @@ export class Clothes extends Component{
                                 <div class="col-sm-4 member-item mt-5">                                
                                     <div key={brand.Id} className="member-item-content">
                                         <img src={this.ImageSrc+brand.PicFileName} alt={brand.PicFileName} className="member-img border-img"/>
-                                        <div className="item-content m-0 p-3">
-                                            <div className="item-about">{brand.Note}</div>
-                                        </div> 
                                     </div>                                                               
                                 </div>
                                 )}

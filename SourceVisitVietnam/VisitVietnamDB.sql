@@ -2,7 +2,8 @@
 go
 
 use VisitVietnamDB
-go
+GO
+
 
 --
 -- CREATE TABLE-------#####################################################################
@@ -120,6 +121,16 @@ create table Event
 
 select * from Place
 
+create table Article
+(
+	Id int identity(1,1) primary key,
+	Name varchar(255),
+	Type varchar(255),
+	Description varchar(2000),
+	PicFileName varchar(255),
+	Status varchar(20),
+);
+
 -- DROP TABLE -------#####################################################################
 /*
 DROP TABLE dbo.Foody
@@ -190,6 +201,10 @@ select * from PlaceEvent
 
 select * from Event
 
+--INSERT INTO Article(Name,Type,Description,PicFileName,Status) VALUES('','','','','');
+
+select * from Article
+
 -- Query
 
 SELECT DATEDIFF(DD, '2018-04-10','2018-03-31')
@@ -212,3 +227,4 @@ FROM
     dbo.Event
 ORDER BY
      DATEDIFF(DD, GETDATE(), StartDate)
+

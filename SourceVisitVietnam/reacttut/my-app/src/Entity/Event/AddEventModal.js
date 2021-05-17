@@ -12,14 +12,6 @@ constructor(props){
 PhotoFileName = "anonymous.png";
 ImageSrc = process.env.REACT_APP_PHOTOPATH+this.PhotoFileName;
 
-// componentDidMount(){
-//     fetch(process.env.REACT_APP_API+'event')
-//     .then(response=>response.json())
-//     .then(data=>{
-//         this.setState({deps:data});
-//     });
-// }
-
 handleSubmit(e){
     e.preventDefault();
     fetch(process.env.REACT_APP_API+'event',{

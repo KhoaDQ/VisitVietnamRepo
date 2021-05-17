@@ -234,10 +234,9 @@ export class Foody extends Component{
                         <div className="text-desc">Description</div>
                     </div>
                 </div>
-                
                 <div className="Container__background pt-5 pb-5">
-
                     <div className="Container__Content">
+
                         <ul id="nav">
                             <li><a href="#">Home</a></li>
                             <li><a href="#mall">Mall</a></li>

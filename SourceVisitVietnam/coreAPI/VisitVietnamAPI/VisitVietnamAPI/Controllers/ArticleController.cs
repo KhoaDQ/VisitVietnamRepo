@@ -15,12 +15,12 @@ namespace VisitVietnamAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlaceController : ControllerBase
+    public class ArticleController : ControllerBase
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _env;
 
-        public PlaceController(IConfiguration configuration, IWebHostEnvironment environment)
+        public ArticleController(IConfiguration configuration, IWebHostEnvironment environment)
         {
             _configuration = configuration;
             _env = environment;
@@ -30,7 +30,7 @@ namespace VisitVietnamAPI.Controllers
 
         public JsonResult Get()
         {
-            string query = @"Select * from Place";
+            string query = @"Select * from Article";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
@@ -54,11 +54,10 @@ namespace VisitVietnamAPI.Controllers
 
         [HttpPost]
 
-        public JsonResult Post(Place place)
+        public JsonResult Post(Article a)
         {
-            string query = @"INSERT INTO Place(Name,Type,Slogan,Overview,Phone,Email,Facebook,LinkWeb,EventOfPlace,PicFileName) 
-                             VALUES('" + place.Name + "','" + place.Type + "',N'" + place.Slogan + "','" + place.Overview + "','" + place.Phone + "','" + place.Email + "','" + place.Facebook + "','" + place.LinkWeb + "','" + place.EventOfPlace + "','" + place.PicFileName + "');";
-
+            string query = @"INSERT INTO Article(Name,Type,Description,PicFileName,Status) 
+                            VALUES('" + a.Name + "','" + a.Type + "','" + a.Description + "','" + a.PicFileName + "','" + a.Status + "');";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
             SqlDataReader myReader;
@@ -81,20 +80,15 @@ namespace VisitVietnamAPI.Controllers
 
         [HttpPut]
 
-        public JsonResult Put(Place place)
+        public JsonResult Put(Article a)
         {
-            string query = @"UPDATE Place SET
-                            Name = '" + place.Name + "', " +
-                            "Type='" + place.Type + "'," +
-                            "Slogan=N'" + place.Slogan + "', " +
-                            "Overview='" + place.Overview + "'," +
-                            "Phone='" + place.Phone + "'," +
-                            "Email='" + place.Email + "'," +
-                            "Facebook='" + place.Facebook + "'," +
-                            "LinkWeb='" + place.LinkWeb + "'," +
-                            "EventOfPlace='" + place.EventOfPlace + "'," +
-                            "PicFileName='" + place.PicFileName + "' " +
-                            "WHERE Id = '" + place.Id + "';";
+            string query = @"UPDATE Article SET
+                            Name = '" + a.Name + "', " +
+                            "Type='" + a.Type + "'," +
+                            "Description='" + a.Description + "', " +
+                            "PicFileName='" + a.PicFileName + "'," +
+                            "Status='" + a.Status + "' " +
+                            "WHERE Id = '" + a.Id + "';";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
@@ -120,7 +114,7 @@ namespace VisitVietnamAPI.Controllers
 
         public JsonResult Delete(int id)
         {
-            string query = @"DELETE FROM Place WHERE Id = '" + id + "';";
+            string query = @"DELETE FROM Article WHERE Id = '" + id + "';";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
@@ -167,11 +161,11 @@ namespace VisitVietnamAPI.Controllers
             }
         }
 
-        [Route("GetPlaceBitexco")]
+        [Route("GetAllArticleEvent")]
 
-        public JsonResult GetPlaceBixteco()
+        public JsonResult GetAllArticleEvent()
         {
-            string query = @"Select * from Place where Name='Bitexco'";
+            string query = @"Select * from Article where Type='Event'";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
@@ -193,115 +187,11 @@ namespace VisitVietnamAPI.Controllers
             return new JsonResult(table);
         }
 
-        [Route("GetPlaceBenThanhMarket")]
+        [Route("GetAllArticleTopPickMaster")]
 
-        public JsonResult GetPlaceBenThanhMarket()
+        public JsonResult GetAllArticleTopPickMaster()
         {
-            string query = @"Select * from Place where Name='Ben Thanh Market'";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
-            SqlDataReader myReader;
-
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult(table);
-        }
-
-        [Route("GetPlaceDamSenPark")]
-
-        public JsonResult GetPlaceDamSenPark()
-        {
-            string query = @"Select * from Place where Name='Dam Sen Park'";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
-            SqlDataReader myReader;
-
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult(table);
-        }
-
-        [Route("GetPlaceTheLandmark81")]
-
-        public JsonResult GetPlaceTheLandmark81()
-        {
-            string query = @"Select * from Place where Name='The Landmark 81'";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
-            SqlDataReader myReader;
-
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult(table);
-        }
-
-        [Route("GetPlaceTheCityPostOffice")]
-
-        public JsonResult GetPlaceTheCityPostOffice()
-        {
-            string query = @"Select * from Place where Name='The City Post Office'";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
-            SqlDataReader myReader;
-
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult(table);
-        }
-
-        [Route("GetPlaceTheWalkingStreet")]
-
-        public JsonResult GetPlaceTheWalkingStreet()
-        {
-            string query = @"Select * from Place where Name='The Walking Street'";
+            string query = @"Select * from Article where Type='Top pick master'";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");

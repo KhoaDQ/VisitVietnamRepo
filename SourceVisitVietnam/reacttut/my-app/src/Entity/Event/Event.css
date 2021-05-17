@@ -11,13 +11,49 @@
     padding: 0 !important;
 }
 
+.Event #slider{
+    background-image:-webkit-linear-gradient(left, rgba(0,0,0,0.6),rgb(255, 255, 255,0.1),rgb(255, 255, 255,0.1)) ,url('../../assets/img/event_1.png');
+}
+.Event #Background-Highlight{
+    background-image: url('../../assets/img/event_2_background.png');
+    background-size: 100%; 
+}
+
+.Event #Background-YearDay{
+    background-image: url('../../assets/img/event_6_background.png');
+    background-size: 100%; 
+}
 
 /* Highlight */
+.Content__Highlight{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 750px;
+}
+
 .Content__Highlight .Line{
     margin-top: 50px;
     width: 100px;
     height: 15px;
     background-color: red;
+}
+
+.Content__Highlight .member-img{
+    min-height: 500px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.Container__Content .Content__Highlight .member-item-content {
+    background:none;
+    border-radius: 16px;
+    box-shadow: 1px 2px 4px rgb(0 0 0 / 50%);
+}
+
+.Container__Content .Content__Highlight .member-item .item-content {
+    background:none !important;
+    color: #000;
 }
 
 .Header{
@@ -32,16 +68,6 @@
     margin-left: -8px;
     margin-right: -8px;
     padding-bottom: 32px;
-}
-
-.member-img{
-    width: 100%;
-    display: block;
-    height: 250px;
-}
-
-.member-img:hover{
-    opacity:0.8;
 }
 
 .item-content{
@@ -74,9 +100,28 @@ margin-top: 15px;
 color: #757575;
 }
 
+/* Upcoming */
+.Content__Upcoming{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Content__Upcoming .Line{
+    margin-top: 50px;
+    width: 100px;
+    height: 15px;
+    background-color:#ffc107;
+}
+
+.Content__Upcoming .Load-Mores{
+    margin-bottom: 50px !important;
+    background-color:#ffc107 !important;
+}
+
 /* Event-Year */
 .Content__Event-Year{
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -95,7 +140,7 @@ color: #757575;
 
 /* Event-Day */
 .Content__Event-Day{
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }

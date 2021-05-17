@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 import {Modal,Button, Row, Col, Form,Image} from 'react-bootstrap';
 
-export class EditEventModal extends Component{
+export class EditArticleModal extends Component{
 constructor(props){
     super(props);
-    // this.state={events:[]};
+    // this.state={Articles:[]};
     this.handleSubmit=this.handleSubmit.bind(this);
     this.handleFileSelected=this.handleFileSelected.bind(this);
 }
@@ -14,7 +14,7 @@ ImageSrc = process.env.REACT_APP_PHOTOPATH+this.PhotoFileName;
 
 handleSubmit(e){
     e.preventDefault();
-    fetch(process.env.REACT_APP_API+'event',{
+    fetch(process.env.REACT_APP_API+'Article',{
         method:'PUT',
         headers:{
             'Accept':'application/json',
@@ -26,9 +26,6 @@ handleSubmit(e){
             Type:e.target.Type.value,
             Description:e.target.Description.value,
             PicFileName:this.PhotoFileName,
-            Details:e.target.Details.value,
-            StartDate:e.target.StartDate.value,
-            EndDate:e.target.EndDate.value,
             Status:e.target.Status.value,
         })
     })
@@ -52,7 +49,7 @@ handleFileSelected(e){
         e.target.files[0].name
     );
 
-    fetch(process.env.REACT_APP_API+'Event/SaveFile',{
+    fetch(process.env.REACT_APP_API+'Article/SaveFile',{
         method:'POST',
         body:formData
     })
@@ -77,7 +74,7 @@ render(){
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Edit Event
+                    Edit Article
                 </Modal.Title>
             </Modal.Header>
             
@@ -115,53 +112,16 @@ render(){
                                 placeholder="Description"/>
                             </Form.Group>
 
-                            <Form.Group controlId="Details">
-                                <Form.Label>Details</Form.Label>
-                                <Form.Control typeof="text" name="Details" required 
-                                defaultValue={this.props.Details}
-                                placeholder="Details"/>
-                            </Form.Group>
-
                             <Form.Group controlId="Status">
                                 <Form.Label>Status</Form.Label>
                                 <Form.Control type="text" name="Status" required 
                                 defaultValue={this.props.Status}
                                 placeholder="Status"/>
                             </Form.Group>
-
-                            {/* <Form.Group controlId="Department">
-                                <Form.Label>Department</Form.Label>
-                                <Form.Control as="select">
-                                {this.state.deps.map(dep=>
-                                    <option key={dep.DepartmentId}>{dep.DepartmentName}</option>)}
-                                </Form.Control>
-                            </Form.Group> */}
-
-                            <Form.Group controlId="StartDate">
-                                <Form.Label>StartDate</Form.Label>
-                                <Form.Control 
-                                type="date"
-                                name="StartDate"
-                                required
-                                placeholder="StartDate"
-                                defaultValue={this.props.StartDate}
-                                />
-                            </Form.Group>
-
-                            <Form.Group controlId="EndDate">
-                                <Form.Label>EndDate</Form.Label>
-                                <Form.Control 
-                                type="date"
-                                name="EndDate"
-                                required
-                                placeholder="EndDate"
-                                defaultValue={this.props.EndDate}
-                                />
-                            </Form.Group>
-
+                            
                             <Form.Group>
                                 <Button variant="primary" type="submit">
-                                    Update Event
+                                    Update Article
                                 </Button>
                             </Form.Group>
                         </Form>
