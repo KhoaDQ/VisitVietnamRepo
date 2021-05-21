@@ -1,36 +1,18 @@
-#slider{
-    background: url('../../assets/img/background-vietnam.jpg') top center / cover no-repeat;
-    /* height: 800px; */
-    padding-top: 30%;
-    position: relative;
-}
-
-#slider .text-content{
-    position: absolute;
-    bottom: 47px;
-    color: #fff;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-}
-#slider .text-heading{
-    font-weight: 500;
-    font-size: 24px;
-    text-transform: uppercase;
-
-}
-#slider .text-desc{
-    font-size: 15px;
-}
-
-
 .Mall{
     margin-top: 20px;
+}
+
+.Clothes #slider{
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.6),rgb(255, 255, 255,0.1),rgb(255, 255, 255,0.1)) ,url('../../assets/img/shopping_1.jpg');
 }
 
 .Container__background{
     background: url('../../assets/img/backgroundshopping.jpg');
     background-size: cover;
+    scroll-behavior: smooth;
+    width: 85%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .Container__Content .member-item .item-content{
@@ -44,9 +26,13 @@
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
-.Container__Content .Content__Brand .member-item-content,
+
 .Container__Content .Content__Product .member-item-content{
     min-height: 370px;
+}
+
+.Container__Content .Content__Brand .member-item-content{
+    min-height: none;
 }
 
 
@@ -54,17 +40,15 @@
     display: inline-block;
 }
 
-.Container .Header{
-    margin: 12px;
-    bottom: 0;
-    vertical-align:bottom;
-    font-size: 28px;
-    text-transform: none;
-}
-
 .Container__Content .Load-Mores{
     width: 5%;
     border-radius: 10px;
     background-color: black !important;
     color: #fff;
+}
+
+.Content__Brand .member-img{
+    min-height: 250px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
 }

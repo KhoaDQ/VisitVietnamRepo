@@ -6,21 +6,23 @@ import {AddHomeStayModal} from './AddHomeStayModal.js';
 import {EditHomeStayModal} from './EditHomeStayModal.js';
 import {AddPlaceModal} from '../Place/AddPlaceModal.js';
 import {EditPlaceModal} from '../Place/EditPlaceModal.js';
+import {AddArticleModal} from '../Article/AddArticleModal.js';
+import {EditArticleModal} from '../Article/EditArticleModal.js';
 import {AddLocationModal} from '../Place/Location/AddLocationModal.js';
 import {EditLocationModal} from '../Place/Location/EditLocationModal.js';
 import {AddPlaceEventModal} from '../Place/PlaceEvent/AddPlaceEventModal.js';
 import {EditPlaceEventModal} from '../Place/PlaceEvent/EditPlaceEventModal.js';
 
 export class HomeStay extends Component{
-
     
     constructor(props){
         super(props);
-        this.state={HomeStays:[], Places:[], PlaceEvents:[], Locations:[],
+        this.state={HomeStays:[], Places:[], PlaceEvents:[], Locations:[], Articles:[],
                     addModalShow:false, editModalShow:false, 
                     addPModalShow:false, editPModalShow:false,
                     addLModalShow:false, editLModalShow:false,
                     addEModalShow:false, editEModalShow:false,
+                    addAModalShow:false, editAModalShow:false,
         }
 
         this.refreshList = this.refreshList.bind(this);
@@ -75,12 +77,23 @@ export class HomeStay extends Component{
         )
     }
 
+    refreshListArticles(){
+        fetch(process.env.REACT_APP_API+'Article')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({Articles:data})
+            }
+        )
+    }
+
     componentDidMount(){
         window.scrollTo(0, 0);
         this.refreshList();
         this.refreshListPlaces();
         this.refreshListLocations();
         this.refreshListPlaceEvents();
+        this.refreshListArticles();
     }
 
 
@@ -143,12 +156,28 @@ export class HomeStay extends Component{
         }
     }
 
+    // Delete Article
+    deleteArticle(ArticleId){
+        if(window.confirm('Are you sure?')){
+            fetch(process.env.REACT_APP_API+'Article/'+ArticleId,{
+                method:'DELETE',
+                header:{'Accept':'application/json',
+                'Content-Type':'application/json'}
+            })
+
+            setTimeout(() => {
+                this.refreshListArticles();
+             }, 100);
+        }
+    }
+
     render(){
         
-        const {HomeStays,Places,Locations,PlaceEvents,
+        const {HomeStays,Places,Locations,PlaceEvents,Articles,
             Description,Type,AvgPrice,Comment,Star,PicFileName,PlaceId,
             pId,pName,pType,pSlogan,pOverview,pPhone,pEmail,pFacebook,pLinkWeb,pEventOfPlace,pPicFileName,
             eId,eName,eType,eDescription,ePicFileName,eDetails,eStartDate,eEndDate,eStatus,ePlaceId,
+            aId,aName,aType,aDescription,aPicFileName,aStatus,
             lId,lDetails,lStreet,lWard,lDistrict,lCity,lPlaceId
         }=this.state;
 
@@ -160,10 +189,12 @@ export class HomeStay extends Component{
         let editLModalClose=()=>this.setState({editLModalShow:false});
         let addEModalClose=()=>this.setState({addEModalShow:false});
         let editEModalClose=()=>this.setState({editEModalShow:false});
+        let addAModalClose=()=>this.setState({addAModalShow:false});
+        let editAModalClose=()=>this.setState({editAModalShow:false});
 
         return(
 
-            <div className="Container">
+            <div className="Container HomeStay">
                 
                 <div className="Admin">
                     <Table className="mt-4" striped bordered hover size="sm">
@@ -477,6 +508,72 @@ export class HomeStay extends Component{
 
                         <AddPlaceEventModal show={this.state.addEModalShow} 
                         onHide={()=>{this.refreshListPlaceEvents(); addEModalClose();}}/>
+                    </ButtonToolbar>
+                </div>
+
+                <div className="Admin">
+                    <Table className="mt-4" striped bordered hover size="sm">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>PicFileName</th>                                
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {Articles.map(Article=>
+                                <tr key={Article.Id}>
+                                    <td>{Article.Id}</td>
+                                    <td>{Article.Name}</td>
+                                    <td>{Article.Type}</td>
+                                    <td>{Article.Description}</td>
+                                    <td>{Article.PicFileName}</td>
+                                    <td>{Article.Status}</td>
+                                    <td>
+                                        <ButtonToolbar>
+                                            <Button variant='info' className="p-1 mr-2"
+                                            onClick={()=>this.setState({editAModalShow:true, 
+                                                                        aId:Article.Id,
+                                                                        aName:Article.Name,                                                      
+                                                                        aType:Article.Type,                                                      
+                                                                        aDescription:Article.Description,                                                      
+                                                                        aPicFileName:Article.PicFileName,                                                                                                  
+                                                                        aStatus:Article.Status                                                                                                          
+                                                                        })}>
+                                                Edit Article
+                                            </Button>
+
+                                            <Button variant='danger' className="p-1 mr-2"
+                                            onClick={()=>this.deleteArticle(Article.Id)}>
+                                                Delete Article
+                                            </Button>
+
+                                            <EditArticleModal show={this.state.editAModalShow} 
+                                            onHide={()=>{editAModalClose(); this.refreshListArticles();}}
+                                            Id={aId}
+                                            Name={aName}
+                                            Type={aType}
+                                            Description={aDescription}
+                                            PicFileName={aPicFileName}
+                                            Status={aStatus}/>
+                                        </ButtonToolbar>
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </Table>
+
+                    <ButtonToolbar>
+                        <Button variant='primary'
+                        onClick={()=>this.setState({addAModalShow:true})}>
+                            Add Article
+                        </Button>
+
+                        <AddArticleModal show={this.state.addAModalShow} 
+                        onHide={()=>{this.refreshListArticles(); addAModalClose();}}/>
                     </ButtonToolbar>
                 </div>
 

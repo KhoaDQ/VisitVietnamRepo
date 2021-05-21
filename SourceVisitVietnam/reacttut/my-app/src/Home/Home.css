@@ -1,4 +1,99 @@
-.Home{
+/* .Home{
     margin-top: 70px;
     height:1000px;
+} */
+
+
+.Home #slider{
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.6),rgb(255, 255, 255,0.1),rgb(255, 255, 255,0.1)) ,url('../assets/img/sliderhome.png');
+}
+
+.Content__TopPicks .member-img{
+    min-height: 350px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+/* Top Picks */
+.Content__TopPicks{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Vibrant */
+.Content__VibrantNeighbourhood{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Popular Places */
+.Content__PopularPlaces{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/* FoodHighlights */
+#sliderFoodHighlights{
+    background-image:url('../assets/img/Food.png');
+
+    /* background-image: linear-gradient(0, rgba(51,51,51,0.5),rgba(255,255,240,0.5)) ,url('../img/background-vietnam.jpg'); */
+    padding-top: 30%;
+    width: 100%;
+    height: 500px;
+    background-size: 100% 500px;
+    background-repeat: no-repeat;
+    position: relative;
+}  
+
+#sliderFoodHighlights .text-content,
+#sliderShopping .text-content {
+    position: absolute;
+    bottom: 2px;
+    color: #fff;
+    left: 20%;
+    transform: translateX(-50%);
+    text-align: left;
+}
+
+.Content__GoShopping #sliderShopping .text-content {
+    bottom: 30px;
+    left: 25%;
+}
+
+#sliderFoodHighlights .text-content .text-heading,
+#sliderShopping .text-content .text-heading{
+    font-weight: 800;
+}
+
+#sliderFoodHighlights .text-content .text-desc,
+#sliderShopping .text-content .text-desc{
+    font-weight: 800;
+}
+
+#sliderFoodHighlights .text-content .text-red,
+#sliderShopping .text-content .text-red{
+    border-radius: 20px;
+    background: #088A08;
+    color: black;
+    height: 30px;
+}
+
+
+/* Shopping */
+
+#sliderShopping{
+    background-image: url('../assets/img/master_13.jpg');
+
+    /* background-image: linear-gradient(0, rgba(51,51,51,0.5),rgba(255,255,240,0.5)) ,url('../img/background-vietnam.jpg'); */
+    padding-top: 30%;
+    width: 100%;
+    height: 500px;
+    background-size: 100% 500px;
+    background-repeat: no-repeat;
+    position: relative;
+    
 }

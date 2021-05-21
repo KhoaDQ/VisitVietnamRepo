@@ -85,7 +85,7 @@ export class Gift extends Component{
         let editModalClose=()=>this.setState({editModalShow:false});
         return(
             
-            <div className="Container">
+            <div className="Container Gift">
                 
                 <div className="Admin">
                     <Table className="mt-4" striped bordered hover size="sm">

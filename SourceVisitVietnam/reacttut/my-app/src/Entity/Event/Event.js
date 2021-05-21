@@ -10,7 +10,7 @@ export class Event extends Component{
     
     constructor(props){
         super(props);
-        this.state={events:[], eventsUpcoming:[], eventsYear:[], eventsDay:[],
+        this.state={events:[], eventsUpcoming:[], eventsYear:[], eventsDay:[], articles:[],
             addModalShow:false, editModalShow:false, 
             Event_Year_visible:3, Event_Day_visible:3}
         this.loadMoreY = this.loadMoreY.bind(this);
@@ -60,12 +60,23 @@ export class Event extends Component{
         )
     }
 
+    getAllArticleEvent(){
+        fetch(process.env.REACT_APP_API+'article/GetAllArticleEvent')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({articles:data})
+            }
+        )
+    }
+
     componentDidMount(){
         window.scrollTo(0, 0);
         this.refreshList();
         this.get4EventUpcoming();
         this.getAllEventDay();
         this.getAllEventYear();
+        this.getAllArticleEvent();
     }
 
     deleteEvent(eventId){
@@ -97,13 +108,13 @@ export class Event extends Component{
 
     render(){
         
-        const {eventsDay,eventsYear,eventsUpcoming,events,
+        const {eventsDay,eventsYear,eventsUpcoming,events,articles,
             Id,Name,Type,Description,PicFileName,Details,StartDate,EndDate,Status}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
         return(
             
-            <div className="Container">
+            <div className="Container Event">
                 
                 <div className="Admin">
                     <Table className="mt-4" striped bordered hover size="sm">
@@ -184,23 +195,46 @@ export class Event extends Component{
                 </div>
 
                 <div id="slider" className="Banner">
-                    <div className="text-content">
+                    <div className="text-content ">                        
                         <div className="text-heading">Event</div>
                         <div className="text-desc">Description</div>
-                    </div>
+                    </div>                 
                 </div>
 
                 <div className="Container__Content">
-                    <div className="Content__Highlight">
+                    <div id="Background-Highlight">
+                    <div className="Content__Highlight pt-4" >
                         <div className="Highlight">
-                            <div className="Line"></div>
-                            <div className="Header text-danger">Highlight</div>
+                            <div className="Line bg-light"></div>
+                            <div className="Header text-black">Highlight</div>
                         </div>
-                        <div className="row member-list">
+                        <div className="row member-list ml-3 mr-3 mt-5">
+                            {articles.map(article=>
+                            <div class="col-sm-4 member-item">                                
+                                <div key={article.Id} className="member-item-content">
+                                    <img src={this.ImageSrc+article.PicFileName} alt={article.PicFileName} class="member-img border-img"/>
+                                    
+                                </div>  
+                                <div className="item-content text-center">
+                                        <h3 className="item-header">{article.Name}</h3>
+                                </div>                                                              
+                            </div>
+                            )}
+                        </div>
+                    </div>
+                    </div>
+
+                    <div id="Background-YearDay">
+                    <div className="Content__Upcoming pt-4" >
+                        <div className="Highlight">
+                            <div className="Line bg-light"></div>
+                            <div className="Header text-black">Upcoming</div>
+                        </div>
+                        <div className="row member-list ml-3 mr-3">
                             {eventsUpcoming.map(event=>
-                            <div class="col-sm-3 member-item">                                
-                                <div key={event.Id}>
-                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
+                            <div class="col-sm-4 member-item">                                
+                                <div key={event.Id} className="member-item-content">
+                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img border-img"/>
                                     <div className="item-content">
                                         <div className="item-header">{event.Name}</div>
                                         <div className="item-description">{event.Description}</div>
@@ -213,16 +247,16 @@ export class Event extends Component{
                         </div>
                     </div>
 
-                    <div className="Content__Event-Year">
+                    <div className="Content__Event-Year pt-4">
                         <div className="Highlight">
                             <div className="Line"></div>
                             <div className="Header text-warning">Annual Event</div>
                         </div>
-                        <div className="row member-list">
+                        <div className="row member-list ml-3 mr-3">
                             {eventsYear.slice(0,this.state.Event_Year_visible).map(event=>
                                 <div class="col-sm-4 member-item">                                
-                                    <div key={event.Id}>
-                                        <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
+                                    <div key={event.Id} className="member-item-content">
+                                        <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img border-img"/>
                                         <div className="item-content">
                                             <div className="item-header">{event.Name}</div>
                                             <div className="item-description">{event.Description}</div>
@@ -247,11 +281,11 @@ export class Event extends Component{
                             <div className="Header text-success">Event</div>
                         </div>
 
-                        <div className="row member-list">
+                        <div className="row member-list ml-3 mr-3">
                         {eventsDay.slice(0,this.state.Event_Day_visible).map(event=>
                             <div class="col-sm-4 member-item">                                
-                                <div key={event.Id}>
-                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img"/>
+                                <div key={event.Id} className="member-item-content">
+                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img border-img"/>
                                     <div className="item-content">
                                         <div className="item-header">{event.Name}</div>
                                         <div className="item-description">{event.Description}</div>
@@ -276,6 +310,7 @@ export class Event extends Component{
                     </div>
 
                     <div className="clear"></div>
+                    </div>
                 </div>
             </div>
         )
