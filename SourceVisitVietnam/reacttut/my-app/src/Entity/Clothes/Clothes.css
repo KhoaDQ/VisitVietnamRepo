@@ -20,12 +20,6 @@
     color: #000;
 }
 
-.Container__Content .member-item-content{
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
-}
-
 
 .Container__Content .Content__Product .member-item-content{
     min-height: 370px;

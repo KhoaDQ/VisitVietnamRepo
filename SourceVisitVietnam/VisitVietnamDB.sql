@@ -5,6 +5,8 @@ use VisitVietnamDB
 GO
 
 
+--QUERY Test
+
 --
 -- CREATE TABLE-------#####################################################################
 create table Place

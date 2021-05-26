@@ -4,6 +4,8 @@ import '../../assets/css/base.css';
 import './Clothes.css';
 import {AddClothesModal} from './AddClothesModal.js';
 import {EditClothesModal} from './EditClothesModal.js';
+import {DetailsModal} from '../../Component/DetailsIModal';
+
 import { Collapse } from 'antd';
 const { Panel } = Collapse;
 
@@ -13,7 +15,7 @@ export class Clothes extends Component{
     constructor(props){
         super(props);
         this.state={outfits:[], places:[], brands:[], locations:[],
-            addModalShow:false, editModalShow:false,
+            addModalShow:false, editModalShow:false, DetailsModalShow:false,
             Mall_visible:3, Brand_visible:3, Product_visible:6
         }
         this.loadMoreM = this.loadMoreM.bind(this);
@@ -120,10 +122,9 @@ export class Clothes extends Component{
     render(){
         
         const {outfits,places,brands,locations,
-            Id,Name,Type,Gender,RangeAge,Price,Note,PicFileName,PlaceId,
-            Slogan,Overview,Phone,Email,Facebook,LinkWeb,EventOfPlace,
-
+            Id,Name,Type,Gender,RangeAge,Price,Note,PicFileName,PlaceId, Status
         }=this.state;
+        let DetailsModalClose=()=>this.setState({DetailsModalShow:false});
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
         return(
@@ -280,7 +281,23 @@ export class Clothes extends Component{
                                 {brands.slice(0,this.state.Brand_visible).map(brand=>
                                 <div class="col-sm-4 member-item mt-5">                                
                                     <div key={brand.Id} className="member-item-content">
+                                        <div
+                                            onClick={()=>this.setState({DetailsModalShow:true, 
+                                                Id:brand.Id,
+                                                Name:brand.Name,
+                                                PicFileName:brand.PicFileName,
+                                                Note:brand.Note,
+                                                Status:brand.Status})}
+                                        >
                                         <img src={this.ImageSrc+brand.PicFileName} alt={brand.PicFileName} className="member-img border-img"/>
+                                        </div>  
+                                        <DetailsModal show={this.state.DetailsModalShow} 
+                                            onHide={()=>{DetailsModalClose();}}
+                                            Id={Id}
+                                            Name={Name}
+                                            Note={Note}
+                                            PicFileName={PicFileName}
+                                            Status={Status}/>                                                       
                                     </div>                                                               
                                 </div>
                                 )}

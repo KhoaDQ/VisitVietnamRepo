@@ -234,6 +234,7 @@ export class Foody extends Component{
                         <div className="text-desc">Description</div>
                     </div>
                 </div>
+                
                 <div className="Container__background pt-5 pb-5">
                     <div className="Container__Content">
 
@@ -286,7 +287,7 @@ export class Foody extends Component{
                                                         <div className="location-list mt-3">
                                                         {locations.map(location=>
                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                {(location.Id)=(place.Id) &&
+                                                                {(location.PlaceId)==(place.Id) &&
                                                                 <div>- {location.Details},                                             
                                                                 {location.Street},                                         
                                                                 {location.Ward},                                             
@@ -336,7 +337,7 @@ export class Foody extends Component{
                                                                         <div className="location-list mt-3">
                                                                         {locations.map(location=>
                                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                                {(location.Id)=(place.Id) &&
+                                                                                {(location.PlaceId)==(place.Id) &&
                                                                                 <div>- {location.Details},                                             
                                                                                 {location.Street},                                         
                                                                                 {location.Ward},                                             
@@ -392,7 +393,7 @@ export class Foody extends Component{
                                                                         <div className="location-list mt-3">
                                                                         {locations.map(location=>
                                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                                {(location.Id)=(place.Id) &&
+                                                                                {(location.PlaceId)==(place.Id) &&
                                                                                 <div>- {location.Details},                                             
                                                                                 {location.Street},                                         
                                                                                 {location.Ward},                                             
@@ -448,7 +449,7 @@ export class Foody extends Component{
                                                                         <div className="location-list mt-3">
                                                                         {locations.map(location=>
                                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                                {(location.Id)=(place.Id) &&
+                                                                                {(location.PlaceId)==(place.Id) &&
                                                                                 <div>- {location.Details},                                             
                                                                                 {location.Street},                                         
                                                                                 {location.Ward},                                             
@@ -504,7 +505,7 @@ export class Foody extends Component{
                                                                         <div className="location-list mt-3">
                                                                         {locations.map(location=>
                                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                                {(location.Id)=(place.Id) &&
+                                                                                {(location.PlaceId)==(place.Id) &&
                                                                                 <div>- {location.Details},                                             
                                                                                 {location.Street},                                         
                                                                                 {location.Ward},                                             

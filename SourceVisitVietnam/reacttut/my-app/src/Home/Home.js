@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import {Navbar,Nav} from 'react-bootstrap'; 
 import '../assets/css/base.css';
 import './Home.css';
+import {DetailsModal} from '../Component/DetailsIModal';
 
 
 
@@ -10,7 +11,9 @@ export class Home extends Component{
 
     constructor(props){
         super(props);
-        this.state={articlestoppick:[], bitexco:[], BenThanhMarket:[], DamSenPark:[], TheCityPostOffice:[], TheLandmark81:[], TheWalkingStreet:[]}
+        this.state={articlestoppick:[], bitexco:[], BenThanhMarket:[], DamSenPark:[], TheCityPostOffice:[], TheLandmark81:[], TheWalkingStreet:[]
+            ,DetailsModalShow:false
+        }
     }
 
     ImageSrc = process.env.REACT_APP_PHOTOPATH;
@@ -97,8 +100,10 @@ export class Home extends Component{
     }
 
     render(){
-        const {articlestoppick, bitexco, DamSenPark, BenThanhMarket, TheCityPostOffice, TheWalkingStreet, TheLandmark81
+        const {articlestoppick, bitexco, DamSenPark, BenThanhMarket, TheCityPostOffice, TheWalkingStreet, TheLandmark81,
+            Id, Name, Type, Description, Status, PicFileName
         } = this.state;
+        let DetailsModalClose=()=>this.setState({DetailsModalShow:false});
         return(
             <div className="Container Home">
                 <div id="slider" className="Banner">
@@ -119,13 +124,31 @@ export class Home extends Component{
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3 mt-5">
                             {articlestoppick.map(article=>
-                            <div class="col-sm-4 member-item">                                
-                                <div key={article.Id} className="member-item-content">
-                                    <img src={this.ImageSrc+article.PicFileName} alt={article.PicFileName} class="member-img border-img"/>   
-                                </div>  
-                                <div className="item-content text-center">
-                                        <h3 className="item-header">{article.Name}</h3>
-                                </div>                                                              
+                            <div class="col-sm-4 member-item">
+                                <div key={article.Id}>
+                                    <div className="member-item-content"
+                                    onClick={()=>this.setState({DetailsModalShow:true, 
+                                        Id:article.Id,
+                                        Name:article.Name,
+                                        Type:article.Type,
+                                        Description:article.Description,
+                                        PicFileName:article.PicFileName,
+                                        Status:article.Status})}
+                                    >
+                                        <img src={this.ImageSrc+article.PicFileName} alt={article.PicFileName} className="member-img border-img"/>
+                                        <div className="item-content text-center">
+                                            <h3 className="item-header">{article.Name}</h3>
+                                        </div>                                     
+                                    </div>
+                                    <DetailsModal show={this.state.DetailsModalShow} 
+                                            onHide={()=>{DetailsModalClose();}}
+                                            Id={Id}
+                                            Name={Name}
+                                            Type={Type}
+                                            Description={Description}
+                                            PicFileName={PicFileName}
+                                            Status={Status}/>
+                                </div>                                                        
                             </div>
                             )}
                         </div>

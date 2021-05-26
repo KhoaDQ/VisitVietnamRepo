@@ -12,12 +12,14 @@ import {AddLocationModal} from '../Place/Location/AddLocationModal.js';
 import {EditLocationModal} from '../Place/Location/EditLocationModal.js';
 import {AddPlaceEventModal} from '../Place/PlaceEvent/AddPlaceEventModal.js';
 import {EditPlaceEventModal} from '../Place/PlaceEvent/EditPlaceEventModal.js';
+import { Collapse } from 'antd';
+const { Panel } = Collapse;
 
 export class HomeStay extends Component{
     
     constructor(props){
         super(props);
-        this.state={HomeStays:[], Places:[], PlaceEvents:[], Locations:[], Articles:[],
+        this.state={HomeStays:[], Places:[], PlaceEvents:[], Locations:[], Articles:[], Hotels:[],Hostels:[],Homestays:[], Villas:[], Bungalows:[], Resorts:[],
                     addModalShow:false, editModalShow:false, 
                     addPModalShow:false, editPModalShow:false,
                     addLModalShow:false, editLModalShow:false,
@@ -26,16 +28,13 @@ export class HomeStay extends Component{
         }
 
         this.refreshList = this.refreshList.bind(this);
-        // this.refreshListPlaceEvents = this.refreshListPlaceEvents.bind(this);
-        // this.refreshListPlaces = this.refreshListPlaces.bind(this);
-        // this.refreshListLocations = this.refreshListLocations.bind(this);
-        // this.deleteHomeStay = this.deleteHomeStay.bind(this);
-        // this.deletePlace = this.deletePlace.bind(this);
-        // this.deleteLocation = this.deleteLocation.bind(this);
-        // this.deletePlaceEvent = this.deletePlaceEvent.bind(this);
     }
     
     ImageSrc = process.env.REACT_APP_PHOTOPATH;
+
+    callback(key) {
+        console.log(key);
+    }
 
     refreshList(){
         fetch(process.env.REACT_APP_API+'HomeStay')
@@ -87,6 +86,66 @@ export class HomeStay extends Component{
         )
     }
 
+    getAllHotel(){
+        fetch(process.env.REACT_APP_API+'homestay/GetAllHotel')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({Hotels:data})
+            }
+        )
+    }
+
+    getAllHostel(){
+        fetch(process.env.REACT_APP_API+'homestay/GetAllHostel')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({Hostels:data})
+            }
+        )
+    }
+
+    getAllHomestay(){
+        fetch(process.env.REACT_APP_API+'homestay/GetAllHomestay')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({Homestays:data})
+            }
+        )
+    }
+
+    getAllVilla(){
+        fetch(process.env.REACT_APP_API+'homestay/GetAllVilla')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({Villas:data})
+            }
+        )
+    }
+
+    getAllBungalow(){
+        fetch(process.env.REACT_APP_API+'homestay/GetAllBungalow')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({Bungalows:data})
+            }
+        )
+    }
+
+    getAllResort(){
+        fetch(process.env.REACT_APP_API+'homestay/GetAllResort')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({Resorts:data})
+            }
+        )
+    }
+
     componentDidMount(){
         window.scrollTo(0, 0);
         this.refreshList();
@@ -94,6 +153,12 @@ export class HomeStay extends Component{
         this.refreshListLocations();
         this.refreshListPlaceEvents();
         this.refreshListArticles();
+        this.getAllHotel();
+        this.getAllHostel();
+        this.getAllHomestay();
+        this.getAllVilla();
+        this.getAllBungalow();
+        this.getAllResort();
     }
 
 
@@ -173,7 +238,7 @@ export class HomeStay extends Component{
 
     render(){
         
-        const {HomeStays,Places,Locations,PlaceEvents,Articles,
+        const {HomeStays,Places,Locations,PlaceEvents,Articles,Hotels,Hostels,Homestays,Villas,Bungalows,Resorts,
             Description,Type,AvgPrice,Comment,Star,PicFileName,PlaceId,
             pId,pName,pType,pSlogan,pOverview,pPhone,pEmail,pFacebook,pLinkWeb,pEventOfPlace,pPicFileName,
             eId,eName,eType,eDescription,ePicFileName,eDetails,eStartDate,eEndDate,eStatus,ePlaceId,
@@ -577,6 +642,360 @@ export class HomeStay extends Component{
                     </ButtonToolbar>
                 </div>
 
+                <div id="slider" className="Banner">
+                    <div className="text-content ">                        
+                        <div className="text-heading">Homestay</div>
+                        <div className="text-desc">Description</div>
+                    </div>                 
+                </div>
+
+                <div className="Container__background pt-5 pb-5">
+                    <div className="Container__Content">
+
+                        <ul id="nav">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#Hotel">Hotel</a></li>
+                            <li><a href="#Hostel">Hostel</a></li>
+                            <li><a href="#Homestay">Homestay</a></li>
+                            <li><a href="#Villa">Villa</a></li>
+                            <li>
+                                <a href="#">
+                                    More
+                                    <i class="nav-arrow-down ti-angle-down"></i>
+                                </a>
+                                <ul class="subnav">
+                                    <li><a href="#Bungalow">Bungalow</a></li>
+                                    <li><a href="#Resort">Resort</a></li>
+                                    <li><a href="#">More</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        {/* Budget Hotel */}
+                        <div className="Content__Hotel" id="Hotel">
+                            <div className="Hotel">                                                     
+                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <div className="Header d-inline text-in-dark">Budget Hotel</div>
+                            </div>
+                            <div className="border-bottom"></div>
+                            <div className="row member-list ml-3 mr-3">
+                                {Hotels.slice(0,this.state.Mall_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-3">                                
+                                    <div key={place.Id} className="member-item-content">
+                                        <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
+                                        <div className="item-content m-0 p-3">
+                                            <div className="item-header px-3">{place.Name}</div>
+                                            <div className="item-slogan px-3">{place.Slogan}</div>
+                                            <Collapse className="mt-2" onChange={this.callback}>
+                                                <Panel header="Overview" key="1">
+                                                    <p><div className="item-overview">{place.Overview}</div></p>
+                                                </Panel>
+                                                <Panel header="Contact" key="2">
+                                                    <p><div className="item-info">{place.Phone}</div></p>
+                                                    <p><div className="item-info">{place.Email}</div></p>
+                                                    <p><div className="item-info">{place.Facebook}</div></p>
+                                                    <p><div className="item-info">{place.LinkWeb}</div></p>
+                                                </Panel>
+                                                <Panel header="Address" key="3">
+                                                    <p>
+                                                        <div className="location-list mt-3">
+                                                        {Locations.map(location=>
+                                                            <div key={location.Id} className="d-inline mt-2">
+                                                                {(location.PlaceId)==(place.Id) &&
+                                                                <div>- {location.Details},                                             
+                                                                {location.Street},                                         
+                                                                {location.Ward},                                             
+                                                                {location.District},                                                
+                                                                {location.City}</div>}
+                                                            </div>                                               
+                                                        )}
+                                                        </div>
+                                                    </p>
+                                                </Panel>
+                                            </Collapse>                                                                                                                                
+                                        </div> 
+                                    </div>                                                               
+                                </div>
+                                )}
+                            </div>
+                            <div className="col-md-12 Contain-Load-Mores">
+                                {this.state.Mall_visible < this.state.Hotels.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                            </div>
+                            <div className="hide-item border-bottom mb-5"></div>
+                        </div>
+                        
+                        {/* Hostel */}
+                        <div className="Content__Hostel" id="Hostel">
+                            <div className="Hostel">                                                     
+                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <div className="Header d-inline text-in-dark">Hostel</div>
+                            </div>
+                            <div className="border-bottom"></div>
+                            <div className="row member-list ml-3 mr-3">
+                                {Hostels.slice(0,this.state.Mall_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-3">                                
+                                    <div key={place.Id} className="member-item-content">
+                                        <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
+                                        <div className="item-content m-0 p-3">
+                                            <div className="item-header px-3">{place.Name}</div>
+                                            <div className="item-slogan px-3">{place.Slogan}</div>
+                                            <Collapse className="mt-2" onChange={this.callback}>
+                                                <Panel header="Overview" key="1">
+                                                    <p><div className="item-overview">{place.Overview}</div></p>
+                                                </Panel>
+                                                <Panel header="Contact" key="2">
+                                                    <p><div className="item-info">{place.Phone}</div></p>
+                                                    <p><div className="item-info">{place.Email}</div></p>
+                                                    <p><div className="item-info">{place.Facebook}</div></p>
+                                                    <p><div className="item-info">{place.LinkWeb}</div></p>
+                                                </Panel>
+                                                <Panel header="Address" key="3">
+                                                    <p>
+                                                        <div className="location-list mt-3">
+                                                        {Locations.map(location=>
+                                                            <div key={location.Id} className="d-inline mt-2">
+                                                                {(location.PlaceId)==(place.Id) &&
+                                                                <div>- {location.Details},                                             
+                                                                {location.Street},                                         
+                                                                {location.Ward},                                             
+                                                                {location.District},                                                
+                                                                {location.City}</div>}
+                                                            </div>                                               
+                                                        )}
+                                                        </div>
+                                                    </p>
+                                                </Panel>
+                                            </Collapse>                                                                                                                                
+                                        </div> 
+                                    </div>                                                               
+                                </div>
+                                )}
+                            </div>
+                            <div className="col-md-12 Contain-Load-Mores">
+                                {this.state.Mall_visible < this.state.Hotels.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                            </div>
+                            <div className="hide-item border-bottom mb-5"></div>
+                        </div>
+
+                        {/* Homestay */}
+                        <div className="Content__Homestay" id="Homestay">
+                            <div className="Homestay">                                                     
+                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <div className="Header d-inline text-in-dark">Homestay</div>
+                            </div>
+                            <div className="border-bottom"></div>
+                            <div className="row member-list ml-3 mr-3">
+                                {Homestays.slice(0,this.state.Mall_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-3">                                
+                                    <div key={place.Id} className="member-item-content">
+                                        <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
+                                        <div className="item-content m-0 p-3">
+                                            <div className="item-header px-3">{place.Name}</div>
+                                            <div className="item-slogan px-3">{place.Slogan}</div>
+                                            <Collapse className="mt-2" onChange={this.callback}>
+                                                <Panel header="Overview" key="1">
+                                                    <p><div className="item-overview">{place.Overview}</div></p>
+                                                </Panel>
+                                                <Panel header="Contact" key="2">
+                                                    <p><div className="item-info">{place.Phone}</div></p>
+                                                    <p><div className="item-info">{place.Email}</div></p>
+                                                    <p><div className="item-info">{place.Facebook}</div></p>
+                                                    <p><div className="item-info">{place.LinkWeb}</div></p>
+                                                </Panel>
+                                                <Panel header="Address" key="3">
+                                                    <p>
+                                                        <div className="location-list mt-3">
+                                                        {Locations.map(location=>
+                                                            <div key={location.Id} className="d-inline mt-2">
+                                                                {(location.PlaceId)==(place.Id) &&
+                                                                <div>- {location.Details},                                             
+                                                                {location.Street},                                         
+                                                                {location.Ward},                                             
+                                                                {location.District},                                                
+                                                                {location.City}</div>}
+                                                            </div>                                               
+                                                        )}
+                                                        </div>
+                                                    </p>
+                                                </Panel>
+                                            </Collapse>                                                                                                                                
+                                        </div> 
+                                    </div>                                                               
+                                </div>
+                                )}
+                            </div>
+                            <div className="col-md-12 Contain-Load-Mores">
+                                {this.state.Mall_visible < this.state.Hotels.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                            </div>
+                            <div className="hide-item border-bottom mb-5"></div>
+                        </div>
+
+                        {/* Villa */}
+                        <div className="Content__Villa" id="Villa">
+                            <div className="Villa">                                                     
+                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <div className="Header d-inline text-in-dark">Villa</div>
+                            </div>
+                            <div className="border-bottom"></div>
+                            <div className="row member-list ml-3 mr-3">
+                                {Villas.slice(0,this.state.Mall_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-3">                                
+                                    <div key={place.Id} className="member-item-content">
+                                        <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
+                                        <div className="item-content m-0 p-3">
+                                            <div className="item-header px-3">{place.Name}</div>
+                                            <div className="item-slogan px-3">{place.Slogan}</div>
+                                            <Collapse className="mt-2" onChange={this.callback}>
+                                                <Panel header="Overview" key="1">
+                                                    <p><div className="item-overview">{place.Overview}</div></p>
+                                                </Panel>
+                                                <Panel header="Contact" key="2">
+                                                    <p><div className="item-info">{place.Phone}</div></p>
+                                                    <p><div className="item-info">{place.Email}</div></p>
+                                                    <p><div className="item-info">{place.Facebook}</div></p>
+                                                    <p><div className="item-info">{place.LinkWeb}</div></p>
+                                                </Panel>
+                                                <Panel header="Address" key="3">
+                                                    <p>
+                                                        <div className="location-list mt-3">
+                                                        {Locations.map(location=>
+                                                            <div key={location.Id} className="d-inline mt-2">
+                                                                {(location.PlaceId)==(place.Id) &&
+                                                                <div>- {location.Details},                                             
+                                                                {location.Street},                                         
+                                                                {location.Ward},                                             
+                                                                {location.District},                                                
+                                                                {location.City}</div>}
+                                                            </div>                                               
+                                                        )}
+                                                        </div>
+                                                    </p>
+                                                </Panel>
+                                            </Collapse>                                                                                                                                
+                                        </div> 
+                                    </div>                                                               
+                                </div>
+                                )}
+                            </div>
+                            <div className="col-md-12 Contain-Load-Mores">
+                                {this.state.Mall_visible < this.state.Hotels.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                            </div>
+                            <div className="hide-item border-bottom mb-5"></div>
+                        </div>
+
+                        {/* Bungalow */}
+                        <div className="Content__Bungalow" id="Bungalow">
+                            <div className="Bungalow">                                                     
+                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <div className="Header d-inline text-in-dark">Bungalow</div>
+                            </div>
+                            <div className="border-bottom"></div>
+                            <div className="row member-list ml-3 mr-3">
+                                {Bungalows.slice(0,this.state.Mall_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-3">                                
+                                    <div key={place.Id} className="member-item-content">
+                                        <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
+                                        <div className="item-content m-0 p-3">
+                                            <div className="item-header px-3">{place.Name}</div>
+                                            <div className="item-slogan px-3">{place.Slogan}</div>
+                                            <Collapse className="mt-2" onChange={this.callback}>
+                                                <Panel header="Overview" key="1">
+                                                    <p><div className="item-overview">{place.Overview}</div></p>
+                                                </Panel>
+                                                <Panel header="Contact" key="2">
+                                                    <p><div className="item-info">{place.Phone}</div></p>
+                                                    <p><div className="item-info">{place.Email}</div></p>
+                                                    <p><div className="item-info">{place.Facebook}</div></p>
+                                                    <p><div className="item-info">{place.LinkWeb}</div></p>
+                                                </Panel>
+                                                <Panel header="Address" key="3">
+                                                    <p>
+                                                        <div className="location-list mt-3">
+                                                        {Locations.map(location=>
+                                                            <div key={location.Id} className="d-inline mt-2">
+                                                                {(location.PlaceId)==(place.Id) &&
+                                                                <div>- {location.Details},                                             
+                                                                {location.Street},                                         
+                                                                {location.Ward},                                             
+                                                                {location.District},                                                
+                                                                {location.City}</div>}
+                                                            </div>                                               
+                                                        )}
+                                                        </div>
+                                                    </p>
+                                                </Panel>
+                                            </Collapse>                                                                                                                                
+                                        </div> 
+                                    </div>                                                               
+                                </div>
+                                )}
+                            </div>
+                            <div className="col-md-12 Contain-Load-Mores">
+                                {this.state.Mall_visible < this.state.Hotels.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                            </div>
+                            <div className="hide-item border-bottom mb-5"></div>
+                        </div>
+
+                        {/* Resort */}
+                        <div className="Content__Resort" id="Resort">
+                            <div className="Resort">                                                     
+                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <div className="Header d-inline text-in-dark">Resort</div>
+                            </div>
+                            <div className="border-bottom"></div>
+                            <div className="row member-list ml-3 mr-3">
+                                {Resorts.slice(0,this.state.Mall_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-3">                                
+                                    <div key={place.Id} className="member-item-content">
+                                        <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
+                                        <div className="item-content m-0 p-3">
+                                            <div className="item-header px-3">{place.Name}</div>
+                                            <div className="item-slogan px-3">{place.Slogan}</div>
+                                            <Collapse className="mt-2" onChange={this.callback}>
+                                                <Panel header="Overview" key="1">
+                                                    <p><div className="item-overview">{place.Overview}</div></p>
+                                                </Panel>
+                                                <Panel header="Contact" key="2">
+                                                    <p><div className="item-info">{place.Phone}</div></p>
+                                                    <p><div className="item-info">{place.Email}</div></p>
+                                                    <p><div className="item-info">{place.Facebook}</div></p>
+                                                    <p><div className="item-info">{place.LinkWeb}</div></p>
+                                                </Panel>
+                                                <Panel header="Address" key="3">
+                                                    <p>
+                                                        <div className="location-list mt-3">
+                                                        {Locations.map(location=>
+                                                            <div key={location.Id} className="d-inline mt-2">
+                                                                {(location.PlaceId)==(place.Id) &&
+                                                                <div>- {location.Details},                                             
+                                                                {location.Street},                                         
+                                                                {location.Ward},                                             
+                                                                {location.District},                                                
+                                                                {location.City}</div>}
+                                                            </div>                                               
+                                                        )}
+                                                        </div>
+                                                    </p>
+                                                </Panel>
+                                            </Collapse>                                                                                                                                
+                                        </div> 
+                                    </div>                                                               
+                                </div>
+                                )}
+                            </div>
+                            <div className="col-md-12 Contain-Load-Mores">
+                                {this.state.Mall_visible < this.state.Hotels.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                            </div>
+                            <div className="hide-item border-bottom mb-5"></div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         )

@@ -31,7 +31,7 @@ export class FooterPage extends Component {
                     <MDBCol md="4">
                         <div className="Col">
                         <h5 className="title text-dark">CONTACT WITH US</h5>
-                            <div class="socials-list">
+                            <div className="socials-list">
                                 <a href=""><i className ="ti-facebook text-dark"></i></a>
                                 <a href=""><i className ="ti-instagram text-dark"></i></a>
                                 <a href=""><i className ="ti-youtube text-dark"></i></a>

@@ -12,6 +12,13 @@
     min-height: 350px;
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
+    box-shadow: 1px 2px 4px rgb(0 0 0 / 50%);
+}
+
+.Container__Content .Content__TopPicks .member-item-content {
+    background:none;
+    border-radius: 16px;
+    box-shadow: none;
 }
 
 /* Top Picks */

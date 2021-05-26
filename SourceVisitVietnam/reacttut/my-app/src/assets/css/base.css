@@ -98,6 +98,10 @@
     margin: 0;
 }
 
+.text-in-dark{
+color: rgb(232, 234, 237);
+}
+
 .Container .Header{
     margin: 12px;
     bottom: 0;
@@ -118,6 +122,12 @@
 
 .Container__Content .member-item .item-content{
     border-radius: 16px;
+}
+
+.Container__Content .member-item-content{
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
 .border-img{

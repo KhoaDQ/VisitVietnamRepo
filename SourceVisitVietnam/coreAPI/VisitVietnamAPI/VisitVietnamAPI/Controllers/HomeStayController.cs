@@ -161,5 +161,168 @@ namespace VisitVietnamAPI.Controllers
                 return new JsonResult("anonymous.png");
             }
         }
+
+        [Route("GetAllHotel")]
+
+        public JsonResult GetAllHotel()
+        {
+            string query = @"Select Id, Name, Overview, Phone, Email, Facebook, LinkWeb, EventOfPlace, Place.PicFileName AS PlacePicFileName, 
+                             Description, HomeStay.Type, AvgPrice, Comment, Star, HomeStay.PicFileName AS HomeStayPicFileName from Place, HomeStay where HomeStay.PlaceId=Place.Id AND HomeStay.Type='Hotel'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllHostel")]
+
+        public JsonResult GetAllHostel()
+        {
+            string query = @"Select Id, Name, Overview, Phone, Email, Facebook, LinkWeb, EventOfPlace, Place.PicFileName AS PlacePicFileName, 
+                             Description, HomeStay.Type, AvgPrice, Comment, Star, HomeStay.PicFileName AS HomeStayPicFileName from Place, HomeStay where HomeStay.PlaceId=Place.Id AND HomeStay.Type='Hostel'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+
+        [Route("GetAllHomestay")]
+
+        public JsonResult GetAllHomestay()
+        {
+            string query = @"Select Id, Name, Overview, Phone, Email, Facebook, LinkWeb, EventOfPlace, Place.PicFileName AS PlacePicFileName, 
+                             Description, HomeStay.Type, AvgPrice, Comment, Star, HomeStay.PicFileName AS HomeStayPicFileName from Place, HomeStay where HomeStay.PlaceId=Place.Id AND HomeStay.Type='Homestay'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllVilla")]
+
+        public JsonResult GetAllVilla()
+        {
+            string query = @"Select Id, Name, Overview, Phone, Email, Facebook, LinkWeb, EventOfPlace, Place.PicFileName AS PlacePicFileName, 
+                             Description, HomeStay.Type, AvgPrice, Comment, Star, HomeStay.PicFileName AS HomeStayPicFileName from Place, HomeStay where HomeStay.PlaceId=Place.Id AND HomeStay.Type='Villa'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllBungalow")]
+
+        public JsonResult GetAllBungalow()
+        {
+            string query = @"Select Id, Name, Overview, Phone, Email, Facebook, LinkWeb, EventOfPlace, Place.PicFileName AS PlacePicFileName, 
+                             Description, HomeStay.Type, AvgPrice, Comment, Star, HomeStay.PicFileName AS HomeStayPicFileName from Place, HomeStay where HomeStay.PlaceId=Place.Id AND HomeStay.Type='Bungalow'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [Route("GetAllResort")]
+
+        public JsonResult GetAllResort()
+        {
+            string query = @"Select Id, Name, Overview, Phone, Email, Facebook, LinkWeb, EventOfPlace, Place.PicFileName AS PlacePicFileName, 
+                             Description, HomeStay.Type, AvgPrice, Comment, Star, HomeStay.PicFileName AS HomeStayPicFileName from Place, HomeStay where HomeStay.PlaceId=Place.Id AND HomeStay.Type='Resort'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
+            SqlDataReader myReader;
+
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
     }
 }

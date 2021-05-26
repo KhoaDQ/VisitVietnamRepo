@@ -4,6 +4,7 @@ import '../../assets/css/base.css';
 import './Event.css';
 import {AddEventModal} from './AddEventModal.js';
 import {EditEventModal} from './EditEventModal.js';
+import {DetailsModal} from '../../Component/DetailsIModal';
 
 export class Event extends Component{
 
@@ -11,7 +12,7 @@ export class Event extends Component{
     constructor(props){
         super(props);
         this.state={events:[], eventsUpcoming:[], eventsYear:[], eventsDay:[], articles:[],
-            addModalShow:false, editModalShow:false, 
+            addModalShow:false, editModalShow:false, DetailsModalShow:false,
             Event_Year_visible:3, Event_Day_visible:3}
         this.loadMoreY = this.loadMoreY.bind(this);
         this.loadMoreD = this.loadMoreD.bind(this);
@@ -112,6 +113,7 @@ export class Event extends Component{
             Id,Name,Type,Description,PicFileName,Details,StartDate,EndDate,Status}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
+        let DetailsModalClose=()=>this.setState({DetailsModalShow:false});
         return(
             
             <div className="Container Event">
@@ -210,14 +212,31 @@ export class Event extends Component{
                         </div>
                         <div className="row member-list ml-3 mr-3 mt-5">
                             {articles.map(article=>
-                            <div class="col-sm-4 member-item">                                
-                                <div key={article.Id} className="member-item-content">
-                                    <img src={this.ImageSrc+article.PicFileName} alt={article.PicFileName} class="member-img border-img"/>
-                                    
-                                </div>  
-                                <div className="item-content text-center">
-                                        <h3 className="item-header">{article.Name}</h3>
-                                </div>                                                              
+                            <div className="col-sm-4 member-item">                                
+                                <div key={article.Id}>
+                                    <div className="member-item-content"
+                                    onClick={()=>this.setState({DetailsModalShow:true, 
+                                        Id:article.Id,
+                                        Name:article.Name,
+                                        Type:article.Type,
+                                        Description:article.Description,
+                                        PicFileName:article.PicFileName,
+                                        Status:article.Status})}
+                                    >
+                                        <img src={this.ImageSrc+article.PicFileName} alt={article.PicFileName} className="member-img border-img"/>
+                                        <div className="item-content text-center">
+                                            <h3 className="item-header">{article.Name}</h3>
+                                        </div>                                     
+                                    </div>
+                                    <DetailsModal show={this.state.DetailsModalShow} 
+                                            onHide={()=>{DetailsModalClose();}}
+                                            Id={Id}
+                                            Name={Name}
+                                            Type={Type}
+                                            Description={Description}
+                                            PicFileName={PicFileName}
+                                            Status={Status}/>
+                                </div>                                                                                               
                             </div>
                             )}
                         </div>
@@ -232,16 +251,40 @@ export class Event extends Component{
                         </div>
                         <div className="row member-list ml-3 mr-3">
                             {eventsUpcoming.map(event=>
-                            <div class="col-sm-4 member-item">                                
+                            <div className="col-sm-4 member-item">                                
                                 <div key={event.Id} className="member-item-content">
-                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img border-img"/>
+                                    <div
+                                        onClick={()=>this.setState({DetailsModalShow:true, 
+                                            Id:event.Id,
+                                            Name:event.Name,
+                                            Type:event.Type,
+                                            Description:event.Description,
+                                            PicFileName:event.PicFileName,
+                                            Details:event.Details,
+                                            StartDate:event.StartDate,
+                                            EndDate:event.EndDate,
+                                            Status:event.Status})}
+                                    >
+                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} className="member-img border-img"/>
                                     <div className="item-content">
                                         <div className="item-header">{event.Name}</div>
                                         <div className="item-description">{event.Description}</div>
                                         <div className="item-date">Start date: {event.StartDate}</div>
                                         <div className="item-date">End date: {event.EndDate}</div>
                                     </div> 
-                                </div>                                                               
+                                    </div>
+                                    <DetailsModal show={this.state.DetailsModalShow} 
+                                            onHide={()=>{DetailsModalClose();}}
+                                            Id={Id}
+                                            Name={Name}
+                                            Type={Type}
+                                            Description={Description}
+                                            PicFileName={PicFileName}
+                                            Details={Details}
+                                            StartDate={StartDate}
+                                            EndDate={EndDate}
+                                            Status={Status}/>  
+                                </div>                                                            
                             </div>
                             )}
                         </div>
@@ -254,16 +297,40 @@ export class Event extends Component{
                         </div>
                         <div className="row member-list ml-3 mr-3">
                             {eventsYear.slice(0,this.state.Event_Year_visible).map(event=>
-                                <div class="col-sm-4 member-item">                                
+                                <div className="col-sm-4 member-item">                                
                                     <div key={event.Id} className="member-item-content">
-                                        <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img border-img"/>
+                                        <div
+                                        onClick={()=>this.setState({DetailsModalShow:true, 
+                                            Id:event.Id,
+                                            Name:event.Name,
+                                            Type:event.Type,
+                                            Description:event.Description,
+                                            PicFileName:event.PicFileName,
+                                            Details:event.Details,
+                                            StartDate:event.StartDate,
+                                            EndDate:event.EndDate,
+                                            Status:event.Status})}
+                                        >
+                                        <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} className="member-img border-img"/>
                                         <div className="item-content">
                                             <div className="item-header">{event.Name}</div>
                                             <div className="item-description">{event.Description}</div>
                                             <div className="item-date">Start date: {event.StartDate}</div>
                                             <div className="item-date">End date: {event.EndDate}</div>
                                         </div> 
-                                    </div>                                                               
+                                        </div>
+                                        <DetailsModal show={this.state.DetailsModalShow} 
+                                            onHide={()=>{DetailsModalClose();}}
+                                            Id={Id}
+                                            Name={Name}
+                                            Type={Type}
+                                            Description={Description}
+                                            PicFileName={PicFileName}
+                                            Details={Details}
+                                            StartDate={StartDate}
+                                            EndDate={EndDate}
+                                            Status={Status}/>  
+                                    </div>                           
                                 </div>
                             )}                    
                         </div>
@@ -283,15 +350,39 @@ export class Event extends Component{
 
                         <div className="row member-list ml-3 mr-3">
                         {eventsDay.slice(0,this.state.Event_Day_visible).map(event=>
-                            <div class="col-sm-4 member-item">                                
+                            <div className="col-sm-4 member-item">                                
                                 <div key={event.Id} className="member-item-content">
-                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} class="member-img border-img"/>
+                                    <div
+                                        onClick={()=>this.setState({DetailsModalShow:true, 
+                                            Id:event.Id,
+                                            Name:event.Name,
+                                            Type:event.Type,
+                                            Description:event.Description,
+                                            PicFileName:event.PicFileName,
+                                            Details:event.Details,
+                                            StartDate:event.StartDate,
+                                            EndDate:event.EndDate,
+                                            Status:event.Status})}
+                                        >
+                                    <img src={this.ImageSrc+event.PicFileName} alt={event.PicFileName} className="member-img border-img"/>
                                     <div className="item-content">
                                         <div className="item-header">{event.Name}</div>
                                         <div className="item-description">{event.Description}</div>
                                         <div className="item-date">Start date: {event.StartDate}</div>
                                         <div className="item-date">End date: {event.EndDate}</div>
                                     </div> 
+                                    </div> 
+                                    <DetailsModal show={this.state.DetailsModalShow} 
+                                            onHide={()=>{DetailsModalClose();}}
+                                            Id={Id}
+                                            Name={Name}
+                                            Type={Type}
+                                            Description={Description}
+                                            PicFileName={PicFileName}
+                                            Details={Details}
+                                            StartDate={StartDate}
+                                            EndDate={EndDate}
+                                            Status={Status}/>
                                 </div>                                                               
                             </div>
                         )}                    
