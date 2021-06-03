@@ -93,25 +93,25 @@ render(){
 
                             <Form.Group controlId="Type">
                                 <Form.Label>Type</Form.Label>
-                                <Form.Control type="text" name="Type" required 
+                                <Form.Control type="text" name="Type"
                                 placeholder="Type"/>
                             </Form.Group>
 
                             <Form.Group controlId="Description">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control type="text" name="Description" required 
+                                <Form.Control type="text" name="Description"
                                 placeholder="Description"/>
                             </Form.Group>
 
                             <Form.Group controlId="Details">
                                 <Form.Label>Details</Form.Label>
-                                <Form.Control typeof="text" name="Details" required 
+                                <Form.Control typeof="text" name="Details"
                                 placeholder="Details"/>
                             </Form.Group>
 
                             <Form.Group controlId="Status">
                                 <Form.Label>Status</Form.Label>
-                                <Form.Control type="text" name="Status" required 
+                                <Form.Control type="text" name="Status"
                                 placeholder="Status"/>
                             </Form.Group>
 
@@ -128,7 +128,7 @@ render(){
                                 <Form.Control 
                                 type="date"
                                 name="StartDate"
-                                required
+                                
                                 placeholder="StartDate"
                                 />
                             </Form.Group>
@@ -138,7 +138,7 @@ render(){
                                 <Form.Control 
                                 type="date"
                                 name="EndDate"
-                                required
+                                
                                 placeholder="EndDate"
                                 />
                             </Form.Group>

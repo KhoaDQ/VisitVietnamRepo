@@ -14,10 +14,10 @@ export class FirstNav extends Component{
                 <Navbar.Brand className="d-inline bg-dark text-white p-0 isHover" onClick={()=>{window.location.reload()}}>
                     <img
                     alt=""
-                    src={logo}
+                    src="./public-img/logoVisit.png"
                     width="30"
                     height="30"
-                    className="d-inline-block align-top"
+                    className="d-inline-block align-top border-img-full"
                     />{' '}
                     VisitVietnam
                 </Navbar.Brand>

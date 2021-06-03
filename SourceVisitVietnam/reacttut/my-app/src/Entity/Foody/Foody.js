@@ -1,4 +1,5 @@
-import {Button,ButtonToolbar, Table} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
+import {Button,ButtonToolbar} from 'react-bootstrap';
 import React,{Component} from 'react';
 import '../../assets/css/base.css';
 import 'antd/dist/antd.css';
@@ -149,7 +150,7 @@ export class Foody extends Component{
 
     render(){
         
-        const {foodies,places, isCakes, isFoods, isDrinks,locations,
+        const {foodies,places, isCakes, isFoods, isDrinks,locations,foodId,
             Id,Name,Type,MiniType,Price,Note,PicFileName,PlaceId}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
@@ -200,6 +201,7 @@ export class Foody extends Component{
                                                 Delete Foody
                                             </Button>
 
+                                            {this.state.editModalShow && this.state.Id  == foody.Id &&
                                             <EditFoodyModal show={this.state.editModalShow} 
                                             onHide={()=>{editModalClose(); this.refreshList();}}
                                             Id={Id}
@@ -208,7 +210,8 @@ export class Foody extends Component{
                                             MiniType={MiniType}
                                             Note={Note}
                                             PicFileName={PicFileName}
-                                            PlaceId={PlaceId}/>
+                                            PlaceId={PlaceId}/>}
+
                                         </ButtonToolbar>
                                     </td>
                                 </tr>)
@@ -231,7 +234,7 @@ export class Foody extends Component{
                 <div id="slider" className="Banner">
                     <div className="text-content">
                         <div className="text-heading">Foody</div>
-                        <div className="text-desc">Description</div>
+                        <div className="text-desc">Itinerary for the intrepid foodie.</div>
                     </div>
                 </div>
                 
@@ -248,9 +251,9 @@ export class Foody extends Component{
                             <li>
                                 <a href="#">
                                     More
-                                    <i class="nav-arrow-down ti-angle-down"></i>
+                                    <i className="nav-arrow-down ti-angle-down"></i>
                                 </a>
-                                <ul class="subnav">
+                                <ul className="subnav">
                                     <li><a href="#">More</a></li>
                                     <li><a href="#">More</a></li>
                                     <li><a href="#">More</a></li>
@@ -266,7 +269,7 @@ export class Foody extends Component{
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
                                 {places.slice(0,this.state.Mall_visible).map(place=>
-                                <div class="col-sm-4 member-item mt-3">                                
+                                <div className="col-sm-4 member-item mt-3">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PicFileName} alt={place.PicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -319,7 +322,7 @@ export class Foody extends Component{
                             <div className="border-bottom"></div>
                             <div className="row member-list  ml-3 mr-3">
                                 {isFoods.slice(0,this.state.Food_visible).map(foody=>
-                                <div class="col-sm-4 member-item mt-5">                                
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={foody.Id} className="member-item-content">
                                         <img src={this.ImageSrc+foody.PicFileName} alt={foody.PicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">                                            
@@ -375,7 +378,7 @@ export class Foody extends Component{
                             <div className="border-bottom"></div>
                             <div className="row member-list  ml-3 mr-3">
                                 {isDrinks.slice(0,this.state.Drink_visible).map(foody=>
-                                <div class="col-sm-4 member-item mt-5">                                
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={foody.Id} className="member-item-content">
                                         <img src={this.ImageSrc+foody.PicFileName} alt={foody.PicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -431,7 +434,7 @@ export class Foody extends Component{
                             <div className="border-bottom"></div>
                             <div className="row member-list  ml-3 mr-3">
                                 {isCakes.slice(0,this.state.Cake_visible).map(foody=>
-                                <div class="col-sm-4 member-item mt-5">                                
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={foody.Id} className="member-item-content">
                                         <img src={this.ImageSrc+foody.PicFileName} alt={foody.PicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -487,7 +490,7 @@ export class Foody extends Component{
                             <div className="border-bottom"></div>
                             <div className="row member-list  ml-3 mr-3">
                                 {foodies.slice(0,this.state.Product_visible).map(foody=>
-                                <div class="col-sm-4 member-item mt-5">                                
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={foody.Id} className="member-item-content">
                                         <img src={this.ImageSrc+foody.PicFileName} alt={foody.PicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">

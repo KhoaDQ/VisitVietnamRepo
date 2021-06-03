@@ -25,9 +25,21 @@ export class HomeStay extends Component{
                     addLModalShow:false, editLModalShow:false,
                     addEModalShow:false, editEModalShow:false,
                     addAModalShow:false, editAModalShow:false,
+                    Hotel_visible:6,
+                    Hostel_visible:6,
+                    Homestay_visible:6,
+                    Villa_visible:6,
+                    Bungalow_visible:6,
+                    Resort_visible:6
         }
 
         this.refreshList = this.refreshList.bind(this);
+        this.loadMoreHotel = this.loadMoreHotel.bind(this);
+        this.loadMoreHostel = this.loadMoreHostel.bind(this);
+        this.loadMoreHomestay = this.loadMoreHomestay.bind(this);
+        this.loadMoreVilla = this.loadMoreVilla.bind(this);
+        this.loadMoreBungalow = this.loadMoreBungalow.bind(this);
+        this.loadMoreResort = this.loadMoreResort.bind(this);
     }
     
     ImageSrc = process.env.REACT_APP_PHOTOPATH;
@@ -236,6 +248,43 @@ export class HomeStay extends Component{
         }
     }
 
+    // Function
+    loadMoreHotel(){
+        this.setState((old)=>{
+            return {Hotel_visible:old.Hotel_visible+3};
+        })
+    }
+
+    loadMoreHostel(){
+        this.setState((old)=>{
+            return {Hostel_visible:old.Hostel_visible+3};
+        })
+    }
+
+    loadMoreHomestay(){
+        this.setState((old)=>{
+            return {Homestay_visible:old.Homestay_visible+3};
+        })
+    }
+
+    loadMoreBungalow(){
+        this.setState((old)=>{
+            return {Bungalow_visible:old.Bungalow_visible+3};
+        })
+    }
+
+    loadMoreVilla(){
+        this.setState((old)=>{
+            return {Villa_visible:old.Villa_visible+3};
+        })
+    }
+
+    loadMoreResort(){
+        this.setState((old)=>{
+            return {Resort_visible:old.Resort_visible+3};
+        })
+    }
+
     render(){
         
         const {HomeStays,Places,Locations,PlaceEvents,Articles,Hotels,Hostels,Homestays,Villas,Bungalows,Resorts,
@@ -278,13 +327,13 @@ export class HomeStay extends Component{
                         <tbody>
                             {HomeStays.map(HomeStay=>
                                 <tr key={HomeStay.PlaceId}>
-                                    <td>{HomeStay.Description}</td>
-                                    <td>{HomeStay.Type}</td>
-                                    <td>{HomeStay.AvgPrice}</td>
-                                    <td>{HomeStay.Comment}</td>
-                                    <td>{HomeStay.Star}</td>
-                                    <td>{HomeStay.PicFileName}</td>
-                                    <td>{HomeStay.PlaceId}</td>
+                                    <td><p>{HomeStay.Description}</p></td>
+                                    <td><p>{HomeStay.Type}</p></td>
+                                    <td><p>{HomeStay.AvgPrice}</p></td>
+                                    <td><p>{HomeStay.Comment}</p></td>
+                                    <td><p>{HomeStay.Star}</p></td>
+                                    <td><p>{HomeStay.PicFileName}</p></td>
+                                    <td><p>{HomeStay.PlaceId}</p></td>
                                     <td>
                                         <ButtonToolbar>
                                             <Button variant='info' className="p-1 mr-2"
@@ -306,6 +355,7 @@ export class HomeStay extends Component{
                                                 Delete HomeStay
                                             </Button>
 
+                                            {this.state.editModalShow && this.state.PlaceId  == HomeStay.PlaceId &&
                                             <EditHomeStayModal show={this.state.editModalShow} 
                                             onHide={()=>{editModalClose(); this.refreshList();}}
                                             Description={Description}
@@ -314,7 +364,7 @@ export class HomeStay extends Component{
                                             Comment={Comment}
                                             Star={Star}
                                             PicFileName={PicFileName}
-                                            PlaceId={PlaceId}/>
+                                            PlaceId={PlaceId}/>}
                                         </ButtonToolbar>
                                     </td>
                                 </tr>)
@@ -354,17 +404,17 @@ export class HomeStay extends Component{
                         <tbody>
                             {Places.map(Place=>
                                 <tr key={Place.Id}>
-                                    <td>{Place.Id}</td>
-                                    <td>{Place.Name}</td>
-                                    <td>{Place.Type}</td>
-                                    <td>{Place.Slogan}</td>
-                                    <td>{Place.Overview}</td>
-                                    <td>{Place.Phone}</td>
-                                    <td>{Place.Email}</td>
-                                    <td>{Place.Facebook}</td>
-                                    <td>{Place.LinkWeb}</td>
-                                    <td>{Place.EventOfPlace}</td>
-                                    <td>{Place.PicFileName}</td>
+                                    <td><p>{Place.Id}</p></td>
+                                    <td><p>{Place.Name}</p></td>
+                                    <td><p>{Place.Type}</p></td>
+                                    <td><p>{Place.Slogan}</p></td>
+                                    <td><p>{Place.Overview}</p></td>
+                                    <td><p>{Place.Phone}</p></td>
+                                    <td><p>{Place.Email}</p></td>
+                                    <td><p>{Place.Facebook}</p></td>
+                                    <td><p>{Place.LinkWeb}</p></td>
+                                    <td><p>{Place.EventOfPlace}</p></td>
+                                    <td><p>{Place.PicFileName}</p></td>
                                     <td>
                                         <ButtonToolbar>
                                             <Button variant='info' className="p-1 mr-2"
@@ -389,6 +439,7 @@ export class HomeStay extends Component{
                                                 Delete Place
                                             </Button>
 
+                                            {this.state.editPModalShow && this.state.pId  == Place.Id &&
                                             <EditPlaceModal show={this.state.editPModalShow} 
                                             onHide={()=>{editPModalClose(); this.refreshListPlaces();}}
                                             Id={pId}
@@ -401,7 +452,7 @@ export class HomeStay extends Component{
                                             Facebook={pFacebook}
                                             LinkWeb={pLinkWeb}
                                             EventOfPlace={pEventOfPlace}
-                                            PicFileName={pPicFileName}/>
+                                            PicFileName={pPicFileName}/>}
                                         </ButtonToolbar>
                                     </td>
                                 </tr>)
@@ -436,13 +487,13 @@ export class HomeStay extends Component{
                         <tbody>
                             {Locations.map(Location=>
                                 <tr key={Location.Id}>
-                                    <td>{Location.Id}</td>
-                                    <td>{Location.Details}</td>
-                                    <td>{Location.Street}</td>
-                                    <td>{Location.Ward}</td>
-                                    <td>{Location.District}</td>
-                                    <td>{Location.City}</td>
-                                    <td>{Location.PlaceId}</td>
+                                    <td><p>{Location.Id}</p></td>
+                                    <td><p>{Location.Details}</p></td>
+                                    <td><p>{Location.Street}</p></td>
+                                    <td><p>{Location.Ward}</p></td>
+                                    <td><p>{Location.District}</p></td>
+                                    <td><p>{Location.City}</p></td>
+                                    <td><p>{Location.PlaceId}</p></td>
 
                                     <td>
                                         <ButtonToolbar>
@@ -464,6 +515,7 @@ export class HomeStay extends Component{
                                                 Delete Location
                                             </Button>
 
+                                            {this.state.editLModalShow && this.state.lId  == Location.Id &&
                                             <EditLocationModal show={this.state.editLModalShow} 
                                             onHide={()=>{editLModalClose(); this.refreshListLocations();}}
                                             Id={lId}
@@ -472,7 +524,7 @@ export class HomeStay extends Component{
                                             Ward={lWard}
                                             District={lDistrict}
                                             City={lCity}
-                                            PlaceId={lPlaceId}/>
+                                            PlaceId={lPlaceId}/>}
 
                                         </ButtonToolbar>
                                     </td>
@@ -512,16 +564,16 @@ export class HomeStay extends Component{
                         <tbody>
                             {PlaceEvents.map(PlaceEvent=>
                                 <tr key={PlaceEvent.Id}>
-                                    <td>{PlaceEvent.Id}</td>
-                                    <td>{PlaceEvent.Name}</td>
-                                    <td>{PlaceEvent.Type}</td>
-                                    <td>{PlaceEvent.Description}</td>
-                                    <td>{PlaceEvent.PicFileName}</td>
-                                    <td>{PlaceEvent.Details}</td>
-                                    <td>{PlaceEvent.StartDate}</td>
-                                    <td>{PlaceEvent.EndDate}</td>
-                                    <td>{PlaceEvent.Status}</td>
-                                    <td>{PlaceEvent.PlaceId}</td>
+                                    <td><p>{PlaceEvent.Id}</p></td>
+                                    <td><p>{PlaceEvent.Name}</p></td>
+                                    <td><p>{PlaceEvent.Type}</p></td>
+                                    <td><p>{PlaceEvent.Description}</p></td>
+                                    <td><p>{PlaceEvent.PicFileName}</p></td>
+                                    <td><p>{PlaceEvent.Details}</p></td>
+                                    <td><p>{PlaceEvent.StartDate}</p></td>
+                                    <td><p>{PlaceEvent.EndDate}</p></td>
+                                    <td><p>{PlaceEvent.Status}</p></td>
+                                    <td><p>{PlaceEvent.PlaceId}</p></td>
 
                                     <td>
                                         <ButtonToolbar>
@@ -546,6 +598,7 @@ export class HomeStay extends Component{
                                                 Delete PlaceEvent
                                             </Button>
 
+                                            {this.state.editEModalShow && this.state.eId  == PlaceEvent.Id &&
                                             <EditPlaceEventModal show={this.state.editEModalShow} 
                                             onHide={()=>{editEModalClose(); this.refreshListPlaceEvents();}}
                                             Id={eId}
@@ -557,7 +610,7 @@ export class HomeStay extends Component{
                                             StartDate={eStartDate}
                                             EndDate={eEndDate}
                                             Status={eStatus}
-                                            PlaceId={ePlaceId}/>
+                                            PlaceId={ePlaceId}/>}
                                         </ButtonToolbar>
                                     </td>
                                 </tr>)
@@ -591,12 +644,12 @@ export class HomeStay extends Component{
                         <tbody>
                             {Articles.map(Article=>
                                 <tr key={Article.Id}>
-                                    <td>{Article.Id}</td>
-                                    <td>{Article.Name}</td>
-                                    <td>{Article.Type}</td>
-                                    <td>{Article.Description}</td>
-                                    <td>{Article.PicFileName}</td>
-                                    <td>{Article.Status}</td>
+                                    <td><p>{Article.Id}</p></td>
+                                    <td><p>{Article.Name}</p></td>
+                                    <td><p>{Article.Type}</p></td>
+                                    <td><p>{Article.Description}</p></td>
+                                    <td><p>{Article.PicFileName}</p></td>
+                                    <td><p>{Article.Status}</p></td>
                                     <td>
                                         <ButtonToolbar>
                                             <Button variant='info' className="p-1 mr-2"
@@ -616,6 +669,7 @@ export class HomeStay extends Component{
                                                 Delete Article
                                             </Button>
 
+                                            {this.state.editAModalShow && this.state.aId  == Article.Id &&
                                             <EditArticleModal show={this.state.editAModalShow} 
                                             onHide={()=>{editAModalClose(); this.refreshListArticles();}}
                                             Id={aId}
@@ -623,7 +677,7 @@ export class HomeStay extends Component{
                                             Type={aType}
                                             Description={aDescription}
                                             PicFileName={aPicFileName}
-                                            Status={aStatus}/>
+                                            Status={aStatus}/>}
                                         </ButtonToolbar>
                                     </td>
                                 </tr>)
@@ -645,7 +699,7 @@ export class HomeStay extends Component{
                 <div id="slider" className="Banner">
                     <div className="text-content ">                        
                         <div className="text-heading">Homestay</div>
-                        <div className="text-desc">Description</div>
+                        <div className="text-desc">After a period of moving full of excitement but inevitable fatigue. We know you're in need of a place to stay. Take a look at them below.</div>
                     </div>                 
                 </div>
 
@@ -679,8 +733,8 @@ export class HomeStay extends Component{
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
-                                {Hotels.slice(0,this.state.Mall_visible).map(place=>
-                                <div class="col-sm-4 member-item mt-3">                                
+                                {Hotels.slice(0,this.state.Hotel_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-5">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -719,22 +773,22 @@ export class HomeStay extends Component{
                                 )}
                             </div>
                             <div className="col-md-12 Contain-Load-Mores">
-                                {this.state.Mall_visible < this.state.Hotels.length &&
-                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                                {this.state.Hotel_visible < this.state.Hotels.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreHotel}>More</Button>}
                             </div>
                             <div className="hide-item border-bottom mb-5"></div>
                         </div>
                         
                         {/* Hostel */}
-                        <div className="Content__Hostel" id="Hostel">
+                        <div className="Content__Hostel mt-5" id="Hostel">
                             <div className="Hostel">                                                     
                                 <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Hostel</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
-                                {Hostels.slice(0,this.state.Mall_visible).map(place=>
-                                <div class="col-sm-4 member-item mt-3">                                
+                                {Hostels.slice(0,this.state.Hostel_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-5">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -773,22 +827,22 @@ export class HomeStay extends Component{
                                 )}
                             </div>
                             <div className="col-md-12 Contain-Load-Mores">
-                                {this.state.Mall_visible < this.state.Hotels.length &&
-                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                                {this.state.Hostel_visible < this.state.Hostels.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreHostel}>More</Button>}
                             </div>
                             <div className="hide-item border-bottom mb-5"></div>
                         </div>
 
                         {/* Homestay */}
-                        <div className="Content__Homestay" id="Homestay">
+                        <div className="Content__Homestay mt-5" id="Homestay">
                             <div className="Homestay">                                                     
                                 <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Homestay</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
-                                {Homestays.slice(0,this.state.Mall_visible).map(place=>
-                                <div class="col-sm-4 member-item mt-3">                                
+                                {Homestays.slice(0,this.state.Homestay_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-5">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -827,22 +881,22 @@ export class HomeStay extends Component{
                                 )}
                             </div>
                             <div className="col-md-12 Contain-Load-Mores">
-                                {this.state.Mall_visible < this.state.Hotels.length &&
-                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                                {this.state.Homestay_visible < this.state.Homestays.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreHomestay}>More</Button>}
                             </div>
                             <div className="hide-item border-bottom mb-5"></div>
                         </div>
 
                         {/* Villa */}
-                        <div className="Content__Villa" id="Villa">
+                        <div className="Content__Villa mt-5" id="Villa">
                             <div className="Villa">                                                     
                                 <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Villa</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
-                                {Villas.slice(0,this.state.Mall_visible).map(place=>
-                                <div class="col-sm-4 member-item mt-3">                                
+                                {Villas.slice(0,this.state.Villa_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-5">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -881,22 +935,22 @@ export class HomeStay extends Component{
                                 )}
                             </div>
                             <div className="col-md-12 Contain-Load-Mores">
-                                {this.state.Mall_visible < this.state.Hotels.length &&
-                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                                {this.state.Villa_visible < this.state.Villas.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreVilla}>More</Button>}
                             </div>
                             <div className="hide-item border-bottom mb-5"></div>
                         </div>
 
                         {/* Bungalow */}
-                        <div className="Content__Bungalow" id="Bungalow">
+                        <div className="Content__Bungalow mt-5" id="Bungalow">
                             <div className="Bungalow">                                                     
                                 <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Bungalow</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
-                                {Bungalows.slice(0,this.state.Mall_visible).map(place=>
-                                <div class="col-sm-4 member-item mt-3">                                
+                                {Bungalows.slice(0,this.state.Bungalow_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-5">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -935,22 +989,22 @@ export class HomeStay extends Component{
                                 )}
                             </div>
                             <div className="col-md-12 Contain-Load-Mores">
-                                {this.state.Mall_visible < this.state.Hotels.length &&
-                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                                {this.state.Bungalow_visible < this.state.Bungalows.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreBungalow}>More</Button>}
                             </div>
                             <div className="hide-item border-bottom mb-5"></div>
                         </div>
 
                         {/* Resort */}
-                        <div className="Content__Resort" id="Resort">
+                        <div className="Content__Resort mt-5" id="Resort">
                             <div className="Resort">                                                     
                                 <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Resort</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
-                                {Resorts.slice(0,this.state.Mall_visible).map(place=>
-                                <div class="col-sm-4 member-item mt-3">                                
+                                {Resorts.slice(0,this.state.Resort_visible).map(place=>
+                                <div class="col-sm-4 member-item mt-5">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PlacePicFileName} alt={place.PlacePicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -989,8 +1043,8 @@ export class HomeStay extends Component{
                                 )}
                             </div>
                             <div className="col-md-12 Contain-Load-Mores">
-                                {this.state.Mall_visible < this.state.Hotels.length &&
-                                <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                                {this.state.Resort_visible < this.state.Resorts.length &&
+                                <Button className="Load-Mores" onClick={this.loadMoreResort}>More</Button>}
                             </div>
                             <div className="hide-item border-bottom mb-5"></div>
                         </div>

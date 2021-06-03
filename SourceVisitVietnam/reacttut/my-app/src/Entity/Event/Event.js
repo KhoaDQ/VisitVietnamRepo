@@ -167,6 +167,7 @@ export class Event extends Component{
                                                 Delete Event
                                             </Button>
 
+                                            {this.state.editModalShow && this.state.Id  == event.Id &&
                                             <EditEventModal show={this.state.editModalShow} 
                                             onHide={()=>{editModalClose(); this.refreshList();}}
                                             Id={Id}
@@ -177,7 +178,7 @@ export class Event extends Component{
                                             Details={Details}
                                             StartDate={StartDate}
                                             EndDate={EndDate}
-                                            Status={Status}/>
+                                            Status={Status}/>}
                                         </ButtonToolbar>
                                     </td>
                                 </tr>)
@@ -199,7 +200,7 @@ export class Event extends Component{
                 <div id="slider" className="Banner">
                     <div className="text-content ">                        
                         <div className="text-heading">Event</div>
-                        <div className="text-desc">Description</div>
+                        <div className="text-desc">Do you want to participate in traditional events? Or are you interested in talk shows, music programs? They are all gathered here. Check it now</div>
                     </div>                 
                 </div>
 
@@ -251,7 +252,7 @@ export class Event extends Component{
                         </div>
                         <div className="row member-list ml-3 mr-3">
                             {eventsUpcoming.map(event=>
-                            <div className="col-sm-4 member-item">                                
+                            <div className="col-sm-4 member-item mt-5">                                
                                 <div key={event.Id} className="member-item-content">
                                     <div
                                         onClick={()=>this.setState({DetailsModalShow:true, 
@@ -297,7 +298,7 @@ export class Event extends Component{
                         </div>
                         <div className="row member-list ml-3 mr-3">
                             {eventsYear.slice(0,this.state.Event_Year_visible).map(event=>
-                                <div className="col-sm-4 member-item">                                
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={event.Id} className="member-item-content">
                                         <div
                                         onClick={()=>this.setState({DetailsModalShow:true, 
@@ -336,7 +337,7 @@ export class Event extends Component{
                         </div>
                         <div className="col-md-12 Contain-Load-Mores">
                             {this.state.Event_Year_visible < this.state.eventsYear.length &&
-                            <Button className="Load-Mores" onClick={this.loadMoreY}>Load more</Button>}
+                            <Button className="Load-Mores" onClick={this.loadMoreY}>More</Button>}
                         </div>
                     </div>
 
@@ -350,7 +351,7 @@ export class Event extends Component{
 
                         <div className="row member-list ml-3 mr-3">
                         {eventsDay.slice(0,this.state.Event_Day_visible).map(event=>
-                            <div className="col-sm-4 member-item">                                
+                            <div className="col-sm-4 member-item mt-5">                                
                                 <div key={event.Id} className="member-item-content">
                                     <div
                                         onClick={()=>this.setState({DetailsModalShow:true, 
@@ -390,7 +391,7 @@ export class Event extends Component{
 
                         <div className="col-md-12 Contain-Load-Mores">
                             {this.state.Event_Day_visible < this.state.eventsDay.length &&
-                            <Button className="Load-Mores" onClick={this.loadMoreD}>Load more</Button>}
+                            <Button className="Load-Mores" onClick={this.loadMoreD}>More</Button>}
                         </div>
                     </div>
 

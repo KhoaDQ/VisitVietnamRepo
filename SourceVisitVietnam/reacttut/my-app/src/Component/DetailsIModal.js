@@ -30,6 +30,7 @@ render(){
                         <Form>
                             <h1>{this.props.Name}</h1>
                             <div>{this.props.Description}</div>
+                            <div>{this.props.Overview}</div>
                             <div>{this.props.Details}</div>
                             <div>{this.props.Note}</div>
                             <div>{this.props.StartDate}</div>

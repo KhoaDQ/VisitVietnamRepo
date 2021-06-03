@@ -3,7 +3,7 @@
 }
 
 .Admin{
-    display: none;
+    /* display: none; */
     background-color: #fff;
 }
 
@@ -25,6 +25,20 @@
     
 }
 
+.Container .Admin p{
+    
+    width: 50px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.Container .Admin td{
+    margin: 0;
+    height: 20px;
+    padding: 0;
+}
+
 .Layer-Gradient{
     opacity: 0.3;
     background-image:-webkit-linear-gradient(left, #000,#757575, white) !important;
@@ -34,9 +48,9 @@
     position: absolute;
     top: 90px;
     color: #fff;
-    left: 30%;
-    transform: translateX(-50%);
+    left: 10%;
     text-align: left;
+    width: 800px;
 }
 #slider .text-heading{
     font-weight: 800;
@@ -45,9 +59,14 @@
 
 }
 #slider .text-desc{
-    font-size: 15px;
+    font-size: 21px;
+    box-sizing: border-box;
+    text-align: justify; 
+    text-shadow: 5px 2px 4px grey;
+    font-family: Roboto,Arial,sans-serif!important;
+    line-height: 30px;
+    font-weight: 400;
 }
-
 
 
 .isHover{
@@ -173,6 +192,21 @@ color: rgb(232, 234, 237);
     text-align: justify;
 }
 
+/* Min-height member-item */
 .Container__Content .Content__Mall .member-item-content{
-    min-height: 520px;
+    min-height: 455px;
+}
+
+.Container__Content .Content__Product .member-item-content{
+    min-height: 425px;
+}
+
+/* Ant collapse */
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    padding: 0 16px !important;
+    padding-left: 40px !important;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+    padding-top: 0px !important;
 }

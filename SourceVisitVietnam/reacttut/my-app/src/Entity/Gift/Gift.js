@@ -16,6 +16,8 @@ export class Gift extends Component{
             addModalShow:false, editModalShow:false,
             Mall_visible:3, Product_visible:6
         }
+        this.loadMoreP = this.loadMoreP.bind(this);
+
     }
     
     ImageSrc = process.env.REACT_APP_PHOTOPATH;
@@ -58,6 +60,7 @@ export class Gift extends Component{
     componentDidMount(){
         window.scrollTo(0, 0);
         this.getAllPlacesShoppingGifts();
+        this.getAllLocation();
         this.refreshList();
     }
 
@@ -76,6 +79,11 @@ export class Gift extends Component{
 
     // Function
 
+    loadMoreP(){
+        this.setState((old)=>{
+            return {Product_visible:old.Product_visible+3};
+        })
+    }
 
     render(){
         
@@ -130,6 +138,7 @@ export class Gift extends Component{
                                                 Delete Gift
                                             </Button>
 
+                                            {this.state.editModalShow && this.state.Id  == Gift.Id &&
                                             <EditGiftModal show={this.state.editModalShow} 
                                             onHide={()=>{editModalClose(); this.refreshList();}}
                                             Id={Id}
@@ -138,7 +147,7 @@ export class Gift extends Component{
                                             Price={Price}
                                             Note={Note}
                                             PicFileName={PicFileName}
-                                            PlaceId={PlaceId}/>
+                                            PlaceId={PlaceId}/>}
                                         </ButtonToolbar>
                                     </td>
                                 </tr>)
@@ -159,8 +168,8 @@ export class Gift extends Component{
 
                 <div id="slider">
                     <div className="text-content">
-                        <div className="text-heading">Gifts</div>
-                        <div className="text-desc">Description</div>
+                        <div className="text-heading">Souvenir</div>
+                        <div className="text-desc">Each souvenir has its own unique meaning, keeping and recalling unforgettable memories. It is usually gifts associated with memories, or can be the personal imprints of the sender to the recipient so that the relationship between the two parties becomes deeper and deeper.</div>
                     </div>
                 </div>
                 
@@ -168,7 +177,7 @@ export class Gift extends Component{
                     <div className="Container__Content">
                         <div className="Content__Mall">
                             <div className="Mall">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_mall.png" alt=""></img>
                                 <div className="Header d-inline">Mall shopping</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -195,7 +204,7 @@ export class Gift extends Component{
                                                         <div className="location-list mt-3">
                                                         {locations.map(location=>
                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                {(location.Id)=(place.Id) &&
+                                                                {(location.PlaceId)==(place.Id) &&
                                                                 <div>- {location.Details},                                             
                                                                 {location.Street},                                         
                                                                 {location.Ward},                                             
@@ -220,7 +229,7 @@ export class Gift extends Component{
 
                         <div className="Content__Product mt-5">
                             <div className="Product">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_souvenir.png" alt=""></img>
                                 <div className="Header d-inline">Souvenir</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -237,14 +246,14 @@ export class Gift extends Component{
                                                     <div key={gift.Id} className="d-inline mt-2">
                                                         {(gift.PlaceId)==(place.Id) &&
                                                             <div>
-                                                            <div className="mt-1">Restaurant: {place.Name}</div>                                                  
+                                                            <div className="mt-1">Shop: {place.Name}</div>                                                  
                                                             <Collapse className="mt-1">
                                                             <Panel header="Address" key="1">
                                                                     <p>
                                                                         <div className="location-list mt-3">
                                                                         {locations.map(location=>
                                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                                {(location.Id)=(place.Id) &&
+                                                                                {(location.PlaceId)==(place.Id) &&
                                                                                 <div>- {location.Details},                                             
                                                                                 {location.Street},                                         
                                                                                 {location.Ward},                                             

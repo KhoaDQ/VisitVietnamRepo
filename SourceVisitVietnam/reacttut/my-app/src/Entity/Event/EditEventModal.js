@@ -9,7 +9,8 @@ constructor(props){
     this.handleFileSelected=this.handleFileSelected.bind(this);
 }
 
-PhotoFileName = "anonymous.png";
+// PhotoFileName = "anonymous.png";
+PhotoFileName = this.props.PicFileName;
 ImageSrc = process.env.REACT_APP_PHOTOPATH+this.PhotoFileName;
 
 handleSubmit(e){
@@ -96,35 +97,35 @@ render(){
 
                             <Form.Group controlId="Name">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" name="Name" required 
+                                <Form.Control type="text" name="Name"  
                                 defaultValue={this.props.Name}
                                 placeholder="Name"/>
                             </Form.Group>
 
                             <Form.Group controlId="Type">
                                 <Form.Label>Type</Form.Label>
-                                <Form.Control type="text" name="Type" required 
+                                <Form.Control type="text" name="Type"  
                                 defaultValue={this.props.Type}
                                 placeholder="Type"/>
                             </Form.Group>
 
                             <Form.Group controlId="Description">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control type="text" name="Description" required 
+                                <Form.Control type="text" name="Description"  
                                 defaultValue={this.props.Description}
                                 placeholder="Description"/>
                             </Form.Group>
 
                             <Form.Group controlId="Details">
                                 <Form.Label>Details</Form.Label>
-                                <Form.Control typeof="text" name="Details" required 
+                                <Form.Control typeof="text" name="Details"  
                                 defaultValue={this.props.Details}
                                 placeholder="Details"/>
                             </Form.Group>
 
                             <Form.Group controlId="Status">
                                 <Form.Label>Status</Form.Label>
-                                <Form.Control type="text" name="Status" required 
+                                <Form.Control type="text" name="Status"  
                                 defaultValue={this.props.Status}
                                 placeholder="Status"/>
                             </Form.Group>
@@ -142,7 +143,7 @@ render(){
                                 <Form.Control 
                                 type="date"
                                 name="StartDate"
-                                required
+                                
                                 placeholder="StartDate"
                                 defaultValue={this.props.StartDate}
                                 />
@@ -153,7 +154,7 @@ render(){
                                 <Form.Control 
                                 type="date"
                                 name="EndDate"
-                                required
+                                
                                 placeholder="EndDate"
                                 defaultValue={this.props.EndDate}
                                 />

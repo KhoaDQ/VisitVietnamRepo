@@ -200,7 +200,7 @@ namespace VisitVietnamAPI.Controllers
         [Route("GetAllEventYear")]
         public JsonResult GetAllEventYear()
         {
-            string query = @"SELECT * FROM dbo.Event WHERE Type = 'Traditional'";
+            string query = @"SELECT * FROM dbo.Event";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
@@ -225,7 +225,7 @@ namespace VisitVietnamAPI.Controllers
         [Route("GetAllEventDay")]
         public JsonResult GetAllEventDay()
         {
-            string query = @"SELECT * FROM dbo.Event WHERE Type <> 'Traditional'";
+            string query = @"SELECT * FROM dbo.PlaceEvent";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VisitVietnamAppCon");
