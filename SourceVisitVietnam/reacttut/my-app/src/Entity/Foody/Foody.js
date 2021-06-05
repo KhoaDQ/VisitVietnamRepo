@@ -269,7 +269,7 @@ export class Foody extends Component{
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
                                 {places.slice(0,this.state.Mall_visible).map(place=>
-                                <div className="col-sm-4 member-item mt-3">                                
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PicFileName} alt={place.PicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">

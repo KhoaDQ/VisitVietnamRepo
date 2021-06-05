@@ -10,6 +10,7 @@
     "antd": "^4.15.4",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
     "material-ui-pickers": "^2.2.4",
     "materialize-css": "^1.0.0-rc.2",
     "mdb-ui-kit": "^3.5.0",
