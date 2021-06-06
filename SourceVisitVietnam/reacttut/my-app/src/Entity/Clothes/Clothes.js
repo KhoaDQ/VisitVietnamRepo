@@ -14,7 +14,7 @@ export class Clothes extends Component{
     
     constructor(props){
         super(props);
-        this.state={outfits:[], places:[], brands:[], locations:[],
+        this.state={outfits:[], places:[], brands:[], locations:[], products:[],
             addModalShow:false, editModalShow:false, DetailsModalShow:false,
             Mall_visible:3, Brand_visible:3, Product_visible:6
         }
@@ -36,6 +36,16 @@ export class Clothes extends Component{
         .then(
             data=>{
                 this.setState({outfits:data})
+            }
+        )
+    }
+
+    getAllProducts(){
+        fetch(process.env.REACT_APP_API+'Clothes/GetAllProducts')
+        .then(response=>response.json())
+        .then(
+            data=>{
+                this.setState({products:data})
             }
         )
     }
@@ -84,6 +94,8 @@ export class Clothes extends Component{
         this.refreshList();
         this.getAllPlacesShoppingClothes();
         this.getAllClothesIsBrand();
+        this.getAllProducts();
+        this.getAllLocation();
         window.scrollTo(0, 0);
     }
 
@@ -121,17 +133,23 @@ export class Clothes extends Component{
 
     render(){
         
-        const {outfits,places,brands,locations,
+        const {outfits,places,brands,locations,products,
             Id,Name,Type,Gender,RangeAge,Price,Note,PicFileName,PlaceId, Status
         }=this.state;
         let DetailsModalClose=()=>this.setState({DetailsModalShow:false});
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
+
+        let styleAdmin={}
+        if (this.props.isAdmin){
+            styleAdmin = {display: 'block'}
+        }
+
         return(
             
             <div className="Container Clothes">
                 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>
@@ -179,7 +197,7 @@ export class Clothes extends Component{
                                             onClick={()=>this.deleteClothes(Clothes.Id)}>
                                                 Delete Clothes
                                             </Button>
-
+                                            {this.state.editModalShow && this.state.Id  == Clothes.Id &&
                                             <EditClothesModal show={this.state.editModalShow} 
                                             onHide={()=>{editModalClose(); this.refreshList();}}
                                             Id={Id}
@@ -190,7 +208,7 @@ export class Clothes extends Component{
                                             Price={Price}
                                             Note={Note}
                                             PicFileName={PicFileName}
-                                            PlaceId={PlaceId}/>
+                                            PlaceId={PlaceId}/> }
                                         </ButtonToolbar>
                                     </td>
                                 </tr>)
@@ -213,7 +231,7 @@ export class Clothes extends Component{
                 <div id="slider">
                     <div className="text-content">
                         <div className="text-heading">Clothes</div>
-                        <div className="text-desc">Description</div>
+                        <div className="text-desc">Someplace or brands which you can find what your need</div>
                     </div>
                 </div>
                 
@@ -221,13 +239,13 @@ export class Clothes extends Component{
                     <div className="Container__Content">
                         <div className="Content__Mall">
                             <div className="Mall">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_mall.png" alt=""></img>
                                 <div className="Header d-inline">Mall shopping</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3">
                                 {places.slice(0,this.state.Mall_visible).map(place=>
-                                <div class="col-sm-4 member-item mt-5">                                
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={place.Id} className="member-item-content">
                                         <img src={this.ImageSrc+place.PicFileName} alt={place.PicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
@@ -248,7 +266,7 @@ export class Clothes extends Component{
                                                         <div className="location-list mt-3">
                                                         {locations.map(location=>
                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                {(location.Id)=(place.Id) &&
+                                                                {(location.PlaceId)==(place.Id) &&
                                                                 <div>- {location.Details},                                             
                                                                 {location.Street},                                         
                                                                 {location.Ward},                                             
@@ -273,13 +291,13 @@ export class Clothes extends Component{
 
                         <div className="Content__Brand mt-5">
                             <div className="Brand">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_brand.png" alt=""></img>
                                 <div className="Header d-inline">Brands</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list  ml-3 mr-3">
                                 {brands.slice(0,this.state.Brand_visible).map(brand=>
-                                <div class="col-sm-4 member-item mt-5">                                
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={brand.Id} className="member-item-content">
                                         <div
                                             onClick={()=>this.setState({DetailsModalShow:true, 
@@ -315,28 +333,26 @@ export class Clothes extends Component{
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list  ml-3 mr-3">
-                                {outfits.slice(0,this.state.Product_visible).map(clothes=>
-                                <div class="col-sm-4 member-item mt-5">                                
+                                {products.slice(0,this.state.Product_visible).map(clothes=>
+                                <div className="col-sm-4 member-item mt-5">                                
                                     <div key={clothes.Id} className="member-item-content">
                                         <img src={this.ImageSrc+clothes.PicFileName} alt={clothes.PicFileName} className="member-img border-img"/>
                                         <div className="item-content m-0 p-3">
                                             <div className="item-header">{clothes.Name}</div>
-                                            <div className="item-info">Gender: {clothes.Gender}</div>
-                                            <div className="item-info">Age: {clothes.RangeAge}</div>
                                             <div className="item-info">Price: {clothes.Price}</div>
                                             {places.map(place=>
                                                 <div>
                                                     <div key={clothes.Id} className="d-inline mt-2">
                                                         {(clothes.PlaceId)==(place.Id) &&
                                                             <div>
-                                                            <div className="mt-1">Restaurant: {place.Name}</div>                                                  
+                                                            <div className="mt-1">Shop: {place.Name}</div>                                                  
                                                             <Collapse className="mt-1">
                                                             <Panel header="Address" key="1">
                                                                     <p>
                                                                         <div className="location-list mt-3">
                                                                         {locations.map(location=>
                                                                             <div key={location.Id} className="d-inline mt-2">
-                                                                                {(location.Id)=(place.Id) &&
+                                                                                {(location.PlaceId)==(place.Id) &&
                                                                                 <div>- {location.Details},                                             
                                                                                 {location.Street},                                         
                                                                                 {location.Ward},                                             

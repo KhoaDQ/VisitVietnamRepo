@@ -10,7 +10,8 @@ constructor(props){
 }
 
 
-PhotoFileName = "anonymous.png";
+// PhotoFileName = "anonymous.png";
+PhotoFileName = this.props.PicFileName;
 ImageSrc = process.env.REACT_APP_PHOTOPATH+this.PhotoFileName;
 
 // componentDidMount(){

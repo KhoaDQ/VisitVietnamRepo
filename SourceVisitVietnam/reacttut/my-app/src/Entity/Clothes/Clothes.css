@@ -21,10 +21,6 @@
 }
 
 
-.Container__Content .Content__Product .member-item-content{
-    min-height: 370px;
-}
-
 .Container__Content .Content__Brand .member-item-content{
     min-height: none;
 }
@@ -45,4 +41,8 @@
     min-height: 250px;
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
+}
+
+.Clothes .Content__Product .member-img{
+    height: 430px;
 }

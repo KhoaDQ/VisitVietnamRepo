@@ -101,7 +101,7 @@ export class Home extends Component{
 
     render(){
         const {articlestoppick, bitexco, DamSenPark, BenThanhMarket, TheCityPostOffice, TheWalkingStreet, TheLandmark81,
-            Id, Name, Type, Description, Status, PicFileName
+            Id, Name, Type, Description, Status, PicFileName, Overview
         } = this.state;
         let DetailsModalClose=()=>this.setState({DetailsModalShow:false});
         return(
@@ -109,7 +109,7 @@ export class Home extends Component{
                 <div id="slider" className="Banner">
                     <div className="text-content">
                         <div className="text-heading">Home</div>
-                        <div className="text-desc">Description</div>
+                        <div className="text-desc">We provide the most important information and useful guidance to make your trip to Vietnam comfortable and smooth. I'm sure we're giving you what you really need</div>
                         <button className="text-red">Let's go</button>
                     </div>
                 </div>
@@ -118,52 +118,70 @@ export class Home extends Component{
                     <div className="Container__Content">
                         <div className="Content__TopPicks mb-5 mt-4">
                             <div className="TopPicks">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_toppick.png" alt=""></img>
                                 <div className="Header d-inline">Top picks</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list ml-3 mr-3 mt-5">
                             {articlestoppick.map(article=>
-                            <div class="col-sm-4 member-item">
-                                <div key={article.Id}>
-                                    <div className="member-item-content"
-                                    onClick={()=>this.setState({DetailsModalShow:true, 
-                                        Id:article.Id,
-                                        Name:article.Name,
-                                        Type:article.Type,
-                                        Description:article.Description,
-                                        PicFileName:article.PicFileName,
-                                        Status:article.Status})}
-                                    >
-                                        <img src={this.ImageSrc+article.PicFileName} alt={article.PicFileName} className="member-img border-img"/>
-                                        <div className="item-content text-center">
-                                            <h3 className="item-header">{article.Name}</h3>
-                                        </div>                                     
-                                    </div>
-                                    <DetailsModal show={this.state.DetailsModalShow} 
-                                            onHide={()=>{DetailsModalClose();}}
-                                            Id={Id}
-                                            Name={Name}
-                                            Type={Type}
-                                            Description={Description}
-                                            PicFileName={PicFileName}
-                                            Status={Status}/>
-                                </div>                                                        
-                            </div>
+                                <div className="col-sm-4 member-item">
+                                    <div key={article.Id}>
+                                        <div className="member-item-content"
+                                        onClick={()=>this.setState({DetailsModalShow:true, 
+                                            Id:article.Id,
+                                            Name:article.Name,
+                                            Type:article.Type,
+                                            Description:article.Description,
+                                            PicFileName:article.PicFileName,
+                                            Status:article.Status})}
+                                        >
+                                            <img src={this.ImageSrc+article.PicFileName} alt={article.PicFileName} className="member-img border-img"/>
+                                            <div className="item-content text-center">
+                                                <h3 className="item-header">{article.Name}</h3>
+                                            </div>                                     
+                                        </div>
+
+                                        {this.state.DetailsModalShow && this.state.Id  == article.Id &&
+                                        <DetailsModal show={this.state.DetailsModalShow} 
+                                                onHide={()=>{DetailsModalClose();}}
+                                                Id={Id}
+                                                Name={Name}
+                                                Type={Type}
+                                                Description={Description}
+                                                PicFileName={PicFileName}
+                                                Status={Status}/>}
+                                    </div>                                                        
+                                </div>
                             )}
+                            </div>
                         </div>
-                        </div>
+
                         <div className="Content__VibrantNeighbourhood mb-5">
                             <div className="TopPicks">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_vibrant.png" alt=""></img>
                                 <div className="Header d-inline">Vibrant neighbourhood</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row ml-3 mr-3 mt-5">
                                 {bitexco.map(thing=>
                                 <div className="col-sm-4">
-                                    <div key={thing.Id} className="member-item-content">
-                                        <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} class="member-img-col border-img-full"/>                                    
+                                    <div key={thing.Id}>
+                                        <div className="member-item-content"
+                                        onClick={()=>this.setState({DetailsModalShow:true, 
+                                            Id:thing.Id,
+                                            Name:thing.Name,                         
+                                            Overview:thing.Overview,
+                                            PicFileName:thing.PicFileName})}
+                                        >
+                                            <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} className="member-img-col border-img-full"/>                                    
+                                        </div>  
+                                        {this.state.DetailsModalShow && this.state.Id  == thing.Id &&
+                                        <DetailsModal show={this.state.DetailsModalShow} 
+                                                onHide={()=>{DetailsModalClose();}}
+                                                Id={Id}
+                                                Name={Name}
+                                                Overview={Overview}
+                                                PicFileName={PicFileName}/>    }
                                     </div> 
                                 </div>
                                 )}
@@ -171,8 +189,23 @@ export class Home extends Component{
                                     {DamSenPark.map(thing=>
                                         <div className="row">
                                             <div className="col-sm-12">
-                                            <div key={thing.Id} className="member-item-content mb-4">
-                                                <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} class="member-img border-img-full"/>                                    
+                                            <div key={thing.Id}>
+                                                <div className="member-item-content mb-4"
+                                                onClick={()=>this.setState({DetailsModalShow:true, 
+                                                Id:thing.Id,
+                                                Name:thing.Name,                         
+                                                Overview:thing.Overview,
+                                                PicFileName:thing.PicFileName})}
+                                                >
+                                                <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} className="member-img border-img-full"/>    
+                                                </div>
+                                                {this.state.DetailsModalShow && this.state.Id  == thing.Id &&
+                                                <DetailsModal show={this.state.DetailsModalShow} 
+                                                onHide={()=>{DetailsModalClose();}}
+                                                Id={Id}
+                                                Name={Name}
+                                                Overview={Overview}
+                                                PicFileName={PicFileName}/>    }                            
                                             </div> 
                                             </div>
                                         </div>
@@ -180,8 +213,23 @@ export class Home extends Component{
                                     {BenThanhMarket.map(thing=>
                                         <div className="row">
                                             <div className="col-sm-12">
-                                            <div key={thing.Id} className="member-item-content">
-                                                <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} class="member-img border-img-full"/>                                    
+                                            <div key={thing.Id}>
+                                                <div className="member-item-content"
+                                                onClick={()=>this.setState({DetailsModalShow:true, 
+                                                Id:thing.Id,
+                                                Name:thing.Name,                         
+                                                Overview:thing.Overview,
+                                                PicFileName:thing.PicFileName})}
+                                                >
+                                                <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} className="member-img border-img-full"/>    
+                                                </div>
+                                                {this.state.DetailsModalShow && this.state.Id  == thing.Id &&
+                                                <DetailsModal show={this.state.DetailsModalShow} 
+                                                onHide={()=>{DetailsModalClose();}}
+                                                Id={Id}
+                                                Name={Name}
+                                                Overview={Overview}
+                                                PicFileName={PicFileName}/>   }                                  
                                             </div> 
                                             </div> 
                                         </div>
@@ -189,17 +237,33 @@ export class Home extends Component{
                                 </div>
                             </div>
                         </div>
+
                         <div className="Content__PopularPlaces mb-5">
                             <div className="TopPicks">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_places.png" alt=""></img>
                                 <div className="Header d-inline">Popular places</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row ml-3 mr-3 mt-5">
                                 {TheLandmark81.map(thing=>
                                 <div className="col-sm-4">
-                                    <div key={thing.Id} className="member-item-content">
-                                        <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} class="member-img-col border-img-full"/>                                    
+                                    <div key={thing.Id}>
+                                            <div className="member-item-content"
+                                            onClick={()=>this.setState({DetailsModalShow:true, 
+                                            Id:thing.Id,
+                                            Name:thing.Name,                         
+                                            Overview:thing.Overview,
+                                            PicFileName:thing.PicFileName})}
+                                            >
+                                            <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} className="member-img-col border-img-full"/>    
+                                            </div>
+                                            {this.state.DetailsModalShow && this.state.Id  == thing.Id &&
+                                            <DetailsModal show={this.state.DetailsModalShow} 
+                                            onHide={()=>{DetailsModalClose();}}
+                                            Id={Id}
+                                            Name={Name}
+                                            Overview={Overview}
+                                            PicFileName={PicFileName}/>   }                                        
                                     </div> 
                                 </div>
                                 )}
@@ -207,8 +271,23 @@ export class Home extends Component{
                                     {TheCityPostOffice.map(thing=>
                                         <div className="row">
                                             <div className="col-sm-12">
-                                            <div key={thing.Id} className="member-item-content mb-4">
-                                                <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} class="member-img border-img-full"/>                                    
+                                            <div key={thing.Id}>
+                                                <div className="member-item-content mb-4"
+                                                onClick={()=>this.setState({DetailsModalShow:true, 
+                                                Id:thing.Id,
+                                                Name:thing.Name,                         
+                                                Overview:thing.Overview,
+                                                PicFileName:thing.PicFileName})}
+                                                >
+                                                <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} className="member-img border-img-full"/>    
+                                                </div>
+                                                {this.state.DetailsModalShow && this.state.Id  == thing.Id &&
+                                                <DetailsModal show={this.state.DetailsModalShow} 
+                                                onHide={()=>{DetailsModalClose();}}
+                                                Id={Id}
+                                                Name={Name}
+                                                Overview={Overview}
+                                                PicFileName={PicFileName}/>   }                                      
                                             </div> 
                                             </div>
                                         </div>
@@ -216,8 +295,23 @@ export class Home extends Component{
                                     {TheWalkingStreet.map(thing=>
                                         <div className="row">
                                             <div className="col-sm-12">
-                                            <div key={thing.Id} className="member-item-content">
-                                                <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} class="member-img border-img-full"/>                                    
+                                            <div key={thing.Id}>
+                                                <div className="member-item-content"
+                                                onClick={()=>this.setState({DetailsModalShow:true, 
+                                                Id:thing.Id,
+                                                Name:thing.Name,                         
+                                                Overview:thing.Overview,
+                                                PicFileName:thing.PicFileName})}
+                                                >
+                                                <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} className="member-img border-img-full"/>    
+                                                </div>
+                                                {this.state.DetailsModalShow && this.state.Id  == thing.Id &&
+                                                <DetailsModal show={this.state.DetailsModalShow} 
+                                                onHide={()=>{DetailsModalClose();}}
+                                                Id={Id}
+                                                Name={Name}
+                                                Overview={Overview}
+                                                PicFileName={PicFileName}/>   }                                      
                                             </div> 
                                             </div> 
                                         </div>
@@ -227,7 +321,7 @@ export class Home extends Component{
                         </div>
                         <div className="Content__FoodHighlights mb-5">
                             <div className="TopPicks">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_food.png" alt=""></img>
                                 <div className="Header d-inline">Food highlights</div>
                             </div>
                             {/* <div className="border-bottom"></div> */}
@@ -246,7 +340,7 @@ export class Home extends Component{
                         </div>
                         <div className="Content__GoShopping mb-5">
                             <div className="TopPicks">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_shopping.png" alt=""></img>
                                 <div className="Header d-inline">Go shopping</div>
                             </div>
                             {/* <div className="border-bottom"></div> */}

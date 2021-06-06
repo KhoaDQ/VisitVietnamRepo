@@ -25,12 +25,14 @@
     padding: 2px !important;
 }
 
-.Navigation .Navigation-Search .Btn{
-    height: 30px;
-}
-
 .Navigation .btn{
     min-width: 120px !important;
     padding: 10px 16px;
     box-shadow: none;
+}
+
+.Navigation .Navigation-Search .btn{
+    min-width: 30px !important;
+    height: 30px;
+    background-color:chartreuse;
 }

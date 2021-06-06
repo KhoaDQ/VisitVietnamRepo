@@ -9,8 +9,8 @@ constructor(props){
     this.handleFileSelected=this.handleFileSelected.bind(this);
 }
 
-event
-PhotoFileName = "anonymous.png";
+// PhotoFileName = "anonymous.png";
+PhotoFileName = this.props.PicFileName;
 ImageSrc = process.env.REACT_APP_PHOTOPATH+this.PhotoFileName;
 
 // componentDidMount(){

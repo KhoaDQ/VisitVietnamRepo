@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import BackToTop from 'react-back-to-top-button';
 import './App.css';
 import {Home} from '../Home/Home';
+import {Search} from '../Search/Search';
 import {Event} from '../Entity/Event/Event';
 import {Gift} from '../Entity/Gift/Gift';
 import {Clothes} from '../Entity/Clothes/Clothes';
@@ -18,32 +19,70 @@ export class App extends Component {
 
   constructor(props){
     super(props);
-    this.state={scrollToTopShow:true}
+    this.state={scrollToTopShow:true,
+                strSearchApp:"",
+                isAdmin:false
+    }
   }
 
   componentDidMount(){
+    console.log(this.state.isAdmin);
+  }
 
+  handleSearchFunction = (content) => {
+    this.setState({
+      strSearchApp:content,
+    })
+  }
+
+  handleAdminLoginFunction = (content) => {
+    this.setState({
+      isAdmin:content,
+    })
+
+    console.log(this.state.isAdmin);
   }
 
   render(){
+    
     const{scrollToTopShow}=this.state;
     let ScrollToTopHide=()=>this.setState({scrollToTopShow:false})
     return (
       <BrowserRouter>
         <div className="contain">
-          <FirstNav/>
+          <FirstNav handleAdminLogin={this.handleAdminLoginFunction}/>
           
-          <Navigation/>
+          <Navigation handleSearchContent={this.handleSearchFunction}/>
 
           <Switch>
             <Route path="/" component={Home} exact/>
-            <Route path="/event" component={Event}/>
-            <Route path="/foody" component={Foody}/>
-            <Route path="/homeStay" component={HomeStay}/>
-            <Route path="/clothes" component={Clothes}/>
-            <Route path="/gift" component={Gift}/>
+            <Route 
+              path="/event" 
+              render={props => <Event {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route 
+              path="/foody" 
+              render={props => <Foody {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route 
+              path="/homeStay" 
+              render={props => <HomeStay {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route 
+              path="/clothes" 
+              render={props => <Clothes {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route 
+              path="/gift" 
+              render={props => <Gift {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route
+              path="/search"
+              render={props => <Search {...props} strSearch={this.state.strSearchApp} />}
+            />
           </Switch>
 
+          <div className="border-bottom"></div>
           <FooterPage/>
           
           <div className="ContainScrollTop">
