@@ -306,11 +306,16 @@ export class HomeStay extends Component{
         let addAModalClose=()=>this.setState({addAModalShow:false});
         let editAModalClose=()=>this.setState({editAModalShow:false});
 
+        let styleAdmin={}
+        if (this.props.isAdmin){
+            styleAdmin = {display: 'block'}
+        }
+
         return(
 
             <div className="Container HomeStay">
                 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>
@@ -383,7 +388,7 @@ export class HomeStay extends Component{
                     </ButtonToolbar>
                 </div>
                 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>
@@ -471,7 +476,7 @@ export class HomeStay extends Component{
                     </ButtonToolbar>
                 </div>
 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>
@@ -545,7 +550,7 @@ export class HomeStay extends Component{
 
                 </div>
 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>
@@ -629,7 +634,7 @@ export class HomeStay extends Component{
                     </ButtonToolbar>
                 </div>
 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>

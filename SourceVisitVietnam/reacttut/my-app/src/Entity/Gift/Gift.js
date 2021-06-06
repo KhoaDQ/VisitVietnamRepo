@@ -91,11 +91,16 @@ export class Gift extends Component{
             Id,Name,Type,Price,Note,PicFileName,PlaceId}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
+        let styleAdmin={}
+        if (this.props.isAdmin){
+            styleAdmin = {display: 'block'}
+        }
+
         return(
             
             <div className="Container Gift">
                 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>

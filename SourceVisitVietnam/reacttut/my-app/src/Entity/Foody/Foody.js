@@ -154,11 +154,17 @@ export class Foody extends Component{
             Id,Name,Type,MiniType,Price,Note,PicFileName,PlaceId}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
+
+        let styleAdmin={}
+        if (this.props.isAdmin){
+            styleAdmin = {display: 'block'}
+        }
+
         return(
             
             <div className="Container Foody">
                 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>

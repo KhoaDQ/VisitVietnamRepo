@@ -5,6 +5,9 @@ import './Event.css';
 import {AddEventModal} from './AddEventModal.js';
 import {EditEventModal} from './EditEventModal.js';
 import {DetailsModal} from '../../Component/DetailsIModal';
+import { nodeName } from 'jquery';
+
+
 
 export class Event extends Component{
 
@@ -13,7 +16,9 @@ export class Event extends Component{
         super(props);
         this.state={events:[], eventsUpcoming:[], eventsYear:[], eventsDay:[], articles:[],
             addModalShow:false, editModalShow:false, DetailsModalShow:false,
-            Event_Year_visible:3, Event_Day_visible:3}
+            Event_Year_visible:3, Event_Day_visible:3,
+            // isAdmin:false
+        }
         this.loadMoreY = this.loadMoreY.bind(this);
         this.loadMoreD = this.loadMoreD.bind(this);
     }
@@ -106,6 +111,7 @@ export class Event extends Component{
         })
     }
     
+    
 
     render(){
         
@@ -114,11 +120,17 @@ export class Event extends Component{
         let addModalClose=()=>this.setState({addModalShow:false});
         let editModalClose=()=>this.setState({editModalShow:false});
         let DetailsModalClose=()=>this.setState({DetailsModalShow:false});
+
+        let styleAdmin={}
+        if (this.props.isAdmin){
+            styleAdmin = {display: 'block'}
+        }
+
         return(
             
             <div className="Container Event">
                 
-                <div className="Admin">
+                <div className="Admin" style={styleAdmin}>
                     <Table className="mt-4" striped bordered hover size="sm">
                         <thead>
                             <tr>

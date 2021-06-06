@@ -28,3 +28,10 @@
 .FirstNav .Contact:hover{
     background-color: red !important;
 }
+
+.FirstNav .btn {
+    min-width: 30px !important;
+    max-height: 25px !important;
+    background-color: chartreuse;
+    padding: 0 10px;
+}

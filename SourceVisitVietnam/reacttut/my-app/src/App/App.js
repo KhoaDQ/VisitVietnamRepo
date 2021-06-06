@@ -21,17 +21,26 @@ export class App extends Component {
     super(props);
     this.state={scrollToTopShow:true,
                 strSearchApp:"",
+                isAdmin:false
     }
   }
 
   componentDidMount(){
-
+    console.log(this.state.isAdmin);
   }
 
   handleSearchFunction = (content) => {
     this.setState({
       strSearchApp:content,
     })
+  }
+
+  handleAdminLoginFunction = (content) => {
+    this.setState({
+      isAdmin:content,
+    })
+
+    console.log(this.state.isAdmin);
   }
 
   render(){
@@ -41,18 +50,32 @@ export class App extends Component {
     return (
       <BrowserRouter>
         <div className="contain">
-          <FirstNav/>
+          <FirstNav handleAdminLogin={this.handleAdminLoginFunction}/>
           
           <Navigation handleSearchContent={this.handleSearchFunction}/>
 
           <Switch>
             <Route path="/" component={Home} exact/>
-            <Route path="/event" component={Event}/>
-            <Route path="/foody" component={Foody}/>
-            <Route path="/homeStay" component={HomeStay}/>
-            <Route path="/clothes" component={Clothes}/>
-            <Route path="/gift" component={Gift}/>
-            {/* <Route path="/search" component={Search}/> */}
+            <Route 
+              path="/event" 
+              render={props => <Event {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route 
+              path="/foody" 
+              render={props => <Foody {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route 
+              path="/homeStay" 
+              render={props => <HomeStay {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route 
+              path="/clothes" 
+              render={props => <Clothes {...props} isAdmin={this.state.isAdmin}/>}
+            />
+            <Route 
+              path="/gift" 
+              render={props => <Gift {...props} isAdmin={this.state.isAdmin}/>}
+            />
             <Route
               path="/search"
               render={props => <Search {...props} strSearch={this.state.strSearchApp} />}

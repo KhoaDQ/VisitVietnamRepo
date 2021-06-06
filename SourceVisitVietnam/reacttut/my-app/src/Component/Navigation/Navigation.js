@@ -54,7 +54,7 @@ export class Navigation extends Component{
 
                 <Form inline className="Navigation-Search">
                     <FormControl value={this.state.strSearch} type="text" placeholder="Search" ref="search" className="Form p-0 m-0" onChange={this.handleChange}/>
-                    <NavLink onClick={this.handleSearch} className="btn p-2 m-0" to="/search">GO</NavLink>
+                    <NavLink onClick={this.handleSearch} className=" border-img-full btn p-2 m-0" to="/search">GO</NavLink>
                 </Form>
             </Navbar>
             </div>
