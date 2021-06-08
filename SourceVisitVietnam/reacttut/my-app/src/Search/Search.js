@@ -14,13 +14,15 @@ export class Search extends Component{
         this.state={foodies:[], outfits:[], gifts:[], places:[], locations:[],
             Product_visible:6,
             ProductGift_visible:6,
-            ProductClothes_visible:6
+            ProductClothes_visible:6,
+            Mall_visible:6
         }
+
 
         this.loadMoreP = this.loadMoreP.bind(this);
         this.loadMoreG = this.loadMoreG.bind(this);
         this.loadMoreC = this.loadMoreC.bind(this);
-
+        this.loadMoreM = this.loadMoreM.bind(this);
     }
 
     ImageSrc = process.env.REACT_APP_PHOTOPATH;
@@ -107,11 +109,18 @@ export class Search extends Component{
         })
     }
 
+    loadMoreM(){
+        this.setState((old)=>{
+            return {Mall_visible:old.Mall_visible+3};
+        })
+    }
+
     render(){
 
         let itemsFood = [];
         let itemsGift = [];
         let itemsClothes = [];
+        let itemsPlaces = [];
                 
         const {foodies,outfits,gifts,places,locations
         } = this.state;
@@ -134,15 +143,73 @@ export class Search extends Component{
             }
         );
 
+        itemsPlaces = filter(
+            places, (item) => {
+                return includes(item.Name, this.props.strSearch);
+            }
+        );
         return(
             <div className="Container Search">
                 <div className="Container__Content">
                     <div className="title-search"><h1>This is search result for '{this.props.strSearch}'</h1></div>
 
+                    {/* Places */}
+                    <div className="Content__Product mt-5">
+                        <div className="Product">                                                     
+                            {/* <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img> */}
+                            <div className="Header d-inline">Places</div>
+                        </div>
+                        <div className="border-bottom"></div>
+                        <div className="row member-list  ml-3 mr-3">
+                            {itemsPlaces.slice(0,this.state.Mall_visible).map(thing=>
+                            <div className="col-sm-12 member-item">                                
+                                <div key={thing.Id} className="member-item-content row">
+                                    <img src={this.ImageSrc+thing.PicFileName} alt={thing.PicFileName} className="member-img border-img col-sm-2 my-1"/>
+                                    <div className="item-content m-0 p-3 col-sm-8">
+                                        <div className="item-header mt-1">{thing.Name}</div>
+                                        <div className="item-slogan">{thing.Slogan}</div>
+                                        <Collapse className="mt-2" onChange={this.callback}>
+                                                <Panel header="Details" key="1">
+                                        <div className="item-slogan">{thing.Overview}</div>
+                                        <p><div className="item-info">{thing.Phone}</div></p>
+                                        <p><div className="item-info">{thing.Email}</div></p>
+                                        <p><div className="item-info">{thing.Facebook}</div></p>
+                                        <p><div className="item-info">{thing.LinkWeb}</div></p>
+
+                                        
+                                                                                       
+                                            <div className="location-list mt-3">
+                                            {locations.map(location=>
+                                                <div key={location.Id} className="d-inline mt-2">
+                                                    {(location.PlaceId)==(thing.Id) &&
+                                                    <div>- {location.Details},                                             
+                                                    {location.Street},                                         
+                                                    {location.Ward},                                             
+                                                    {location.District},                                                
+                                                    {location.City}</div>}
+                                                </div>                                               
+                                            )}
+                                            </div>
+                                            </Panel>
+                                        </Collapse>
+                                    </div>                                                         
+                                                                                       
+                                        
+                                </div> 
+                                </div>                                                               
+                            )}
+                        </div>
+                        <div className="col-md-12 Contain-Load-Mores">
+                            {this.state.Mall_visible < itemsPlaces.length &&
+                            <Button className="Load-Mores" onClick={this.loadMoreM}>More</Button>}
+                        </div>
+                        <div className="hide-item border-bottom mb-5"></div>
+                    </div>
+
                     {/* Foody */}
                     <div className="Content__Product mt-5">
                         <div className="Product">                                                     
-                            <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                            {/* <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img> */}
                             <div className="Header d-inline">Foody</div>
                         </div>
                         <div className="border-bottom"></div>
@@ -199,7 +266,7 @@ export class Search extends Component{
                     {/* Clothes */}
                     <div className="Content__Product mt-5">
                         <div className="Product">                                                     
-                            <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                            {/* <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img> */}
                             <div className="Header d-inline">Clothes</div>
                         </div>
                         <div className="border-bottom"></div>
@@ -256,7 +323,7 @@ export class Search extends Component{
                     {/* Gift */}
                     <div className="Content__Product mt-5">
                         <div className="Product">                                                     
-                            <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                            {/* <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img> */}
                             <div className="Header d-inline">Gift</div>
                         </div>
                         <div className="border-bottom"></div>

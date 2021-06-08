@@ -230,3 +230,30 @@ FROM
 ORDER BY
      DATEDIFF(DD, GETDATE(), StartDate)
 
+go
+
+use VisitVietnamDB2021
+
+select * from Event
+go
+
+-- TRIGGER --
+create trigger Insert_Event
+on Event
+for insert
+as
+	begin
+		if ((SELECT DATEDIFF(DD, StartDate, EndDate) FROM Event WHERE Id =(SELECT Id FROM inserted)) < 0)
+		rollback tran
+	end
+go
+
+create trigger Insert_PlaceEvent
+on PlaceEvent
+for insert
+as
+	begin
+		if ((SELECT DATEDIFF(DD, StartDate, EndDate) FROM PlaceEvent WHERE Id =(SELECT Id FROM inserted)) < 0)
+		rollback tran
+	end
+go

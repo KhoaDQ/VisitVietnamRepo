@@ -733,7 +733,7 @@ export class HomeStay extends Component{
                         {/* Budget Hotel */}
                         <div className="Content__Hotel" id="Hotel">
                             <div className="Hotel">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_budgethotel.png" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Budget Hotel</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -787,7 +787,7 @@ export class HomeStay extends Component{
                         {/* Hostel */}
                         <div className="Content__Hostel mt-5" id="Hostel">
                             <div className="Hostel">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_hostel.png" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Hostel</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -841,7 +841,7 @@ export class HomeStay extends Component{
                         {/* Homestay */}
                         <div className="Content__Homestay mt-5" id="Homestay">
                             <div className="Homestay">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_homestay.png" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Homestay</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -895,7 +895,7 @@ export class HomeStay extends Component{
                         {/* Villa */}
                         <div className="Content__Villa mt-5" id="Villa">
                             <div className="Villa">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_villa.png" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Villa</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -949,7 +949,7 @@ export class HomeStay extends Component{
                         {/* Bungalow */}
                         <div className="Content__Bungalow mt-5" id="Bungalow">
                             <div className="Bungalow">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_bungalow.png" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Bungalow</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -1003,7 +1003,7 @@ export class HomeStay extends Component{
                         {/* Resort */}
                         <div className="Content__Resort mt-5" id="Resort">
                             <div className="Resort">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_resort.png" alt=""></img>
                                 <div className="Header d-inline text-in-dark">Resort</div>
                             </div>
                             <div className="border-bottom"></div>
