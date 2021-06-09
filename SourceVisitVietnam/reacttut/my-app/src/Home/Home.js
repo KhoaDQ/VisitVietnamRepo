@@ -110,7 +110,6 @@ export class Home extends Component{
                     <div className="text-content">
                         <div className="text-heading">Home</div>
                         <div className="text-desc">We provide the most important information and useful guidance to make your trip to Vietnam comfortable and smooth. I'm sure we're giving you what you really need</div>
-                        <button className="text-red">Let's go</button>
                     </div>
                 </div>
 

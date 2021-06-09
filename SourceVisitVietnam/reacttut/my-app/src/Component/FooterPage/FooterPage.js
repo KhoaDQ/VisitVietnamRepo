@@ -32,11 +32,11 @@ export class FooterPage extends Component {
                         <div className="Col">
                         <h5 className="title text-dark">CONTACT WITH US</h5>
                             <div className="socials-list">
-                                <a href=""><i className ="ti-facebook text-dark"></i></a>
-                                <a href=""><i className ="ti-instagram text-dark"></i></a>
-                                <a href=""><i className ="ti-youtube text-dark"></i></a>
+                                <a href="https://www.facebook.com/1ngaykhongxa"><i className ="ti-facebook text-dark"></i></a>
+                                <a href="https://www.instagram.com/justin_jobs/"><i className ="ti-instagram text-dark"></i></a>
+                                <a href="https://www.youtube.com/channel/UCajGtCAFAh2bgb5Ucjs9NqA"><i className ="ti-youtube text-dark"></i></a>
                                 <a href=""><i className ="ti-twitter text-dark"></i></a>
-                                <a href=""><i className ="ti-linkedin text-dark"></i></a>
+                                <a href="https://www.linkedin.com/in/khoa-dang-6a5164171/"><i className ="ti-linkedin text-dark"></i></a>
                             </div>
                         </div>
                     </MDBCol>

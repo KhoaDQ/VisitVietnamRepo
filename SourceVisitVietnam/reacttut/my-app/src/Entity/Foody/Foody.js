@@ -269,7 +269,7 @@ export class Foody extends Component{
 
                         <div className="Content__Mall" id="mall">
                             <div className="Mall">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_restaurant.png" alt=""></img>
                                 <div className="Header d-inline">Restaurant</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -322,7 +322,7 @@ export class Foody extends Component{
 
                         <div className="Content__Food mt-5" id="food">
                             <div className="Food">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_foodi.png" alt=""></img>
                                 <div className="Header d-inline">Food</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -378,7 +378,7 @@ export class Foody extends Component{
 
                         <div className="Content__Drink mt-5" id="drink">
                             <div className="Drink">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_drink.png" alt=""></img>
                                 <div className="Header d-inline">Drink</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -434,7 +434,7 @@ export class Foody extends Component{
 
                         <div className="Content__Cake mt-5" id="cake">
                             <div className="Cake">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_cake.png" alt=""></img>
                                 <div className="Header d-inline">Cake</div>
                             </div>
                             <div className="border-bottom"></div>
@@ -490,8 +490,8 @@ export class Foody extends Component{
 
                         <div className="Content__Product mt-5" id="all">
                             <div className="Product">                                                     
-                                <img className="Circle-Icon d-inline" src="./public-img/background-vietnam.jpg" alt=""></img>
-                                <div className="Header d-inline">Product</div>
+                                <img className="Circle-Icon d-inline" src="./public-img/icon_allfood.png" alt=""></img>
+                                <div className="Header d-inline">All</div>
                             </div>
                             <div className="border-bottom"></div>
                             <div className="row member-list  ml-3 mr-3">
