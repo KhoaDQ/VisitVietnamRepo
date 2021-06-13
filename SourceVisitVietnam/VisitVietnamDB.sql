@@ -119,9 +119,16 @@ create table Event
 	StartDate varchar(555),
 	EndDate varchar(255),
 	Status varchar(20),
+	LocationId int
+
+	foreign key (LocationId) references Location(Id)
 );
 
-select * from Place
+ALTER TABLE Event
+ADD
+  FOREIGN KEY (LocationId)
+  REFERENCES Location (Id);
+select * from Event
 
 create table Article
 (
