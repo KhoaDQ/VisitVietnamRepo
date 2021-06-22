@@ -1,13 +1,11 @@
 ﻿--create database VisitVietnamDB
 go
 
-use VisitVietnamDB
+--use VisitVietnamDB
 GO
 
 
---QUERY Test
 
---
 -- CREATE TABLE-------#####################################################################
 create table Place
 (
@@ -52,6 +50,7 @@ create table Clothes
 	foreign key (PlaceId) references Place(Id)
 );
 
+-- Change name Foody to Food
 create table Foody
 (
 	Id int identity(1,1) primary key,
@@ -92,6 +91,7 @@ create table HomeStay
 	foreign key (PlaceId) references Place(Id)
 );
 
+-- Change name PlaceEvent to Event
 create table PlaceEvent
 (
 	Id int identity(1,1) primary key,
@@ -108,6 +108,7 @@ create table PlaceEvent
 	foreign key (PlaceId) references Place(Id)
 );
 
+-- Change name Event to Holiday
 create table Event
 (
 	Id int identity(1,1) primary key,
@@ -145,6 +146,7 @@ create table Article
 	PicFileName varchar(255),
 	Status varchar(20),
 );
+go
 
 -- DROP TABLE -------#####################################################################
 /*
@@ -165,14 +167,7 @@ VALUES('Hoang Yen Buffet','Foody',
 N'Hoàng Yến Buffet – Ăn đúng nơi, ngon đúng điệu',
 'For a long time, Hoang Yen Buffet restaurants have become a familiar destination of gourmet in Saigon. With an extensive menu of over 60 lunch dishes and more than 70 buffet dinner dishes, the restaurant offers its diners a unique and exciting culinary journey. The dishes here are a combination of many different culinary styles and are also the enthusiasm of many experienced chefs.',
 '02838233220','care@hoangyengroup.com','https://www.facebook.com/hoangyenbuffet','https://hoangyenbuffet.com/','','hoangyenbuffet.png');
-
-/*
-UPDATE Place
-SET Slogan = N'Hoàng Yến Buffet – Ăn đúng nơi, ngon đúng điệu'
-WHERE Id = '1';
-*/
-
-select * from place
+go
 
 INSERT INTO Location(Details,Street,Ward,District,City,PlaceId) VALUES('B3-27 Floor B3, 72','Le Thanh Ton','Ben Nghe','1','Ho Chi Minh','1');
 INSERT INTO Location(Details,Street,Ward,District,City,PlaceId) VALUES('Floor 3, 19A','Cao Thang','2','3','Ho Chi Minh','1');
@@ -180,8 +175,7 @@ INSERT INTO Location(Details,Street,Ward,District,City,PlaceId) VALUES('Floor 5,
 INSERT INTO Location(Details,Street,Ward,District,City,PlaceId) VALUES('Floor 4, 561','Dien Bien Phu','15','Binh Thanh','Ho Chi Minh','1');
 INSERT INTO Location(Details,Street,Ward,District,City,PlaceId) VALUES('Floor 3, 30','Bo Bao Tan Thang','Son Ki','Tan Phu','Ho Chi Minh','1');
 INSERT INTO Location(Details,Street,Ward,District,City,PlaceId) VALUES('Floor 5, 101','Tan Dat Tien','Tan Phu','7','Ho Chi Minh','1');
-
-select * from Location
+go
 
 INSERT INTO Foody(Name,Type,MiniType,Price,Note,PicFileName,PlaceId) VALUES('Balut','Buffet','Egg','','','hoangyenbalut.png','1');
 INSERT INTO Foody(Name,Type,MiniType,Price,Note,PicFileName,PlaceId) VALUES('Fried fish ball','Buffet','Fish','','Appetizer','hoangyenfriedfishball.png','1');
@@ -193,6 +187,7 @@ INSERT INTO Foody(Name,Type,MiniType,Price,Note,PicFileName,PlaceId) VALUES('Tir
 INSERT INTO Foody(Name,Type,MiniType,Price,Note,PicFileName,PlaceId) VALUES('Muffin','Buffet','Cake','','Desserts','hoangyenmuffin.png','1');
 INSERT INTO Foody(Name,Type,MiniType,Price,Note,PicFileName,PlaceId) VALUES('Strongbow Gold','Drink','Beer','39000','','hoangyenstrongbowgold.png','1');
 INSERT INTO Foody(Name,Type,MiniType,Price,Note,PicFileName,PlaceId) VALUES('Heineken','Drink','Beer','29000','','hoangyenheineken.png','1');
+go
 
 select * from Foody
 
@@ -220,34 +215,6 @@ select * from Event
 
 select * from Article
 
--- Query
-
-SELECT DATEDIFF(DD, '2018-04-10','2018-03-31')
-
-SELECT
-    *
-FROM
-    dbo.Event
-WHERE
-	DATEDIFF(DD, GETDATE(), StartDate)>=0
-ORDER BY
-     DATEDIFF(DD, GETDATE(), StartDate)
-OFFSET 0 ROWS 
-FETCH NEXT 6 ROWS ONLY;
-
-SELECT
-	DATEDIFF(DD, GETDATE(), StartDate),
-    Name
-FROM
-    dbo.Event
-ORDER BY
-     DATEDIFF(DD, GETDATE(), StartDate)
-
-go
-
-use VisitVietnamDB2021
-
-select * from Event
 go
 
 -- TRIGGER --
