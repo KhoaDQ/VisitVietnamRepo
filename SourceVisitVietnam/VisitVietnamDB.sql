@@ -124,11 +124,17 @@ create table Event
 	foreign key (LocationId) references Location(Id)
 );
 
-ALTER TABLE Event
-ADD
-  FOREIGN KEY (LocationId)
-  REFERENCES Location (Id);
-select * from Event
+create table Comment
+(
+	Id int identity(1,1) primary key,
+	StarRating int,
+	Pros varchar(255),
+	Cons varchar(2000),
+	CreatedBy varchar(255),
+	PlaceId int
+
+	foreign key (PlaceId) references Place(Id)
+);
 
 create table Article
 (
