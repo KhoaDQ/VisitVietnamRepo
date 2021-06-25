@@ -19,3 +19,6 @@ SHOPPING:
 Someplace or brands which you can find 
 what your need
 
+
+Cần làm rõ use case và cả functional
+Nếu có thể thì tạo ra DFD
