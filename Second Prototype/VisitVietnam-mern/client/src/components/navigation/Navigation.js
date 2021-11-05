@@ -63,7 +63,7 @@ export class Navigation extends Component {
             </Nav>
           </Navbar.Collapse>
 
-          <Form inline className="Navigation-Search">
+          <Form className="Navigation-Search">
             <FormControl
               value={this.state.strSearch}
               type="text"

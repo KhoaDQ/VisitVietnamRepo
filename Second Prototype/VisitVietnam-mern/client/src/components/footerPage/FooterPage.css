@@ -1,0 +1,46 @@
+.Col {
+  width: 55%;
+  margin: 50px auto;
+}
+
+.about-text {
+  text-align: justify;
+  line-height: 1.4;
+}
+
+.pull-right {
+  float: right;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.socials-list {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.socials-list a {
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+#Background-Footer {
+  width: 85%;
+  background-image: url("../../assets/img/footer.png");
+  background-size: 100% 230px !important;
+  padding-top: 225px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-copyright a:hover,
+.socials-list a:hover {
+  color: rgba(195, 223, 111, 0.6);
+}
+
+.footer-copyright a {
+  color: rgba(0, 0, 0, 0.6);
+}
