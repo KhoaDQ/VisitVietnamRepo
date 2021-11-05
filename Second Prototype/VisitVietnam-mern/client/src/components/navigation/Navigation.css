@@ -17,6 +17,7 @@
 
 .Navigation .Navigation-Search {
   line-height: 40px;
+  display: flex;
 }
 
 .Navigation .Navigation-Search .Form {
@@ -32,7 +33,7 @@
 }
 
 .Navigation .Navigation-Search .btn {
-  min-width: 30px !important;
+  min-width: 80px !important;
   height: 30px;
   background-color: chartreuse;
 }

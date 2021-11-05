@@ -1,5 +1,12 @@
 .App {
+  max-width: 100%;
   text-align: center;
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+  display: block;
 }
 
 .App-logo {
@@ -34,5 +41,35 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Personal */
+
+.ContainScrollTop {
+}
+
+.ContainScrollTop .fWohKN {
+  margin-bottom: 40px;
+  margin-right: 10px;
+}
+
+.ContainScrollTop .Circle-Icon {
+  width: 50px;
+  height: 50px;
+}
+
+.ContainScrollTop .Circle-Icon .ti-angle-up {
+  animation: infinite 0.5s scrollTop alternate ease;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+@keyframes scrollTop {
+  from {
+    transform: translateY(2px);
+  }
+  to {
+    transform: translateY(-1px);
   }
 }
