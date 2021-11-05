@@ -1,5 +1,14 @@
 import express from "express";
 import places from "./routers/places.js";
+import articles from "./routers/articles.js";
+import events from "./routers/events.js";
+import foods from "./routers/foods.js";
+import holidays from "./routers/holidays.js";
+import locations from "./routers/locations.js";
+import outfits from "./routers/outfits.js";
+import residences from "./routers/residences.js";
+import reviews from "./routers/reviews.js";
+import souvenirs from "./routers/souvenirs.js";
 import mongoose from "mongoose";
 
 // middleware
@@ -18,6 +27,15 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 app.use(cors());
 
 app.use("/places", places);
+app.use("/articles", articles);
+app.use("/events", events);
+app.use("/foods", foods);
+app.use("/foods", holidays);
+app.use("/foods", locations);
+app.use("/outfits", outfits);
+app.use("/residences", residences);
+app.use("/reviews", reviews);
+app.use("/souvenirs", souvenirs);
 
 mongoose
   .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
