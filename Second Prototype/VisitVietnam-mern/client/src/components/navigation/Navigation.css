@@ -1,0 +1,38 @@
+.Navigation {
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  height: 46px;
+  z-index: 1;
+}
+
+.Navigation .Navigation-Navbar {
+  height: 40px;
+}
+
+#basic-navbar-nav {
+  line-height: 40px !important;
+}
+
+.Navigation .Navigation-Search {
+  line-height: 40px;
+}
+
+.Navigation .Navigation-Search .Form {
+  height: 28px;
+  margin-right: 10px !important;
+  padding: 2px !important;
+}
+
+.Navigation .btn {
+  min-width: 120px !important;
+  padding: 10px 16px;
+  box-shadow: none;
+}
+
+.Navigation .Navigation-Search .btn {
+  min-width: 30px !important;
+  height: 30px;
+  background-color: chartreuse;
+}

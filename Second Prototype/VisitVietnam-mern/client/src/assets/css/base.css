@@ -1,0 +1,209 @@
+.html {
+  scroll-behavior: smooth;
+}
+
+.Admin {
+  display: none;
+  background-color: #fff;
+}
+
+.Container__Content {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#slider {
+  /* background-image: linear-gradient(0, rgba(51,51,51,0.5),rgba(255,255,240,0.5)) ,url('../img/background-vietnam.jpg'); */
+  padding-top: 30%;
+  width: 100%;
+  height: 680px;
+  background-size: 100% 680px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.Container .Admin p {
+  width: 50px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Container .Admin td {
+  margin: 0;
+  height: 20px;
+  padding: 0;
+}
+
+.Layer-Gradient {
+  opacity: 0.3;
+  background-image: -webkit-linear-gradient(
+    left,
+    #000,
+    #757575,
+    white
+  ) !important;
+}
+
+#slider .text-content {
+  position: absolute;
+  top: 90px;
+  color: #fff;
+  left: 10%;
+  text-align: left;
+  width: 800px;
+}
+#slider .text-heading {
+  font-weight: 800;
+  font-size: 120px;
+  text-transform: uppercase;
+}
+#slider .text-desc {
+  font-size: 21px;
+  box-sizing: border-box;
+  text-align: justify;
+  text-shadow: 5px 2px 4px grey;
+  font-family: Roboto, Arial, sans-serif !important;
+  line-height: 30px;
+  font-weight: 400;
+}
+
+.isHover {
+  cursor: pointer;
+}
+
+.clear {
+  clear: both;
+}
+
+.hide-item {
+  display: none;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.StartAdmin {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1;
+}
+
+.StartAdmin Button {
+  padding: 5px;
+}
+
+.Container {
+  margin-top: 70px;
+}
+
+.Banner {
+  width: 100%;
+}
+
+.Circle-Icon {
+  background: black;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.text-in-dark {
+  color: rgb(232, 234, 237);
+}
+
+.Container .Header {
+  margin: 12px;
+  bottom: 0;
+  vertical-align: bottom;
+  font-size: 48px;
+  text-transform: none;
+}
+
+.Container .Container__Content .border-bottom {
+  background-color: #000 !important;
+  height: 1px;
+  width: 100% !important;
+  max-width: 1220px;
+  margin: 17px auto 0;
+  clear: both;
+  border-bottom: 2px solid #000 !important;
+}
+
+.Container__Content .member-item .item-content {
+  border-radius: 16px;
+}
+
+.Container__Content .member-item-content {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.border-img {
+  border-top-right-radius: 16px !important;
+  border-top-left-radius: 16px !important;
+}
+
+.border-img-full {
+  border-radius: 16px !important;
+}
+
+.member-item {
+  width: 32%;
+}
+
+.member-img {
+  width: 100%;
+  display: block;
+  height: 270px;
+}
+
+.member-img-col {
+  width: 100%;
+  display: block;
+  height: 560px;
+}
+
+.member-img-col:hover,
+.member-img:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+.Container__Content .item-slogan {
+  margin-top: 8px;
+  color: #757575;
+}
+
+.Container__Content .item-overview {
+  margin-top: 15px;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+/* Min-height member-item */
+.Container__Content .Content__Mall .member-item-content {
+  min-height: 455px;
+}
+
+.Container__Content .Content__Product .member-item-content {
+  min-height: 425px;
+}
+
+/* Ant collapse */
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  padding: 0 16px !important;
+  padding-left: 40px !important;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+  padding-top: 0px !important;
+}
