@@ -193,122 +193,128 @@ export class Home extends Component {
               </div>
               <div className="border-bottom"></div>
               <div className="row ml-3 mr-3 mt-5">
-                {Bitexco.map((thing) => (
-                  <div className="col-sm-4">
-                    <div key={thing._id}>
-                      <div
-                        className="member-item-content"
-                        onClick={() =>
-                          this.setState({
-                            DetailsModalShow: true,
-                            Id: thing._id,
-                            Name: thing.Name,
-                            Overview: thing.Overview,
-                            PicFileName: thing.attachment,
-                          })
-                        }
-                      >
-                        <img
-                          src={thing.attachment}
-                          alt={thing.attachment}
-                          className="member-img-col border-img-full"
-                        />
-                      </div>
-                      {this.state.DetailsModalShow &&
-                        this.state.Id == thing._id && (
-                          <DetailsModal
-                            show={this.state.DetailsModalShow}
-                            onHide={() => {
-                              DetailsModalClose();
-                            }}
-                            Id={Id}
-                            Name={Name}
-                            Overview={Overview}
-                            PicFileName={PicFileName}
+                {Bitexco != null &&
+                  Bitexco.length != 0 &&
+                  Bitexco.map((thing) => (
+                    <div className="col-sm-4">
+                      <div key={thing._id}>
+                        <div
+                          className="member-item-content"
+                          onClick={() =>
+                            this.setState({
+                              DetailsModalShow: true,
+                              Id: thing._id,
+                              Name: thing.Name,
+                              Overview: thing.Overview,
+                              PicFileName: thing.attachment,
+                            })
+                          }
+                        >
+                          <img
+                            src={thing.attachment}
+                            alt={thing.attachment}
+                            className="member-img-col border-img-full"
                           />
-                        )}
+                        </div>
+                        {this.state.DetailsModalShow &&
+                          this.state.Id == thing._id && (
+                            <DetailsModal
+                              show={this.state.DetailsModalShow}
+                              onHide={() => {
+                                DetailsModalClose();
+                              }}
+                              Id={Id}
+                              Name={Name}
+                              Overview={Overview}
+                              PicFileName={PicFileName}
+                            />
+                          )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
                 <div className="col-sm-8">
-                  {DamSenPark.map((thing) => (
-                    <div className="row">
-                      <div className="col-sm-12">
-                        <div key={thing._id}>
-                          <div
-                            className="member-item-content mb-4"
-                            onClick={() =>
-                              this.setState({
-                                DetailsModalShow: true,
-                                Id: thing._id,
-                                Name: thing.Name,
-                                Overview: thing.Overview,
-                                PicFileName: thing.attachment,
-                              })
-                            }
-                          >
-                            <img
-                              src={thing.attachment}
-                              alt={thing.attachment}
-                              className="member-img border-img-full"
-                            />
-                          </div>
-                          {this.state.DetailsModalShow &&
-                            this.state.Id == thing._id && (
-                              <DetailsModal
-                                show={this.state.DetailsModalShow}
-                                onHide={() => {
-                                  DetailsModalClose();
-                                }}
-                                Id={Id}
-                                Name={Name}
-                                Overview={Overview}
-                                PicFileName={PicFileName}
+                  {DamSenPark != null &&
+                    DamSenPark.length != 0 &&
+                    DamSenPark.map((thing) => (
+                      <div className="row">
+                        <div className="col-sm-12">
+                          <div key={thing._id}>
+                            <div
+                              className="member-item-content mb-4"
+                              onClick={() =>
+                                this.setState({
+                                  DetailsModalShow: true,
+                                  Id: thing._id,
+                                  Name: thing.Name,
+                                  Overview: thing.Overview,
+                                  PicFileName: thing.attachment,
+                                })
+                              }
+                            >
+                              <img
+                                src={thing.attachment}
+                                alt={thing.attachment}
+                                className="member-img border-img-full"
                               />
-                            )}
+                            </div>
+                            {this.state.DetailsModalShow &&
+                              this.state.Id == thing._id && (
+                                <DetailsModal
+                                  show={this.state.DetailsModalShow}
+                                  onHide={() => {
+                                    DetailsModalClose();
+                                  }}
+                                  Id={Id}
+                                  Name={Name}
+                                  Overview={Overview}
+                                  PicFileName={PicFileName}
+                                />
+                              )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                  {BenThanhMarket.map((thing) => (
-                    <div className="row">
-                      <div className="col-sm-12">
-                        <div key={thing._id}>
-                          <div
-                            className="member-item-content"
-                            onClick={() =>
-                              this.setState({
-                                DetailsModalShow: true,
-                                Id: thing._id,
-                                Name: thing.Name,
-                                Overview: thing.Overview,
-                                PicFileName: thing.attachment,
-                              })
-                            }
-                          >
-                            <img
-                              src={thing.attachment}
-                              alt={thing.attachment}
-                              className="member-img border-img-full"
-                            />
-                          </div>
-                          {this.state.DetailsModalShow &&
-                            this.state.Id == thing._id && (
-                              <DetailsModal
-                                show={this.state.DetailsModalShow}
-                                onHide={() => {
-                                  DetailsModalClose();
-                                }}
-                                Id={Id}
-                                Name={Name}
-                                Overview={Overview}
-                                PicFileName={PicFileName}
+                    ))}
+                  {BenThanhMarket != null &&
+                    BenThanhMarket.length != 0 &&
+                    BenThanhMarket.map((thing) => (
+                      <div className="row">
+                        <div className="col-sm-12">
+                          <div key={thing._id}>
+                            <div
+                              className="member-item-content"
+                              onClick={() =>
+                                this.setState({
+                                  DetailsModalShow: true,
+                                  Id: thing._id,
+                                  Name: thing.Name,
+                                  Overview: thing.Overview,
+                                  PicFileName: thing.attachment,
+                                })
+                              }
+                            >
+                              <img
+                                src={thing.attachment}
+                                alt={thing.attachment}
+                                className="member-img border-img-full"
                               />
-                            )}
+                            </div>
+                            {this.state.DetailsModalShow &&
+                              this.state.Id == thing._id && (
+                                <DetailsModal
+                                  show={this.state.DetailsModalShow}
+                                  onHide={() => {
+                                    DetailsModalClose();
+                                  }}
+                                  Id={Id}
+                                  Name={Name}
+                                  Overview={Overview}
+                                  PicFileName={PicFileName}
+                                />
+                              )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             </div>
@@ -324,122 +330,128 @@ export class Home extends Component {
               </div>
               <div className="border-bottom"></div>
               <div className="row ml-3 mr-3 mt-5">
-                {TheLandmark81.map((thing) => (
-                  <div className="col-sm-4">
-                    <div key={thing._id}>
-                      <div
-                        className="member-item-content"
-                        onClick={() =>
-                          this.setState({
-                            DetailsModalShow: true,
-                            Id: thing._id,
-                            Name: thing.Name,
-                            Overview: thing.Overview,
-                            PicFileName: thing.attachment,
-                          })
-                        }
-                      >
-                        <img
-                          src={thing.attachment}
-                          alt={thing.attachment}
-                          className="member-img-col border-img-full"
-                        />
-                      </div>
-                      {this.state.DetailsModalShow &&
-                        this.state.Id == thing._id && (
-                          <DetailsModal
-                            show={this.state.DetailsModalShow}
-                            onHide={() => {
-                              DetailsModalClose();
-                            }}
-                            Id={Id}
-                            Name={Name}
-                            Overview={Overview}
-                            PicFileName={PicFileName}
+                {TheLandmark81 != null &&
+                  TheLandmark81.length != 0 &&
+                  TheLandmark81.map((thing) => (
+                    <div className="col-sm-4">
+                      <div key={thing._id}>
+                        <div
+                          className="member-item-content"
+                          onClick={() =>
+                            this.setState({
+                              DetailsModalShow: true,
+                              Id: thing._id,
+                              Name: thing.Name,
+                              Overview: thing.Overview,
+                              PicFileName: thing.attachment,
+                            })
+                          }
+                        >
+                          <img
+                            src={thing.attachment}
+                            alt={thing.attachment}
+                            className="member-img-col border-img-full"
                           />
-                        )}
+                        </div>
+                        {this.state.DetailsModalShow &&
+                          this.state.Id == thing._id && (
+                            <DetailsModal
+                              show={this.state.DetailsModalShow}
+                              onHide={() => {
+                                DetailsModalClose();
+                              }}
+                              Id={Id}
+                              Name={Name}
+                              Overview={Overview}
+                              PicFileName={PicFileName}
+                            />
+                          )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
                 <div className="col-sm-8">
-                  {TheCityPostOffice.map((thing) => (
-                    <div className="row">
-                      <div className="col-sm-12">
-                        <div key={thing._id}>
-                          <div
-                            className="member-item-content mb-4"
-                            onClick={() =>
-                              this.setState({
-                                DetailsModalShow: true,
-                                Id: thing._id,
-                                Name: thing.Name,
-                                Overview: thing.Overview,
-                                PicFileName: thing.attachment,
-                              })
-                            }
-                          >
-                            <img
-                              src={thing.attachment}
-                              alt={thing.attachment}
-                              className="member-img border-img-full"
-                            />
-                          </div>
-                          {this.state.DetailsModalShow &&
-                            this.state.Id == thing._id && (
-                              <DetailsModal
-                                show={this.state.DetailsModalShow}
-                                onHide={() => {
-                                  DetailsModalClose();
-                                }}
-                                Id={Id}
-                                Name={Name}
-                                Overview={Overview}
-                                PicFileName={PicFileName}
+                  {TheCityPostOffice != null &&
+                    TheCityPostOffice.length != 0 &&
+                    TheCityPostOffice.map((thing) => (
+                      <div className="row">
+                        <div className="col-sm-12">
+                          <div key={thing._id}>
+                            <div
+                              className="member-item-content mb-4"
+                              onClick={() =>
+                                this.setState({
+                                  DetailsModalShow: true,
+                                  Id: thing._id,
+                                  Name: thing.Name,
+                                  Overview: thing.Overview,
+                                  PicFileName: thing.attachment,
+                                })
+                              }
+                            >
+                              <img
+                                src={thing.attachment}
+                                alt={thing.attachment}
+                                className="member-img border-img-full"
                               />
-                            )}
+                            </div>
+                            {this.state.DetailsModalShow &&
+                              this.state.Id == thing._id && (
+                                <DetailsModal
+                                  show={this.state.DetailsModalShow}
+                                  onHide={() => {
+                                    DetailsModalClose();
+                                  }}
+                                  Id={Id}
+                                  Name={Name}
+                                  Overview={Overview}
+                                  PicFileName={PicFileName}
+                                />
+                              )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                  {TheWalkingStreet.map((thing) => (
-                    <div className="row">
-                      <div className="col-sm-12">
-                        <div key={thing._id}>
-                          <div
-                            className="member-item-content"
-                            onClick={() =>
-                              this.setState({
-                                DetailsModalShow: true,
-                                Id: thing._id,
-                                Name: thing.Name,
-                                Overview: thing.Overview,
-                                PicFileName: thing.attachment,
-                              })
-                            }
-                          >
-                            <img
-                              src={thing.attachment}
-                              alt={thing.attachment}
-                              className="member-img border-img-full"
-                            />
-                          </div>
-                          {this.state.DetailsModalShow &&
-                            this.state.Id == thing._id && (
-                              <DetailsModal
-                                show={this.state.DetailsModalShow}
-                                onHide={() => {
-                                  DetailsModalClose();
-                                }}
-                                Id={Id}
-                                Name={Name}
-                                Overview={Overview}
-                                PicFileName={PicFileName}
+                    ))}
+                  {TheWalkingStreet != null &&
+                    TheWalkingStreet.length != 0 &&
+                    TheWalkingStreet.map((thing) => (
+                      <div className="row">
+                        <div className="col-sm-12">
+                          <div key={thing._id}>
+                            <div
+                              className="member-item-content"
+                              onClick={() =>
+                                this.setState({
+                                  DetailsModalShow: true,
+                                  Id: thing._id,
+                                  Name: thing.Name,
+                                  Overview: thing.Overview,
+                                  PicFileName: thing.attachment,
+                                })
+                              }
+                            >
+                              <img
+                                src={thing.attachment}
+                                alt={thing.attachment}
+                                className="member-img border-img-full"
                               />
-                            )}
+                            </div>
+                            {this.state.DetailsModalShow &&
+                              this.state.Id == thing._id && (
+                                <DetailsModal
+                                  show={this.state.DetailsModalShow}
+                                  onHide={() => {
+                                    DetailsModalClose();
+                                  }}
+                                  Id={Id}
+                                  Name={Name}
+                                  Overview={Overview}
+                                  PicFileName={PicFileName}
+                                />
+                              )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             </div>

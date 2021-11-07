@@ -3,7 +3,6 @@ import { FoodModel } from "../models/FoodModel.js";
 export const getFoods = async (req, res) => {
   try {
     const foods = await FoodModel.find();
-    console.log(foods);
     res.status(200).json(foods);
   } catch (err) {
     res.status(500).json({ error: err });

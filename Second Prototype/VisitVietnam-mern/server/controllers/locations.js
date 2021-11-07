@@ -3,7 +3,6 @@ import { LocationModel } from "../models/LocationModel.js";
 export const getLocations = async (req, res) => {
   try {
     const locations = await LocationModel.find();
-    console.log(locations);
     res.status(200).json(locations);
   } catch (err) {
     res.status(500).json({ error: err });

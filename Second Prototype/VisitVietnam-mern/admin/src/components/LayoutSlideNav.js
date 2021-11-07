@@ -26,13 +26,14 @@ export class LayoutSlideNav extends Component {
                 </NavLink>
                 <div className="sb-sidenav-menu-heading">System</div>
 
+                {/* MAIN */}
                 <a
                   className="nav-link collapsed"
                   href="/#"
                   data-bs-toggle="collapse"
-                  data-bs-target="#collapseLayouts"
+                  data-bs-target="#collapsePlaceLayouts"
                   aria-expanded="false"
-                  aria-controls="collapseLayouts"
+                  aria-controls="collapsePlaceLayouts"
                 >
                   <div className="sb-nav-link-icon">
                     <i className="fas fa-columns"></i>
@@ -44,7 +45,7 @@ export class LayoutSlideNav extends Component {
                 </a>
                 <div
                   className="collapse"
-                  id="collapseLayouts"
+                  id="collapsePlaceLayouts"
                   aria-labelledby="headingOne"
                   data-bs-parent="#sidenavAccordion"
                 >
@@ -58,6 +59,39 @@ export class LayoutSlideNav extends Component {
                   </nav>
                 </div>
 
+                <a
+                  className="nav-link collapsed"
+                  href="/#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseArticleLayouts"
+                  aria-expanded="false"
+                  aria-controls="collapseArticleLayouts"
+                >
+                  <div className="sb-nav-link-icon">
+                    <i className="fas fa-columns"></i>
+                  </div>
+                  Article
+                  <div className="sb-sidenav-collapse-arrow">
+                    <i className="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div
+                  className="collapse"
+                  id="collapseArticleLayouts"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                  <nav className="sb-sidenav-menu-nested nav">
+                    <NavLink className="nav-link" to="/list_article">
+                      List
+                    </NavLink>
+                    <NavLink className="nav-link" to="/create_article">
+                      Create new
+                    </NavLink>
+                  </nav>
+                </div>
+
+                {/* OUT */}
                 <div className="sb-sidenav-menu-heading">Addons</div>
                 <a className="nav-link" href="charts.html">
                   <div className="sb-nav-link-icon">
