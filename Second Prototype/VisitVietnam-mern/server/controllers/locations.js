@@ -33,3 +33,21 @@ export const updateLocation = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteLocation = async (req, res) => {
+  try {
+    await LocationModel.findByIdAndRemove(req.params.id);
+    res.status(200).json("Deleted");
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getLocationById = async (req, res) => {
+  try {
+    const location = await LocationModel.findById(req.params.id);
+    res.status(200).json(location);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};

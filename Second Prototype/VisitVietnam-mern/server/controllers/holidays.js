@@ -33,3 +33,21 @@ export const updateHoliday = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteHoliday = async (req, res) => {
+  try {
+    await HolidayModel.findByIdAndRemove(req.params.id);
+    res.status(200).json("Deleted");
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getHolidayById = async (req, res) => {
+  try {
+    const holiday = await HolidayModel.findById(req.params.id);
+    res.status(200).json(holiday);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};

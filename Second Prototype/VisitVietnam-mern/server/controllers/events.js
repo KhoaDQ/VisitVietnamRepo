@@ -33,3 +33,21 @@ export const updateEvent = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteEvent = async (req, res) => {
+  try {
+    await EventModel.findByIdAndRemove(req.params.id);
+    res.status(200).json("Deleted");
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getEventById = async (req, res) => {
+  try {
+    const event = await EventModel.findById(req.params.id);
+    res.status(200).json(event);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
