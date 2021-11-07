@@ -3,7 +3,6 @@ import { EventModel } from "../models/EventModel.js";
 export const getEvents = async (req, res) => {
   try {
     const events = await EventModel.find();
-    console.log(events);
     res.status(200).json(events);
   } catch (err) {
     res.status(500).json({ error: err });

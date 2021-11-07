@@ -3,7 +3,6 @@ import { HolidayModel } from "../models/HolidayModel.js";
 export const getHolidays = async (req, res) => {
   try {
     const holidays = await HolidayModel.find();
-    console.log(holidays);
     res.status(200).json(holidays);
   } catch (err) {
     res.status(500).json({ error: err });

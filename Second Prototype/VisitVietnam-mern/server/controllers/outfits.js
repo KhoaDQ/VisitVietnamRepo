@@ -3,7 +3,6 @@ import { OutfitModel } from "../models/OutfitModel.js";
 export const getOutfits = async (req, res) => {
   try {
     const outfits = await OutfitModel.find();
-    console.log(outfits);
     res.status(200).json(outfits);
   } catch (err) {
     res.status(500).json({ error: err });

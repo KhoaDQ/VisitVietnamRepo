@@ -12,6 +12,10 @@ import { ListPlace } from "./components/contentComponents/place/ListPlace";
 import { EditPlace } from "./components/contentComponents/place/EditPlace";
 import { CreatePlace } from "./components/contentComponents/place/CreatePlace";
 
+import { ListArticle } from "./components/contentComponents/article/ListArticle";
+import { EditArticle } from "./components/contentComponents/article/EditArticle";
+import { CreateArticle } from "./components/contentComponents/article/CreateArticle";
+
 import { Footer } from "./components/Footer";
 
 export default class App extends Component {
@@ -22,6 +26,8 @@ export default class App extends Component {
       isAdmin: false,
       //Place
       editPlaceId: "",
+      //Article
+      editArticleId: "",
     };
   }
 
@@ -46,6 +52,13 @@ export default class App extends Component {
   handleEditPlaceIdFunction = (content) => {
     this.setState({
       editPlaceId: content,
+    });
+  };
+
+  //Article
+  handleEditArticleIdFunction = (content) => {
+    this.setState({
+      editArticleId: content,
     });
   };
 
@@ -83,6 +96,29 @@ export default class App extends Component {
                   path="/edit_place"
                   render={(props) => (
                     <EditPlace {...props} placeId={this.state.editPlaceId} />
+                  )}
+                />
+                <Route
+                  path="/list_article"
+                  render={(props) => (
+                    <ListArticle
+                      {...props}
+                      handleEditArticleId={this.handleEditArticleIdFunction}
+                      handleDetailArticleId={this.handleDetailArticleIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_article"
+                  render={(props) => <CreateArticle {...props} />}
+                />
+                <Route
+                  path="/edit_article"
+                  render={(props) => (
+                    <EditArticle
+                      {...props}
+                      articleId={this.state.editArticleId}
+                    />
                   )}
                 />
               </Switch>

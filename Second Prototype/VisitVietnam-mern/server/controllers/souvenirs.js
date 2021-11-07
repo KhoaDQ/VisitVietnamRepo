@@ -3,7 +3,6 @@ import { SouvenirModel } from "../models/SouvenirModel.js";
 export const getSouvenirs = async (req, res) => {
   try {
     const souvenirs = await SouvenirModel.find();
-    console.log(souvenirs);
     res.status(200).json(souvenirs);
   } catch (err) {
     res.status(500).json({ error: err });

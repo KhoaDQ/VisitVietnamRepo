@@ -3,7 +3,6 @@ import { PlaceModel } from "../models/PlaceModel.js";
 export const getPlaces = async (req, res) => {
   try {
     const places = await PlaceModel.find();
-    console.log(places);
     res.status(200).json(places);
   } catch (err) {
     res.status(500).json({ error: err });
@@ -38,7 +37,7 @@ export const updatePlace = async (req, res) => {
 export const getPlaceBitexco = async (req, res) => {
   try {
     const places = await PlaceModel.find({
-      Name: "Test1",
+      Name: "Bitexco",
     });
     res.status(200).json(places);
   } catch (err) {
@@ -49,7 +48,7 @@ export const getPlaceBitexco = async (req, res) => {
 export const getPlaceBenThanhMarket = async (req, res) => {
   try {
     const places = await PlaceModel.find({
-      Name: "Test 2",
+      Name: "Ben Thanh Market",
     });
     res.status(200).json(places);
   } catch (err) {
@@ -60,7 +59,7 @@ export const getPlaceBenThanhMarket = async (req, res) => {
 export const getPlaceDamSenPark = async (req, res) => {
   try {
     const places = await PlaceModel.find({
-      Name: "Test 3",
+      Name: "Dam Sen Park",
     });
     res.status(200).json(places);
   } catch (err) {
@@ -71,7 +70,7 @@ export const getPlaceDamSenPark = async (req, res) => {
 export const getPlaceTheLandmark81 = async (req, res) => {
   try {
     const places = await PlaceModel.find({
-      Name: "Test 4",
+      Name: "The Landmark 81",
     });
     res.status(200).json(places);
   } catch (err) {
@@ -82,7 +81,7 @@ export const getPlaceTheLandmark81 = async (req, res) => {
 export const getPlaceTheCityPostOffice = async (req, res) => {
   try {
     const places = await PlaceModel.find({
-      Name: "Test 5",
+      Name: "The City Post Office",
     });
     res.status(200).json(places);
   } catch (err) {
@@ -92,8 +91,8 @@ export const getPlaceTheCityPostOffice = async (req, res) => {
 
 export const getPlaceTheWalkingStreet = async (req, res) => {
   try {
-    const places = await PlaceModel.findOne({
-      Name: "Test 6",
+    const places = await PlaceModel.find({
+      Name: "The Walking Street",
     });
     res.status(200).json(places);
   } catch (err) {

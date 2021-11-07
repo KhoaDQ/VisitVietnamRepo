@@ -3,7 +3,6 @@ import { ResidenceModel } from "../models/ResidenceModel.js";
 export const getResidences = async (req, res) => {
   try {
     const residences = await ResidenceModel.find();
-    console.log(residences);
     res.status(200).json(residences);
   } catch (err) {
     res.status(500).json({ error: err });
