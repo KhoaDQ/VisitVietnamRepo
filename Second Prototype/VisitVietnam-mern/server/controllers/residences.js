@@ -33,3 +33,21 @@ export const updateResidence = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteResidence = async (req, res) => {
+  try {
+    await ResidenceModel.findByIdAndRemove(req.params.id);
+    res.status(200).json("Deleted");
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getResidenceById = async (req, res) => {
+  try {
+    const residence = await ResidenceModel.findById(req.params.id);
+    res.status(200).json(residence);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};

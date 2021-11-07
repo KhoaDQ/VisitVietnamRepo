@@ -33,3 +33,21 @@ export const updateReview = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteReview = async (req, res) => {
+  try {
+    await ReviewModel.findByIdAndRemove(req.params.id);
+    res.status(200).json("Deleted");
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getReviewById = async (req, res) => {
+  try {
+    const review = await ReviewModel.findById(req.params.id);
+    res.status(200).json(review);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};

@@ -33,3 +33,21 @@ export const updateFood = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteFood = async (req, res) => {
+  try {
+    await FoodModel.findByIdAndRemove(req.params.id);
+    res.status(200).json("Deleted");
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getFoodById = async (req, res) => {
+  try {
+    const food = await FoodModel.findById(req.params.id);
+    res.status(200).json(food);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};

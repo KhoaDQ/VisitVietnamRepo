@@ -33,3 +33,21 @@ export const updateOutfit = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteOutfit = async (req, res) => {
+  try {
+    await OutfitModel.findByIdAndRemove(req.params.id);
+    res.status(200).json("Deleted");
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getOutfitById = async (req, res) => {
+  try {
+    const outfit = await OutfitModel.findById(req.params.id);
+    res.status(200).json(outfit);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};

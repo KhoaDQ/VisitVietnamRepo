@@ -33,3 +33,21 @@ export const updateSouvenir = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteSouvenir = async (req, res) => {
+  try {
+    await SouvenirModel.findByIdAndRemove(req.params.id);
+    res.status(200).json("Deleted");
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getSouvenirById = async (req, res) => {
+  try {
+    const souvenir = await SouvenirModel.findById(req.params.id);
+    res.status(200).json(souvenir);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
