@@ -34,3 +34,15 @@ export const updateArticle = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const getAllArticleTopPickMaster = async (req, res) => {
+  try {
+    const articles = await ArticleModel.findOne({
+      Type: "Top pick master",
+    });
+    console.log(articles);
+    res.status(200).json(articles);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};

@@ -1,10 +1,32 @@
 import express from "express";
-import { getPlaces, createPlace, updatePlace } from "../controllers/places.js";
+import {
+  getPlaces,
+  getPlaceById,
+  createPlace,
+  updatePlace,
+  deletePlace,
+  getPlaceBitexco,
+  getPlaceBenThanhMarket,
+  getPlaceDamSenPark,
+  getPlaceTheLandmark81,
+  getPlaceTheCityPostOffice,
+  getPlaceTheWalkingStreet,
+} from "../controllers/places.js";
 
 const router = express.Router();
 
 router.get("/", getPlaces);
 router.post("/", createPlace);
 router.put("/", updatePlace);
+
+router.get("/getPlaceBitexco", getPlaceBitexco);
+router.get("/getPlaceBenThanhMarket", getPlaceBenThanhMarket);
+router.get("/getPlaceDamSenPark", getPlaceDamSenPark);
+router.get("/getPlaceTheLandmark81", getPlaceTheLandmark81);
+router.get("/getPlaceTheCityPostOffice", getPlaceTheCityPostOffice);
+router.get("/getPlaceTheWalkingStreet", getPlaceTheWalkingStreet);
+
+router.delete("/:id", deletePlace);
+router.get("/:id", getPlaceById);
 
 export default router;
