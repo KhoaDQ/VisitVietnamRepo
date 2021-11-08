@@ -16,6 +16,38 @@ import { ListArticle } from "./components/contentComponents/article/ListArticle"
 import { EditArticle } from "./components/contentComponents/article/EditArticle";
 import { CreateArticle } from "./components/contentComponents/article/CreateArticle";
 
+import { ListEvent } from "./components/contentComponents/event/ListEvent";
+import { EditEvent } from "./components/contentComponents/event/EditEvent";
+import { CreateEvent } from "./components/contentComponents/event/CreateEvent";
+
+import { ListFood } from "./components/contentComponents/food/ListFood";
+import { EditFood } from "./components/contentComponents/food/EditFood";
+import { CreateFood } from "./components/contentComponents/food/CreateFood";
+
+import { ListHoliday } from "./components/contentComponents/holiday/ListHoliday";
+import { EditHoliday } from "./components/contentComponents/holiday/EditHoliday";
+import { CreateHoliday } from "./components/contentComponents/holiday/CreateHoliday";
+
+import { ListLocation } from "./components/contentComponents/location/ListLocation";
+import { EditLocation } from "./components/contentComponents/location/EditLocation";
+import { CreateLocation } from "./components/contentComponents/location/CreateLocation";
+
+import { ListOutfit } from "./components/contentComponents/outfit/ListOutfit";
+import { EditOutfit } from "./components/contentComponents/outfit/EditOutfit";
+import { CreateOutfit } from "./components/contentComponents/outfit/CreateOutfit";
+
+import { ListResidence } from "./components/contentComponents/residence/ListResidence";
+import { EditResidence } from "./components/contentComponents/residence/EditResidence";
+import { CreateResidence } from "./components/contentComponents/residence/CreateResidence";
+
+import { ListReview } from "./components/contentComponents/review/ListReview";
+import { EditReview } from "./components/contentComponents/review/EditReview";
+import { CreateReview } from "./components/contentComponents/review/CreateReview";
+
+import { ListSouvenir } from "./components/contentComponents/souvenir/ListSouvenir";
+import { EditSouvenir } from "./components/contentComponents/souvenir/EditSouvenir";
+import { CreateSouvenir } from "./components/contentComponents/souvenir/CreateSouvenir";
+
 import { Footer } from "./components/Footer";
 
 export default class App extends Component {
@@ -28,6 +60,22 @@ export default class App extends Component {
       editPlaceId: "",
       //Article
       editArticleId: "",
+      //Event
+      editEventId: "",
+      //Food
+      editFoodId: "",
+      //Holiday
+      editHolidayId: "",
+      //Location
+      editLocationId: "",
+      //Outfit
+      editOutfitId: "",
+      //Residence
+      editResidenceId: "",
+      //Review
+      editReviewId: "",
+      //Souvenir
+      editSouvenirId: "",
     };
   }
 
@@ -59,6 +107,62 @@ export default class App extends Component {
   handleEditArticleIdFunction = (content) => {
     this.setState({
       editArticleId: content,
+    });
+  };
+
+  //Event
+  handleEditEventIdFunction = (content) => {
+    this.setState({
+      editEventId: content,
+    });
+  };
+
+  //Food
+  handleEditFoodIdFunction = (content) => {
+    this.setState({
+      editFoodId: content,
+    });
+  };
+
+  //Holiday
+  handleEditHolidayIdFunction = (content) => {
+    this.setState({
+      editHolidayId: content,
+    });
+  };
+
+  //Location
+  handleEditLocationIdFunction = (content) => {
+    this.setState({
+      editLocationId: content,
+    });
+  };
+
+  //Outfit
+  handleEditOutfitIdFunction = (content) => {
+    this.setState({
+      editOutfitId: content,
+    });
+  };
+
+  //Residence
+  handleEditResidenceIdFunction = (content) => {
+    this.setState({
+      editResidenceId: content,
+    });
+  };
+
+  //Review
+  handleEditReviewIdFunction = (content) => {
+    this.setState({
+      editReviewId: content,
+    });
+  };
+
+  //Souvenir
+  handleEditSouvenirIdFunction = (content) => {
+    this.setState({
+      editSouvenirId: content,
     });
   };
 
@@ -121,6 +225,191 @@ export default class App extends Component {
                     />
                   )}
                 />
+                <Route
+                  path="/list_event"
+                  render={(props) => (
+                    <ListArticle
+                      {...props}
+                      handleEditEventId={this.handleEditEventIdFunction}
+                      handleDetailEventId={this.handleDetailEventIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_event"
+                  render={(props) => <CreateEvent {...props} />}
+                />
+                <Route
+                  path="/edit_event"
+                  render={(props) => (
+                    <EditArticle
+                      {...props}
+                      eventId={this.state.editEventId}
+                    />
+                  )}
+                />
+                <Route
+                  path="/list_food"
+                  render={(props) => (
+                    <ListFood
+                      {...props}
+                      handleEditFoodId={this.handleEditFoodIdFunction}
+                      handleDetailFoodId={this.handleDetailFoodIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_food"
+                  render={(props) => <CreateFood {...props} />}
+                />
+                <Route
+                  path="/edit_food"
+                  render={(props) => (
+                    <EditFood
+                      {...props}
+                      foodId={this.state.editFoodId}
+                    />
+                  )}
+                />
+                <Route
+                  path="/list_holiday"
+                  render={(props) => (
+                    <ListHoliday
+                      {...props}
+                      handleEditHolidayId={this.handleEditHolidayIdFunction}
+                      handleDetailHolidayId={this.handleDetailHolidayIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_holiday"
+                  render={(props) => <CreateHoliday {...props} />}
+                />
+                <Route
+                  path="/edit_holiday"
+                  render={(props) => (
+                    <EditHoliday
+                      {...props}
+                      foodId={this.state.editHolidayId}
+                    />
+                  )}
+                />
+              <Route
+                  path="/list_location"
+                  render={(props) => (
+                    <ListLocation
+                      {...props}
+                      handleEditHolidayId={this.handleEditLocationIdFunction}
+                      handleDetailHolidayId={this.handleDetailLocationIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_location"
+                  render={(props) => <CreateLocation {...props} />}
+                />
+                <Route
+                  path="/edit_location"
+                  render={(props) => (
+                    <EditLocation
+                      {...props}
+                      foodId={this.state.editLocationId}
+                    />
+                  )}
+                />
+              <Route
+                  path="/list_outfit"
+                  render={(props) => (
+                    <ListOutfit
+                      {...props}
+                      handleEditOutfitId={this.handleEditOutfitIdFunction}
+                      handleDetailOutfitId={this.handleDetailOutfitIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_outfit"
+                  render={(props) => <CreateOutfit {...props} />}
+                />
+                <Route
+                  path="/edit_outfit"
+                  render={(props) => (
+                    <EditOutfit
+                      {...props}
+                      foodId={this.state.editOutfitId}
+                    />
+                  )}
+                />
+              <Route
+                  path="/list_residence"
+                  render={(props) => (
+                    <ListResidence
+                      {...props}
+                      handleEditResidenceId={this.handleEditResidenceIdFunction}
+                      handleDetailResidenceId={this.handleDetailResidenceIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_residence"
+                  render={(props) => <CreateResidence {...props} />}
+                />
+                <Route
+                  path="/edit_residence"
+                  render={(props) => (
+                    <EditResidence
+                      {...props}
+                      foodId={this.state.editResidenceId}
+                    />
+                  )}
+                />
+                <Route
+                  path="/list_review"
+                  render={(props) => (
+                    <ListReview
+                      {...props}
+                      handleEditReviewId={this.handleEditReviewIdFunction}
+                      handleDetailReviewId={this.handleDetailReviewIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_review"
+                  render={(props) => <CreateReview {...props} />}
+                />
+                <Route
+                  path="/edit_review"
+                  render={(props) => (
+                    <EditReview
+                      {...props}
+                      foodId={this.state.editReviewId}
+                    />
+                  )}
+                />
+                <Route
+                  path="/list_souvenir"
+                  render={(props) => (
+                    <ListSouvenir
+                      {...props}
+                      handleEditSouvenirId={this.handleEditSouvenirIdFunction}
+                      handleDetailSouvenirId={this.handleDetailSouvenirIdFunction}
+                    />
+                  )}
+                />
+                <Route
+                  path="/create_souvenir"
+                  render={(props) => <CreateSouvenir {...props} />}
+                />
+                <Route
+                  path="/edit_Souvenir"
+                  render={(props) => (
+                    <EditSouvenir
+                      {...props}
+                      foodId={this.state.editSouvenirId}
+                    />
+                  )}
+                />
+
               </Switch>
               <Footer />
             </div>
