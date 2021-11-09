@@ -70,7 +70,7 @@ export class ListResidence extends Component {
     const { dataResidences } = this.state;
 
     residences = filter(dataResidences, (item) => {
-      return includes(item.Name, this.state.strSearch);
+      return includes(item.Type, this.state.strSearch);
     });
     return (
       <div>
@@ -103,7 +103,7 @@ export class ListResidence extends Component {
                               <FormControl
                                 value={this.state.strSearch}
                                 type="text"
-                                placeholder="Search by name"
+                                placeholder="Search by type"
                                 ref="search"
                                 onChange={this.handleChange}
                               />
