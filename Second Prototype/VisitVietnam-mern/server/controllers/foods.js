@@ -34,6 +34,40 @@ export const updateFood = async (req, res) => {
   }
 };
 
+export const getAllFood = async (req, res) => {
+  try {
+    const foods = await FoodModel.find({
+      Type: { $nin: ["Cake", "Drink"] },
+      MiniType: { $nin: ["Cake", "Drink"] },
+    });
+    res.status(200).json(foods);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getAllCake = async (req, res) => {
+  try {
+    const foods = await FoodModel.find({
+      $or: [{ Type: "Cake" }, { MiniType: "Cake" }],
+    });
+    res.status(200).json(foods);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
+export const getAllDrink = async (req, res) => {
+  try {
+    const foods = await FoodModel.find({
+      $or: [{ Type: "Drink" }, { MiniType: "Drink" }],
+    });
+    res.status(200).json(foods);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
 export const deleteFood = async (req, res) => {
   try {
     await FoodModel.findByIdAndRemove(req.params.id);

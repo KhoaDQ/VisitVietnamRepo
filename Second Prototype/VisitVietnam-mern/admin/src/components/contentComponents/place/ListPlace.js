@@ -37,10 +37,6 @@ export class ListPlace extends Component {
     this.props.handleEditPlaceId(content);
   }
 
-  handleCategoryPlace(content) {
-    this.props.handleCategoryPlaceId(content);
-  }
-
   deletePlace(placeId) {
     if (window.confirm("Are you sure?")) {
       axios
@@ -127,11 +123,7 @@ export class ListPlace extends Component {
                               <th>Id</th>
                               <th>Name</th>
                               <th>Type</th>
-                              <th>Slogan</th>
-                              <th>Overview</th>
                               <th>Phone</th>
-                              <th>Email</th>
-                              <th>Facebook</th>
                               <th>LinkWeb</th>
                             </tr>
                           </thead>
@@ -141,11 +133,7 @@ export class ListPlace extends Component {
                                 <td>{item._id}</td>
                                 <td>{item.Name}</td>
                                 <td>{item.Type}</td>
-                                <td>{item.Slogan}</td>
-                                <td>{item.Overview}</td>
                                 <td>{item.Phone}</td>
-                                <td>{item.Email}</td>
-                                <td>{item.Facebook}</td>
                                 <td>{item.LinkWeb}</td>
                                 <td>
                                   <ButtonToolbar>

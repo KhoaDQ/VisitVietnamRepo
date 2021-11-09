@@ -34,6 +34,19 @@ export const updateHoliday = async (req, res) => {
   }
 };
 
+export const get4HolidayUpcoming = async (req, res) => {
+  try {
+    const holidays = await HolidayModel.find({
+      StartDate: {
+        $gte: Date.now(),
+      },
+    }).limit(4);
+    res.status(200).json(holidays);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
 export const deleteHoliday = async (req, res) => {
   try {
     await HolidayModel.findByIdAndRemove(req.params.id);

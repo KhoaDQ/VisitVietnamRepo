@@ -45,6 +45,17 @@ export const getAllArticleTopPickMaster = async (req, res) => {
   }
 };
 
+export const getAllArticleEvent = async (req, res) => {
+  try {
+    const articles = await ArticleModel.find({
+      Type: "Event",
+    });
+    res.status(200).json(articles);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
 export const deleteArticle = async (req, res) => {
   try {
     await ArticleModel.findByIdAndRemove(req.params.id);

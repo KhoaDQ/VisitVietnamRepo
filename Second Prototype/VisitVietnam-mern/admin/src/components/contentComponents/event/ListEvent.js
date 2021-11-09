@@ -89,10 +89,7 @@ export class ListEvent extends Component {
                   <div className="card-header">
                     <div className="row">
                       <div className="col-md-6 col-xs-12">
-                        <NavLink
-                          className="btn btn-success"
-                          to="/create_event"
-                        >
+                        <NavLink className="btn btn-success" to="/create_event">
                           Create new
                         </NavLink>
                       </div>
@@ -130,8 +127,6 @@ export class ListEvent extends Component {
                               <th>Id</th>
                               <th>Name</th>
                               <th>Type</th>
-                              <th>Description</th>
-                              <th>Details</th>
                               <th>Start Date</th>
                               <th>End Date</th>
                               <th>Status</th>
@@ -144,8 +139,6 @@ export class ListEvent extends Component {
                                 <td>{item._id}</td>
                                 <td>{item.Name}</td>
                                 <td>{item.Type}</td>
-                                <td>{item.Description}</td>
-                                <td>{item.Details}</td>
                                 <td>{item.StartDate}</td>
                                 <td>{item.EndDate}</td>
                                 <td>{item.Status}</td>
@@ -164,9 +157,7 @@ export class ListEvent extends Component {
                                     <Button
                                       variant="danger"
                                       className="p-1"
-                                      onClick={() =>
-                                        this.deleteEvent(item._id)
-                                      }
+                                      onClick={() => this.deleteEvent(item._id)}
                                     >
                                       Delete
                                     </Button>

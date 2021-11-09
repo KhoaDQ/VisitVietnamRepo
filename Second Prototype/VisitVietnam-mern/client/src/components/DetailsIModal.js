@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button, Row, Col, Form, Image } from "react-bootstrap";
+import Moment from "moment";
 
 export class DetailsModal extends Component {
   constructor(props) {
@@ -30,8 +31,8 @@ export class DetailsModal extends Component {
                   <div>{this.props.Overview}</div>
                   <div>{this.props.Details}</div>
                   <div>{this.props.Note}</div>
-                  <div>{this.props.StartDate}</div>
-                  <div>{this.props.EndDate}</div>
+                  <div>{Moment(this.props.StartDate).format("D/MM/yy")}</div>
+                  <div>{Moment(this.props.EndDate).format("D/MM/yy")}</div>
                 </Form>
               </Col>
               <Col sm={6}>

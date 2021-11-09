@@ -1,0 +1,94 @@
+.cssok {
+  display: block;
+}
+
+.Food #slider {
+  background-image: -webkit-linear-gradient(
+      left,
+      rgba(0, 0, 0, 0.6),
+      rgb(255, 255, 255, 0.1),
+      rgb(255, 255, 255, 0.1)
+    ),
+    url("../../assets/img/foody_1.jpg");
+}
+
+.Food .Container__background {
+  background: url("../../assets/img/backgoundfoody.jpg");
+  background-size: cover;
+  scroll-behavior: smooth;
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Begin : Nav */
+#nav {
+  display: inline-block;
+  margin-left: 3%;
+  margin-bottom: 80px;
+}
+
+#nav,
+.subnav {
+  list-style-type: none;
+}
+
+#nav li {
+  position: relative;
+}
+
+#nav > li {
+  display: inline-block;
+}
+
+#nav > li > a {
+  text-transform: uppercase;
+  color: #000;
+}
+
+#nav li a {
+  text-decoration: none;
+  line-height: 46px;
+  padding: 0 24px;
+  display: block;
+  font-weight: 800;
+  min-width: 150px;
+}
+
+#nav .subnav li:hover,
+#nav > li:hover > a {
+  color: #000 !important;
+  background-color: #ccc !important;
+}
+
+#nav li:hover a {
+}
+
+#nav li:hover .subnav {
+  display: block;
+}
+
+#nav .nav-arrow-down {
+  font-size: 14px;
+}
+
+#nav .subnav {
+  min-width: 160px;
+  top: 100%;
+  left: 0;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#nav .subnav a {
+  padding: 0 12px;
+  line-height: 38px;
+  color: #000;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+/* End : Nav */
