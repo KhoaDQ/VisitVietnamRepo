@@ -12,11 +12,9 @@ const schema = mongoose.Schema(
     },
     Description: {
       type: String,
-      required: true,
     },
     Details: {
       type: String,
-      required: true,
     },
     StartDate: {
       type: Date,
@@ -28,12 +26,10 @@ const schema = mongoose.Schema(
     },
     Status: {
       type: String,
-      required: true,
     },
     attachment: String,
     PlaceId: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }

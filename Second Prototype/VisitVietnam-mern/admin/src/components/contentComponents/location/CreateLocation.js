@@ -41,7 +41,9 @@ export class CreateLocation extends Component {
                   <li className="breadcrumb-item">
                     <a href="/">Master page</a>
                   </li>
-                  <li className="breadcrumb-item active">Create new Location</li>
+                  <li className="breadcrumb-item active">
+                    Create new Location
+                  </li>
                 </ol>
                 <div className="card mb-4">
                   <div className="card-header">
@@ -79,9 +81,9 @@ export class CreateLocation extends Component {
                             placeholder="Ward"
                           />
                         </Form.Group>
-                      
+
                         <Form.Group controlId="District">
-                          <Form.Label>Note</Form.Label>
+                          <Form.Label>District</Form.Label>
                           <Form.Control
                             type="text"
                             name="District"
@@ -97,7 +99,7 @@ export class CreateLocation extends Component {
                             placeholder="City"
                           />
                         </Form.Group>
-                        
+
                         <Form.Group controlId="PlaceId">
                           <Form.Label>PlaceId</Form.Label>
                           <Form.Control

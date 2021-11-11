@@ -6,6 +6,7 @@ import {
   updateArticle,
   deleteArticle,
   getAllArticleTopPickMaster,
+  getAllArticleEvent,
 } from "../controllers/articles.js";
 
 const router = express.Router();
@@ -15,6 +16,7 @@ router.post("/", createArticle);
 router.put("/", updateArticle);
 
 router.get("/getAllArticleTopPickMaster", getAllArticleTopPickMaster);
+router.get("/getAllArticleEvent", getAllArticleEvent);
 
 router.delete("/:id", deleteArticle);
 router.get("/:id", getArticleById);

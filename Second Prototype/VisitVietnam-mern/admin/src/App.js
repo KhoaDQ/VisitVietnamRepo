@@ -228,7 +228,7 @@ export default class App extends Component {
                 <Route
                   path="/list_event"
                   render={(props) => (
-                    <ListArticle
+                    <ListEvent
                       {...props}
                       handleEditEventId={this.handleEditEventIdFunction}
                       handleDetailEventId={this.handleDetailEventIdFunction}
@@ -242,10 +242,7 @@ export default class App extends Component {
                 <Route
                   path="/edit_event"
                   render={(props) => (
-                    <EditArticle
-                      {...props}
-                      eventId={this.state.editEventId}
-                    />
+                    <EditEvent {...props} eventId={this.state.editEventId} />
                   )}
                 />
                 <Route
@@ -265,10 +262,7 @@ export default class App extends Component {
                 <Route
                   path="/edit_food"
                   render={(props) => (
-                    <EditFood
-                      {...props}
-                      foodId={this.state.editFoodId}
-                    />
+                    <EditFood {...props} foodId={this.state.editFoodId} />
                   )}
                 />
                 <Route
@@ -288,19 +282,18 @@ export default class App extends Component {
                 <Route
                   path="/edit_holiday"
                   render={(props) => (
-                    <EditHoliday
-                      {...props}
-                      foodId={this.state.editHolidayId}
-                    />
+                    <EditHoliday {...props} foodId={this.state.editHolidayId} />
                   )}
                 />
-              <Route
+                <Route
                   path="/list_location"
                   render={(props) => (
                     <ListLocation
                       {...props}
                       handleEditHolidayId={this.handleEditLocationIdFunction}
-                      handleDetailHolidayId={this.handleDetailLocationIdFunction}
+                      handleDetailHolidayId={
+                        this.handleDetailLocationIdFunction
+                      }
                     />
                   )}
                 />
@@ -317,7 +310,7 @@ export default class App extends Component {
                     />
                   )}
                 />
-              <Route
+                <Route
                   path="/list_outfit"
                   render={(props) => (
                     <ListOutfit
@@ -334,19 +327,18 @@ export default class App extends Component {
                 <Route
                   path="/edit_outfit"
                   render={(props) => (
-                    <EditOutfit
-                      {...props}
-                      foodId={this.state.editOutfitId}
-                    />
+                    <EditOutfit {...props} foodId={this.state.editOutfitId} />
                   )}
                 />
-              <Route
+                <Route
                   path="/list_residence"
                   render={(props) => (
                     <ListResidence
                       {...props}
                       handleEditResidenceId={this.handleEditResidenceIdFunction}
-                      handleDetailResidenceId={this.handleDetailResidenceIdFunction}
+                      handleDetailResidenceId={
+                        this.handleDetailResidenceIdFunction
+                      }
                     />
                   )}
                 />
@@ -380,10 +372,7 @@ export default class App extends Component {
                 <Route
                   path="/edit_review"
                   render={(props) => (
-                    <EditReview
-                      {...props}
-                      foodId={this.state.editReviewId}
-                    />
+                    <EditReview {...props} foodId={this.state.editReviewId} />
                   )}
                 />
                 <Route
@@ -392,7 +381,9 @@ export default class App extends Component {
                     <ListSouvenir
                       {...props}
                       handleEditSouvenirId={this.handleEditSouvenirIdFunction}
-                      handleDetailSouvenirId={this.handleDetailSouvenirIdFunction}
+                      handleDetailSouvenirId={
+                        this.handleDetailSouvenirIdFunction
+                      }
                     />
                   )}
                 />
@@ -409,7 +400,6 @@ export default class App extends Component {
                     />
                   )}
                 />
-
               </Switch>
               <Footer />
             </div>

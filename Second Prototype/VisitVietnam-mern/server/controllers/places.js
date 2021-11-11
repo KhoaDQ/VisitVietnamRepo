@@ -100,6 +100,17 @@ export const getPlaceTheWalkingStreet = async (req, res) => {
   }
 };
 
+export const getAllPlacesFood = async (req, res) => {
+  try {
+    const places = await PlaceModel.find({
+      Type: "Food",
+    });
+    res.status(200).json(places);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
 export const deletePlace = async (req, res) => {
   try {
     await PlaceModel.findByIdAndRemove(req.params.id);

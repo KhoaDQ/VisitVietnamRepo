@@ -27,7 +27,7 @@ export class LayoutSlideNav extends Component {
                 <div className="sb-sidenav-menu-heading">System</div>
 
                 {/* MAIN */}
-                
+
                 {/* PLACE */}
                 <a
                   className="nav-link collapsed"
@@ -354,26 +354,11 @@ export class LayoutSlideNav extends Component {
                     </NavLink>
                   </nav>
                 </div>
-
-                {/* OUT */}
-                <div className="sb-sidenav-menu-heading">Addons</div>
-                <a className="nav-link" href="charts.html">
-                  <div className="sb-nav-link-icon">
-                    <i className="fas fa-chart-area"></i>
-                  </div>
-                  Charts
-                </a>
-                <a className="nav-link" href="tables.html">
-                  <div className="sb-nav-link-icon">
-                    <i className="fas fa-table"></i>
-                  </div>
-                  Tables
-                </a>
               </div>
             </div>
             <div className="sb-sidenav-footer">
               <div className="small">Logged in as:</div>
-              Start Bootstrap
+              Admin VisitVietnam
             </div>
           </nav>
         </div>
