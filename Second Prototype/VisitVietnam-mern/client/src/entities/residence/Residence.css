@@ -1,0 +1,28 @@
+.Residence #slider {
+  background-image: -webkit-linear-gradient(
+      left,
+      rgba(0, 0, 0, 0.6),
+      rgb(255, 255, 255, 0.1),
+      rgb(255, 255, 255, 0.1)
+    ),
+    url("../../assets/img/stay_1.jpg");
+}
+
+.Residence .Container__background {
+  background: url("../../assets/img/backgroundhomestay.jpg");
+  background-size: cover;
+  scroll-behavior: smooth;
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Residence #nav > li > a {
+  text-transform: uppercase;
+  color: rgb(232, 234, 237);
+}
+
+.Residence #nav {
+  margin-left: 10%;
+  margin-bottom: 80px;
+}
