@@ -125,7 +125,7 @@ export class EditOutfit extends Component {
                         <Form.Group controlId="Price">
                           <Form.Label>Price</Form.Label>
                           <Form.Control
-                            type="date"
+                            type="number"
                             name="Price"
                             placeholder="Price"
                             defaultValue={this.state.outfit.Price}
@@ -135,7 +135,7 @@ export class EditOutfit extends Component {
                         <Form.Group controlId="Note">
                           <Form.Label>Note</Form.Label>
                           <Form.Control
-                            type="date"
+                            type="text"
                             name="Note"
                             placeholder="Note"
                             defaultValue={this.state.outfit.Note}

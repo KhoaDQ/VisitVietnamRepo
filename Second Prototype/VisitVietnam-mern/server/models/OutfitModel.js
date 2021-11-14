@@ -12,24 +12,19 @@ const schema = mongoose.Schema(
     },
     Gender: {
       type: String,
-      required: true,
     },
     RangeAge: {
       type: String,
-      required: true,
     },
     Price: {
       type: String,
-      required: true,
     },
     Note: {
       type: String,
-      required: true,
     },
     attachment: String,
     PlaceId: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }
