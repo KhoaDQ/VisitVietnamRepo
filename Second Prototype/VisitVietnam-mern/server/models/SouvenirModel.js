@@ -12,11 +12,9 @@ const schema = mongoose.Schema(
     },
     Price: {
       type: String,
-      required: true,
     },
     Note: {
       type: String,
-      required: true,
     },
     attachment: String,
     PlaceId: {

@@ -111,6 +111,17 @@ export const getAllPlacesFood = async (req, res) => {
   }
 };
 
+export const getAllPlacesSouvenir = async (req, res) => {
+  try {
+    const places = await PlaceModel.find({
+      Type: "Souvenir",
+    });
+    res.status(200).json(places);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+
 export const deletePlace = async (req, res) => {
   try {
     await PlaceModel.findByIdAndRemove(req.params.id);

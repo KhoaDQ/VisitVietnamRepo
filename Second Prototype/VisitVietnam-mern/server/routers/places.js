@@ -12,6 +12,7 @@ import {
   getPlaceTheCityPostOffice,
   getPlaceTheWalkingStreet,
   getAllPlacesFood,
+  getAllPlacesSouvenir,
 } from "../controllers/places.js";
 
 const router = express.Router();
@@ -27,6 +28,7 @@ router.get("/getPlaceTheLandmark81", getPlaceTheLandmark81);
 router.get("/getPlaceTheCityPostOffice", getPlaceTheCityPostOffice);
 router.get("/getPlaceTheWalkingStreet", getPlaceTheWalkingStreet);
 router.get("/getAllPlacesFood", getAllPlacesFood);
+router.get("/getAllPlacesSouvenir",getAllPlacesSouvenir);
 
 router.delete("/:id", deletePlace);
 router.get("/:id", getPlaceById);

@@ -1,0 +1,9 @@
+.Souvenir #slider {
+  background-image: -webkit-linear-gradient(
+      left,
+      rgba(0, 0, 0, 0.6),
+      rgb(255, 255, 255, 0.1),
+      rgb(255, 255, 255, 0.1)
+    ),
+    url("../../assets/img/gift_slider.jpg");
+}
