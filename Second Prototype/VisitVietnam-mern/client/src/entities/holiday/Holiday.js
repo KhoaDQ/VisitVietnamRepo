@@ -113,8 +113,8 @@ export class Holiday extends Component {
               </div>
               <div className="row member-list ml-3 mr-3 mt-5">
                 {articles.map((article) => (
-                  <div className="col-sm-4 member-item">
-                    <div key={article._id}>
+                  <div key={article._id} className="col-sm-4 member-item">
+                    <div>
                       <div
                         className="member-item-content"
                         onClick={() =>
@@ -138,18 +138,21 @@ export class Holiday extends Component {
                           <h3 className="item-header">{article.Name}</h3>
                         </div>
                       </div>
-                      <DetailsModal
-                        show={this.state.DetailsModalShow}
-                        onHide={() => {
-                          DetailsModalClose();
-                        }}
-                        Id={Id}
-                        Name={Name}
-                        Type={Type}
-                        Description={Description}
-                        PicFileName={PicFileName}
-                        Status={Status}
-                      />
+                      {this.state.DetailsModalShow &&
+                        this.state.Id === article._id && (
+                          <DetailsModal
+                            show={this.state.DetailsModalShow}
+                            onHide={() => {
+                              DetailsModalClose();
+                            }}
+                            Id={Id}
+                            Name={Name}
+                            Type={Type}
+                            Description={Description}
+                            PicFileName={PicFileName}
+                            Status={Status}
+                          />
+                        )}
                     </div>
                   </div>
                 ))}
@@ -165,8 +168,8 @@ export class Holiday extends Component {
               </div>
               <div className="row member-list ml-3 mr-3">
                 {holidaysUpcoming.map((holiday) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={holiday._id} className="member-item-content">
+                  <div key={holiday._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <div
                         onClick={() =>
                           this.setState({
@@ -203,21 +206,24 @@ export class Holiday extends Component {
                           </div>
                         </div>
                       </div>
-                      <DetailsModal
-                        show={this.state.DetailsModalShow}
-                        onHide={() => {
-                          DetailsModalClose();
-                        }}
-                        Id={Id}
-                        Name={Name}
-                        Type={Type}
-                        Description={Description}
-                        PicFileName={PicFileName}
-                        Details={Details}
-                        StartDate={StartDate}
-                        EndDate={EndDate}
-                        Status={Status}
-                      />
+                      {this.state.DetailsModalShow &&
+                        this.state.Id === holiday._id && (
+                          <DetailsModal
+                            show={this.state.DetailsModalShow}
+                            onHide={() => {
+                              DetailsModalClose();
+                            }}
+                            Id={Id}
+                            Name={Name}
+                            Type={Type}
+                            Description={Description}
+                            PicFileName={PicFileName}
+                            Details={Details}
+                            StartDate={StartDate}
+                            EndDate={EndDate}
+                            Status={Status}
+                          />
+                        )}
                     </div>
                   </div>
                 ))}
@@ -233,8 +239,11 @@ export class Holiday extends Component {
                 {holidaysYear
                   .slice(0, this.state.Holiday_Year_visible)
                   .map((holiday) => (
-                    <div className="col-sm-4 member-item mt-5">
-                      <div key={holiday._id} className="member-item-content">
+                    <div
+                      key={holiday._id}
+                      className="col-sm-4 member-item mt-5"
+                    >
+                      <div className="member-item-content">
                         <div
                           onClick={() =>
                             this.setState({
@@ -271,21 +280,24 @@ export class Holiday extends Component {
                             </div>
                           </div>
                         </div>
-                        <DetailsModal
-                          show={this.state.DetailsModalShow}
-                          onHide={() => {
-                            DetailsModalClose();
-                          }}
-                          Id={Id}
-                          Name={Name}
-                          Type={Type}
-                          Description={Description}
-                          PicFileName={PicFileName}
-                          Details={Details}
-                          StartDate={StartDate}
-                          EndDate={EndDate}
-                          Status={Status}
-                        />
+                        {this.state.DetailsModalShow &&
+                          this.state.Id === holiday._id && (
+                            <DetailsModal
+                              show={this.state.DetailsModalShow}
+                              onHide={() => {
+                                DetailsModalClose();
+                              }}
+                              Id={Id}
+                              Name={Name}
+                              Type={Type}
+                              Description={Description}
+                              PicFileName={PicFileName}
+                              Details={Details}
+                              StartDate={StartDate}
+                              EndDate={EndDate}
+                              Status={Status}
+                            />
+                          )}
                       </div>
                     </div>
                   ))}
@@ -312,8 +324,11 @@ export class Holiday extends Component {
                 {holidaysDay
                   .slice(0, this.state.Holiday_Day_visible)
                   .map((holiday) => (
-                    <div className="col-sm-4 member-item mt-5">
-                      <div key={holiday._id} className="member-item-content">
+                    <div
+                      key={holiday._id}
+                      className="col-sm-4 member-item mt-5"
+                    >
+                      <div className="member-item-content">
                         <div
                           onClick={() =>
                             this.setState({
@@ -350,21 +365,24 @@ export class Holiday extends Component {
                             </div>
                           </div>
                         </div>
-                        <DetailsModal
-                          show={this.state.DetailsModalShow}
-                          onHide={() => {
-                            DetailsModalClose();
-                          }}
-                          Id={Id}
-                          Name={Name}
-                          Type={Type}
-                          Description={Description}
-                          PicFileName={PicFileName}
-                          Details={Details}
-                          StartDate={StartDate}
-                          EndDate={EndDate}
-                          Status={Status}
-                        />
+                        {this.state.DetailsModalShow &&
+                          this.state.Id === holiday._id && (
+                            <DetailsModal
+                              show={this.state.DetailsModalShow}
+                              onHide={() => {
+                                DetailsModalClose();
+                              }}
+                              Id={Id}
+                              Name={Name}
+                              Type={Type}
+                              Description={Description}
+                              PicFileName={PicFileName}
+                              Details={Details}
+                              StartDate={StartDate}
+                              EndDate={EndDate}
+                              Status={Status}
+                            />
+                          )}
                       </div>
                     </div>
                   ))}

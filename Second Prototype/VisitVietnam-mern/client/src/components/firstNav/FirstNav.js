@@ -1,21 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import "./FirstNav.css";
 
 export class FirstNav extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isAdmin: false,
-      LoginModalShow: false,
-    };
-
-    this.handleLogin = this.handleLogin.bind(this);
-  }
-
-  handleLogin() {}
-
   render() {
     return (
       <div className="FirstNav" bg="dark">
@@ -49,23 +37,6 @@ export class FirstNav extends Component {
             >
               Contact
             </NavLink>
-
-            <Button
-              className="btn"
-              onClick={() => this.setState({ LoginModalShow: true })}
-            >
-              Login
-            </Button>
-            {this.state.isAdmin && (
-              <Button
-                className="btn"
-                onClick={() => {
-                  this.handleLogout();
-                }}
-              >
-                Logout
-              </Button>
-            )}
           </Nav>
         </Navbar>
       </div>

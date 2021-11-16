@@ -1,4 +1,4 @@
-import { Button, ButtonToolbar, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import React, { Component } from "react";
 import "../../assets/css/base.css";
 import "./Residence.css";
@@ -44,9 +44,7 @@ export class Residence extends Component {
     this.loadMoreResort = this.loadMoreResort.bind(this);
   }
 
-  callback(key) {
-    console.log(key);
-  }
+  callback(key) {}
 
   refreshListLocations() {
     fetch(process.env.REACT_APP_API + "/locations")
@@ -180,7 +178,7 @@ export class Residence extends Component {
           <div className="Container__Content">
             <ul id="nav">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li>
                 <a href="#Hotel">Hotel</a>
@@ -195,11 +193,11 @@ export class Residence extends Component {
                 <a href="#Villa">Villa</a>
               </li>
               <li>
-                <a href="#">
+                <a href="/">
                   More
-                  <i class="nav-arrow-down ti-angle-down"></i>
+                  <i className="nav-arrow-down ti-angle-down"></i>
                 </a>
-                <ul class="subnav">
+                <ul className="subnav">
                   <li>
                     <a href="#Bungalow">Bungalow</a>
                   </li>
@@ -207,7 +205,7 @@ export class Residence extends Component {
                     <a href="#Resort">Resort</a>
                   </li>
                   <li>
-                    <a href="#">More</a>
+                    <a href="/">More</a>
                   </li>
                 </ul>
               </li>
@@ -226,8 +224,8 @@ export class Residence extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list ml-3 mr-3">
                 {Hotels.slice(0, this.state.Hotel_visible).map((place) => (
-                  <div class="col-sm-4 member-item mt-5">
-                    <div key={place._id} className="member-item-content">
+                  <div key={place._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={place.PlaceAttachment}
                         alt={place.PlaceAttachment}
@@ -238,35 +236,27 @@ export class Residence extends Component {
                         <div className="item-slogan px-3">{place.Slogan}</div>
                         <Collapse className="mt-2" onChange={this.callback}>
                           <Panel header="Overview" key="1">
-                            <p>
-                              <div className="item-overview">
-                                {place.Overview}
-                              </div>
-                            </p>
+                            <div className="item-overview">
+                              {place.Overview}
+                            </div>
                           </Panel>
                           <Panel header="Contact" key="2">
-                            <p>
-                              <div className="item-info">{place.Phone}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Email}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Facebook}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.LinkWeb}</div>
-                            </p>
+                            <div>
+                              <p className="item-info">{place.Phone}</p>
+                              <p className="item-info">{place.Email}</p>
+                              <p className="item-info">{place.Facebook}</p>
+                              <p className="item-info">{place.LinkWeb}</p>
+                            </div>
                           </Panel>
                           <Panel header="Address" key="3">
-                            <p>
+                            <div>
                               <div className="location-list mt-3">
                                 {Locations.map((location) => (
                                   <div
                                     key={location._id}
                                     className="d-inline mt-2"
                                   >
-                                    {location.PlaceId == place._id && (
+                                    {location.PlaceId === place._id && (
                                       <div>
                                         - {location.Details},{location.Street},
                                         {location.Ward},{location.District},
@@ -276,7 +266,7 @@ export class Residence extends Component {
                                   </div>
                                 ))}
                               </div>
-                            </p>
+                            </div>
                           </Panel>
                         </Collapse>
                       </div>
@@ -307,8 +297,8 @@ export class Residence extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list ml-3 mr-3">
                 {Hostels.slice(0, this.state.Hostel_visible).map((place) => (
-                  <div class="col-sm-4 member-item mt-5">
-                    <div key={place._id} className="member-item-content">
+                  <div key={place._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={place.PlaceAttachment}
                         alt={place.PlaceAttachment}
@@ -319,35 +309,27 @@ export class Residence extends Component {
                         <div className="item-slogan px-3">{place.Slogan}</div>
                         <Collapse className="mt-2" onChange={this.callback}>
                           <Panel header="Overview" key="1">
-                            <p>
-                              <div className="item-overview">
-                                {place.Overview}
-                              </div>
-                            </p>
+                            <div className="item-overview">
+                              {place.Overview}
+                            </div>
                           </Panel>
                           <Panel header="Contact" key="2">
-                            <p>
-                              <div className="item-info">{place.Phone}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Email}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Facebook}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.LinkWeb}</div>
-                            </p>
+                            <div>
+                              <p className="item-info">{place.Phone}</p>
+                              <p className="item-info">{place.Email}</p>
+                              <p className="item-info">{place.Facebook}</p>
+                              <p className="item-info">{place.LinkWeb}</p>
+                            </div>
                           </Panel>
                           <Panel header="Address" key="3">
-                            <p>
+                            <div>
                               <div className="location-list mt-3">
                                 {Locations.map((location) => (
                                   <div
                                     key={location._id}
                                     className="d-inline mt-2"
                                   >
-                                    {location.PlaceId == place._id && (
+                                    {location.PlaceId === place._id && (
                                       <div>
                                         - {location.Details},{location.Street},
                                         {location.Ward},{location.District},
@@ -357,7 +339,7 @@ export class Residence extends Component {
                                   </div>
                                 ))}
                               </div>
-                            </p>
+                            </div>
                           </Panel>
                         </Collapse>
                       </div>
@@ -389,8 +371,8 @@ export class Residence extends Component {
               <div className="row member-list ml-3 mr-3">
                 {Homestays.slice(0, this.state.Homestay_visible).map(
                   (place) => (
-                    <div class="col-sm-4 member-item mt-5">
-                      <div key={place._id} className="member-item-content">
+                    <div key={place._id} className="col-sm-4 member-item mt-5">
+                      <div className="member-item-content">
                         <img
                           src={place.PlaceAttachment}
                           alt={place.PlaceAttachment}
@@ -401,37 +383,27 @@ export class Residence extends Component {
                           <div className="item-slogan px-3">{place.Slogan}</div>
                           <Collapse className="mt-2" onChange={this.callback}>
                             <Panel header="Overview" key="1">
-                              <p>
-                                <div className="item-overview">
-                                  {place.Overview}
-                                </div>
-                              </p>
+                              <div className="item-overview">
+                                {place.Overview}
+                              </div>
                             </Panel>
                             <Panel header="Contact" key="2">
-                              <p>
-                                <div className="item-info">{place.Phone}</div>
-                              </p>
-                              <p>
-                                <div className="item-info">{place.Email}</div>
-                              </p>
-                              <p>
-                                <div className="item-info">
-                                  {place.Facebook}
-                                </div>
-                              </p>
-                              <p>
-                                <div className="item-info">{place.LinkWeb}</div>
-                              </p>
+                              <div>
+                                <p className="item-info">{place.Phone}</p>
+                                <p className="item-info">{place.Email}</p>
+                                <p className="item-info">{place.Facebook}</p>
+                                <p className="item-info">{place.LinkWeb}</p>
+                              </div>
                             </Panel>
                             <Panel header="Address" key="3">
-                              <p>
+                              <div>
                                 <div className="location-list mt-3">
                                   {Locations.map((location) => (
                                     <div
                                       key={location._id}
                                       className="d-inline mt-2"
                                     >
-                                      {location.PlaceId == place._id && (
+                                      {location.PlaceId === place._id && (
                                         <div>
                                           - {location.Details},{location.Street}
                                           ,{location.Ward},{location.District},
@@ -441,7 +413,7 @@ export class Residence extends Component {
                                     </div>
                                   ))}
                                 </div>
-                              </p>
+                              </div>
                             </Panel>
                           </Collapse>
                         </div>
@@ -476,8 +448,8 @@ export class Residence extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list ml-3 mr-3">
                 {Villas.slice(0, this.state.Villa_visible).map((place) => (
-                  <div class="col-sm-4 member-item mt-5">
-                    <div key={place._id} className="member-item-content">
+                  <div key={place._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={place.PlaceAttachment}
                         alt={place.PlaceAttachment}
@@ -488,35 +460,27 @@ export class Residence extends Component {
                         <div className="item-slogan px-3">{place.Slogan}</div>
                         <Collapse className="mt-2" onChange={this.callback}>
                           <Panel header="Overview" key="1">
-                            <p>
-                              <div className="item-overview">
-                                {place.Overview}
-                              </div>
-                            </p>
+                            <div className="item-overview">
+                              {place.Overview}
+                            </div>
                           </Panel>
                           <Panel header="Contact" key="2">
-                            <p>
-                              <div className="item-info">{place.Phone}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Email}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Facebook}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.LinkWeb}</div>
-                            </p>
+                            <div>
+                              <p className="item-info">{place.Phone}</p>
+                              <p className="item-info">{place.Email}</p>
+                              <p className="item-info">{place.Facebook}</p>
+                              <p className="item-info">{place.LinkWeb}</p>
+                            </div>
                           </Panel>
                           <Panel header="Address" key="3">
-                            <p>
+                            <div>
                               <div className="location-list mt-3">
                                 {Locations.map((location) => (
                                   <div
                                     key={location._id}
                                     className="d-inline mt-2"
                                   >
-                                    {location.PlaceId == place._id && (
+                                    {location.PlaceId === place._id && (
                                       <div>
                                         - {location.Details},{location.Street},
                                         {location.Ward},{location.District},
@@ -526,7 +490,7 @@ export class Residence extends Component {
                                   </div>
                                 ))}
                               </div>
-                            </p>
+                            </div>
                           </Panel>
                         </Collapse>
                       </div>
@@ -558,8 +522,8 @@ export class Residence extends Component {
               <div className="row member-list ml-3 mr-3">
                 {Bungalows.slice(0, this.state.Bungalow_visible).map(
                   (place) => (
-                    <div class="col-sm-4 member-item mt-5">
-                      <div key={place._id} className="member-item-content">
+                    <div key={place._id} className="col-sm-4 member-item mt-5">
+                      <div className="member-item-content">
                         <img
                           src={place.PlaceAttachment}
                           alt={place.PlaceAttachment}
@@ -570,37 +534,27 @@ export class Residence extends Component {
                           <div className="item-slogan px-3">{place.Slogan}</div>
                           <Collapse className="mt-2" onChange={this.callback}>
                             <Panel header="Overview" key="1">
-                              <p>
-                                <div className="item-overview">
-                                  {place.Overview}
-                                </div>
-                              </p>
+                              <div className="item-overview">
+                                {place.Overview}
+                              </div>
                             </Panel>
                             <Panel header="Contact" key="2">
-                              <p>
-                                <div className="item-info">{place.Phone}</div>
-                              </p>
-                              <p>
-                                <div className="item-info">{place.Email}</div>
-                              </p>
-                              <p>
-                                <div className="item-info">
-                                  {place.Facebook}
-                                </div>
-                              </p>
-                              <p>
-                                <div className="item-info">{place.LinkWeb}</div>
-                              </p>
+                              <div>
+                                <p className="item-info">{place.Phone}</p>
+                                <p className="item-info">{place.Email}</p>
+                                <p className="item-info">{place.Facebook}</p>
+                                <p className="item-info">{place.LinkWeb}</p>
+                              </div>
                             </Panel>
                             <Panel header="Address" key="3">
-                              <p>
+                              <div>
                                 <div className="location-list mt-3">
                                   {Locations.map((location) => (
                                     <div
                                       key={location._id}
                                       className="d-inline mt-2"
                                     >
-                                      {location.PlaceId == place._id && (
+                                      {location.PlaceId === place._id && (
                                         <div>
                                           - {location.Details},{location.Street}
                                           ,{location.Ward},{location.District},
@@ -610,7 +564,7 @@ export class Residence extends Component {
                                     </div>
                                   ))}
                                 </div>
-                              </p>
+                              </div>
                             </Panel>
                           </Collapse>
                         </div>
@@ -645,8 +599,8 @@ export class Residence extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list ml-3 mr-3">
                 {Resorts.slice(0, this.state.Resort_visible).map((place) => (
-                  <div class="col-sm-4 member-item mt-5">
-                    <div key={place._id} className="member-item-content">
+                  <div key={place._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={place.PlaceAttachment}
                         alt={place.PlaceAttachment}
@@ -657,35 +611,27 @@ export class Residence extends Component {
                         <div className="item-slogan px-3">{place.Slogan}</div>
                         <Collapse className="mt-2" onChange={this.callback}>
                           <Panel header="Overview" key="1">
-                            <p>
-                              <div className="item-overview">
-                                {place.Overview}
-                              </div>
-                            </p>
+                            <div className="item-overview">
+                              {place.Overview}
+                            </div>
                           </Panel>
                           <Panel header="Contact" key="2">
-                            <p>
-                              <div className="item-info">{place.Phone}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Email}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Facebook}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.LinkWeb}</div>
-                            </p>
+                            <div>
+                              <p className="item-info">{place.Phone}</p>
+                              <p className="item-info">{place.Email}</p>
+                              <p className="item-info">{place.Facebook}</p>
+                              <p className="item-info">{place.LinkWeb}</p>
+                            </div>
                           </Panel>
                           <Panel header="Address" key="3">
-                            <p>
+                            <div>
                               <div className="location-list mt-3">
                                 {Locations.map((location) => (
                                   <div
                                     key={location._id}
                                     className="d-inline mt-2"
                                   >
-                                    {location.PlaceId == place._id && (
+                                    {location.PlaceId === place._id && (
                                       <div>
                                         - {location.Details},{location.Street},
                                         {location.Ward},{location.District},
@@ -695,7 +641,7 @@ export class Residence extends Component {
                                   </div>
                                 ))}
                               </div>
-                            </p>
+                            </div>
                           </Panel>
                         </Collapse>
                       </div>

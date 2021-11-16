@@ -42,7 +42,7 @@ export class FooterPage extends Component {
                   <a href="https://www.youtube.com/channel/UCajGtCAFAh2bgb5Ucjs9NqA">
                     <i className="ti-youtube text-dark"></i>
                   </a>
-                  <a href="">
+                  <a href="/">
                     <i className="ti-twitter text-dark"></i>
                   </a>
                   <a href="https://www.linkedin.com/in/khoa-dang-6a5164171/">

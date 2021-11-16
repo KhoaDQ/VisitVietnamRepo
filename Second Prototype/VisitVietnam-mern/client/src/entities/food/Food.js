@@ -31,9 +31,7 @@ export class Food extends Component {
 
   ImageSrc = process.env.REACT_APP_PHOTOPATH;
 
-  callback(key) {
-    console.log(key);
-  }
+  callback(key) {}
 
   // Call API
   refreshList() {
@@ -126,23 +124,8 @@ export class Food extends Component {
   }
 
   render() {
-    const {
-      foodies,
-      places,
-      isCakes,
-      isFoods,
-      isDrinks,
-      locations,
-      foodId,
-      Id,
-      Name,
-      Type,
-      MiniType,
-      Price,
-      Note,
-      PicFileName,
-      PlaceId,
-    } = this.state;
+    const { foodies, places, isCakes, isFoods, isDrinks, locations } =
+      this.state;
 
     return (
       <div className="Container Food">
@@ -157,7 +140,7 @@ export class Food extends Component {
           <div className="Container__Content">
             <ul id="nav">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li>
                 <a href="#mall">Mall</a>
@@ -175,19 +158,19 @@ export class Food extends Component {
                 <a href="#all">all</a>
               </li>
               <li>
-                <a href="#">
+                <a href="/">
                   More
                   <i className="nav-arrow-down ti-angle-down"></i>
                 </a>
                 <ul className="subnav">
                   <li>
-                    <a href="#">More</a>
+                    <a href="/">More</a>
                   </li>
                   <li>
-                    <a href="#">More</a>
+                    <a href="/">More</a>
                   </li>
                   <li>
-                    <a href="#">More</a>
+                    <a href="/">More</a>
                   </li>
                 </ul>
               </li>
@@ -205,8 +188,8 @@ export class Food extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list ml-3 mr-3">
                 {places.slice(0, this.state.Mall_visible).map((place) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={place._id} className="member-item-content">
+                  <div key={place._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={place.attachment}
                         alt={place.attachment}
@@ -217,35 +200,27 @@ export class Food extends Component {
                         <div className="item-slogan px-3">{place.Slogan}</div>
                         <Collapse className="mt-2" onChange={this.callback}>
                           <Panel header="Overview" key="1">
-                            <p>
-                              <div className="item-overview">
-                                {place.Overview}
-                              </div>
-                            </p>
+                            <div>
+                              <p className="item-overview">{place.Overview}</p>
+                            </div>
                           </Panel>
                           <Panel header="Contact" key="2">
-                            <p>
-                              <div className="item-info">{place.Phone}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Email}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Facebook}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.LinkWeb}</div>
-                            </p>
+                            <div>
+                              <p className="item-info">{place.Phone}</p>
+                              <p className="item-info">{place.Email}</p>
+                              <p className="item-info">{place.Facebook}</p>
+                              <p className="item-info">{place.LinkWeb}</p>
+                            </div>
                           </Panel>
                           <Panel header="Address" key="3">
-                            <p>
+                            <div>
                               <div className="location-list mt-3">
                                 {locations.map((location) => (
                                   <div
                                     key={location._id}
                                     className="d-inline mt-2"
                                   >
-                                    {location.PlaceId == place._id && (
+                                    {location.PlaceId === place._id && (
                                       <div>
                                         - {location.Details},{location.Street},
                                         {location.Ward},{location.District},
@@ -255,7 +230,7 @@ export class Food extends Component {
                                   </div>
                                 ))}
                               </div>
-                            </p>
+                            </div>
                           </Panel>
                         </Collapse>
                       </div>
@@ -285,8 +260,8 @@ export class Food extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list  ml-3 mr-3">
                 {isFoods.slice(0, this.state.Food_visible).map((food) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={food._id} className="member-item-content">
+                  <div key={food._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={food.attachment}
                         alt={food.attachment}
@@ -298,9 +273,9 @@ export class Food extends Component {
                           Price: {food.Price}
                         </div>
                         {places.map((place) => (
-                          <div>
-                            <div key={food._id} className="d-inline mt-2">
-                              {food.PlaceId == place._id && (
+                          <div key={place._id}>
+                            <div className="d-inline mt-2">
+                              {food.PlaceId === place._id && (
                                 <div>
                                   <div className="mt-1">
                                     Restaurant: {place.Name}
@@ -314,7 +289,7 @@ export class Food extends Component {
                                               key={location._id}
                                               className="d-inline mt-2"
                                             >
-                                              {location.PlaceId ==
+                                              {location.PlaceId ===
                                                 place._id && (
                                                 <div>
                                                   - {location.Details},
@@ -362,8 +337,8 @@ export class Food extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list  ml-3 mr-3">
                 {isDrinks.slice(0, this.state.Drink_visible).map((food) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={food._id} className="member-item-content">
+                  <div key={food._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={food.attachment}
                         alt={food.attachment}
@@ -375,9 +350,9 @@ export class Food extends Component {
                           Price: {food.Price}
                         </div>
                         {places.map((place) => (
-                          <div>
-                            <div key={food._id} className="d-inline mt-2">
-                              {food.PlaceId == place._id && (
+                          <div key={food._id}>
+                            <div className="d-inline mt-2">
+                              {food.PlaceId === place._id && (
                                 <div>
                                   <div className="mt-1">
                                     Restaurant: {place.Name}
@@ -391,7 +366,7 @@ export class Food extends Component {
                                               key={location._id}
                                               className="d-inline mt-2"
                                             >
-                                              {location.PlaceId ==
+                                              {location.PlaceId ===
                                                 place._id && (
                                                 <div>
                                                   - {location.Details},
@@ -439,8 +414,8 @@ export class Food extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list  ml-3 mr-3">
                 {isCakes.slice(0, this.state.Cake_visible).map((food) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={food._id} className="member-item-content">
+                  <div key={food._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={food.attachment}
                         alt={food.attachment}
@@ -452,9 +427,9 @@ export class Food extends Component {
                           Price: {food.Price}
                         </div>
                         {places.map((place) => (
-                          <div>
-                            <div key={food._id} className="d-inline mt-2">
-                              {food.PlaceId == place._id && (
+                          <div key={place._id}>
+                            <div className="d-inline mt-2">
+                              {food.PlaceId === place._id && (
                                 <div>
                                   <div className="mt-1">
                                     Restaurant: {place.Name}
@@ -468,7 +443,7 @@ export class Food extends Component {
                                               key={location._id}
                                               className="d-inline mt-2"
                                             >
-                                              {location.PlaceId ==
+                                              {location.PlaceId ===
                                                 place._id && (
                                                 <div>
                                                   - {location.Details},
@@ -516,8 +491,8 @@ export class Food extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list  ml-3 mr-3">
                 {foodies.slice(0, this.state.Product_visible).map((food) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={food._id} className="member-item-content">
+                  <div key={food._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={food.attachment}
                         alt={food.attachment}
@@ -529,23 +504,23 @@ export class Food extends Component {
                           Price: {food.Price}
                         </div>
                         {places.map((place) => (
-                          <div>
-                            <div key={food._id} className="d-inline mt-2">
-                              {food.PlaceId == place._id && (
+                          <div key={place._id}>
+                            <div className="d-inline mt-2">
+                              {food.PlaceId === place._id && (
                                 <div>
                                   <div className="mt-1">
                                     Restaurant: {place.Name}
                                   </div>
                                   <Collapse className="mt-1">
                                     <Panel header="Address" key="1">
-                                      <p>
+                                      <div>
                                         <div className="location-list mt-3">
                                           {locations.map((location) => (
                                             <div
                                               key={location._id}
                                               className="d-inline mt-2"
                                             >
-                                              {location.PlaceId ==
+                                              {location.PlaceId ===
                                                 place._id && (
                                                 <div>
                                                   - {location.Details},
@@ -558,7 +533,7 @@ export class Food extends Component {
                                             </div>
                                           ))}
                                         </div>
-                                      </p>
+                                      </div>
                                     </Panel>
                                   </Collapse>
                                 </div>

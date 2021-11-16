@@ -132,11 +132,11 @@ export class Home extends Component {
               </div>
               <div className="border-bottom"></div>
               <div className="row member-list ml-3 mr-3 mt-5">
-                {articlestoppick != null &&
-                  articlestoppick.length != 0 &&
+                {articlestoppick !== null &&
+                  articlestoppick.length !== 0 &&
                   articlestoppick.map((article) => (
-                    <div className="col-sm-4 member-item">
-                      <div key={article._id}>
+                    <div key={article._id} className="col-sm-4 member-item">
+                      <div>
                         <div
                           className="member-item-content"
                           onClick={() =>
@@ -162,7 +162,7 @@ export class Home extends Component {
                         </div>
 
                         {this.state.DetailsModalShow &&
-                          this.state.Id == article._id && (
+                          this.state.Id === article._id && (
                             <DetailsModal
                               show={this.state.DetailsModalShow}
                               onHide={() => {
@@ -193,11 +193,11 @@ export class Home extends Component {
               </div>
               <div className="border-bottom"></div>
               <div className="row ml-3 mr-3 mt-5">
-                {Bitexco != null &&
-                  Bitexco.length != 0 &&
+                {Bitexco !== null &&
+                  Bitexco.length !== 0 &&
                   Bitexco.map((thing) => (
-                    <div className="col-sm-4">
-                      <div key={thing._id}>
+                    <div key={thing._id} className="col-sm-4">
+                      <div>
                         <div
                           className="member-item-content"
                           onClick={() =>
@@ -217,7 +217,7 @@ export class Home extends Component {
                           />
                         </div>
                         {this.state.DetailsModalShow &&
-                          this.state.Id == thing._id && (
+                          this.state.Id === thing._id && (
                             <DetailsModal
                               show={this.state.DetailsModalShow}
                               onHide={() => {
@@ -233,12 +233,12 @@ export class Home extends Component {
                     </div>
                   ))}
                 <div className="col-sm-8">
-                  {DamSenPark != null &&
-                    DamSenPark.length != 0 &&
+                  {DamSenPark !== null &&
+                    DamSenPark.length !== 0 &&
                     DamSenPark.map((thing) => (
-                      <div className="row">
+                      <div key={thing._id} className="row">
                         <div className="col-sm-12">
-                          <div key={thing._id}>
+                          <div>
                             <div
                               className="member-item-content mb-4"
                               onClick={() =>
@@ -258,7 +258,7 @@ export class Home extends Component {
                               />
                             </div>
                             {this.state.DetailsModalShow &&
-                              this.state.Id == thing._id && (
+                              this.state.Id === thing._id && (
                                 <DetailsModal
                                   show={this.state.DetailsModalShow}
                                   onHide={() => {
@@ -274,12 +274,12 @@ export class Home extends Component {
                         </div>
                       </div>
                     ))}
-                  {BenThanhMarket != null &&
-                    BenThanhMarket.length != 0 &&
+                  {BenThanhMarket !== null &&
+                    BenThanhMarket.length !== 0 &&
                     BenThanhMarket.map((thing) => (
-                      <div className="row">
+                      <div key={thing._id} className="row">
                         <div className="col-sm-12">
-                          <div key={thing._id}>
+                          <div>
                             <div
                               className="member-item-content"
                               onClick={() =>
@@ -299,7 +299,7 @@ export class Home extends Component {
                               />
                             </div>
                             {this.state.DetailsModalShow &&
-                              this.state.Id == thing._id && (
+                              this.state.Id === thing._id && (
                                 <DetailsModal
                                   show={this.state.DetailsModalShow}
                                   onHide={() => {
@@ -330,11 +330,11 @@ export class Home extends Component {
               </div>
               <div className="border-bottom"></div>
               <div className="row ml-3 mr-3 mt-5">
-                {TheLandmark81 != null &&
-                  TheLandmark81.length != 0 &&
+                {TheLandmark81 !== null &&
+                  TheLandmark81.length !== 0 &&
                   TheLandmark81.map((thing) => (
-                    <div className="col-sm-4">
-                      <div key={thing._id}>
+                    <div key={thing._id} className="col-sm-4">
+                      <div>
                         <div
                           className="member-item-content"
                           onClick={() =>
@@ -354,7 +354,7 @@ export class Home extends Component {
                           />
                         </div>
                         {this.state.DetailsModalShow &&
-                          this.state.Id == thing._id && (
+                          this.state.Id === thing._id && (
                             <DetailsModal
                               show={this.state.DetailsModalShow}
                               onHide={() => {
@@ -370,12 +370,12 @@ export class Home extends Component {
                     </div>
                   ))}
                 <div className="col-sm-8">
-                  {TheCityPostOffice != null &&
-                    TheCityPostOffice.length != 0 &&
+                  {TheCityPostOffice !== null &&
+                    TheCityPostOffice.length !== 0 &&
                     TheCityPostOffice.map((thing) => (
-                      <div className="row">
+                      <div key={thing._id} className="row">
                         <div className="col-sm-12">
-                          <div key={thing._id}>
+                          <div>
                             <div
                               className="member-item-content mb-4"
                               onClick={() =>
@@ -395,7 +395,7 @@ export class Home extends Component {
                               />
                             </div>
                             {this.state.DetailsModalShow &&
-                              this.state.Id == thing._id && (
+                              this.state.Id === thing._id && (
                                 <DetailsModal
                                   show={this.state.DetailsModalShow}
                                   onHide={() => {
@@ -411,12 +411,12 @@ export class Home extends Component {
                         </div>
                       </div>
                     ))}
-                  {TheWalkingStreet != null &&
-                    TheWalkingStreet.length != 0 &&
+                  {TheWalkingStreet !== null &&
+                    TheWalkingStreet.length !== 0 &&
                     TheWalkingStreet.map((thing) => (
-                      <div className="row">
+                      <div key={thing._id} className="row">
                         <div className="col-sm-12">
-                          <div key={thing._id}>
+                          <div>
                             <div
                               className="member-item-content"
                               onClick={() =>
@@ -436,7 +436,7 @@ export class Home extends Component {
                               />
                             </div>
                             {this.state.DetailsModalShow &&
-                              this.state.Id == thing._id && (
+                              this.state.Id === thing._id && (
                                 <DetailsModal
                                   show={this.state.DetailsModalShow}
                                   onHide={() => {
