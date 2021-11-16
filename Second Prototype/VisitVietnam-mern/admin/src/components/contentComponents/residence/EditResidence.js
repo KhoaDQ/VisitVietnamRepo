@@ -14,7 +14,6 @@ export class EditResidence extends Component {
       attachment: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleImageChange = this.handleImageChange.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +27,7 @@ export class EditResidence extends Component {
       .then((response) => response.json())
       .then((data) => {
         this.setState({ residence: data });
+        this.setState({ attachment: data.attachment });
       });
   }
 
@@ -51,28 +51,23 @@ export class EditResidence extends Component {
       });
   }
 
-  handleImageChange(e) {
-    e.preventDefault();
-    this.setState({ file: e.target.files[0] });
-  }
-
   render() {
     return (
       <div>
         <div id="layoutSidenav">
           <div id="layoutSidenav_content">
             <main>
-              <div class="container-fluid">
-                <h1 class="mt-4">Edit Residence</h1>
-                <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item">
+              <div className="container-fluid">
+                <h1 className="mt-4">Edit Residence</h1>
+                <ol className="breadcrumb mb-4">
+                  <li className="breadcrumb-item">
                     <a href="/">Master page</a>
                   </li>
-                  <li class="breadcrumb-item active">Edit Residence</li>
+                  <li className="breadcrumb-item active">Edit Residence</li>
                 </ol>
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <NavLink class="btn btn-success" to="/list_residence">
+                <div className="card mb-4">
+                  <div className="card-header">
+                    <NavLink className="btn btn-success" to="/list_residence">
                       Back to list
                     </NavLink>
                   </div>
@@ -121,7 +116,7 @@ export class EditResidence extends Component {
                             }
                           />
                         </Form.Group>
-                        
+
                         <Form.Group controlId="PlaceId">
                           <Form.Label>PlaceId</Form.Label>
                           <Form.Control

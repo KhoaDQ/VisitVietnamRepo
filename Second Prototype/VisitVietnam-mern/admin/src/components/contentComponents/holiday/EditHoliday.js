@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import FileBase64 from "react-file-base64";
 import axios from "axios";
+import Moment from "moment";
 
 export class EditHoliday extends Component {
   constructor(props) {
@@ -11,10 +12,11 @@ export class EditHoliday extends Component {
     this.state = {
       holidayId: this.props.holidayId,
       holiday: "",
+      StartDate: "",
+      EndDate: "",
       attachment: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleImageChange = this.handleImageChange.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +30,9 @@ export class EditHoliday extends Component {
       .then((response) => response.json())
       .then((data) => {
         this.setState({ holiday: data });
+        this.setState({ StartDate: data.StartDate });
+        this.setState({ EndDate: data.EndDate });
+        this.setState({ attachment: data.attachment });
       });
   }
 
@@ -55,28 +60,23 @@ export class EditHoliday extends Component {
       });
   }
 
-  handleImageChange(e) {
-    e.preventDefault();
-    this.setState({ file: e.target.files[0] });
-  }
-
   render() {
     return (
       <div>
         <div id="layoutSidenav">
           <div id="layoutSidenav_content">
             <main>
-              <div class="container-fluid">
-                <h1 class="mt-4">Edit Holiday</h1>
-                <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item">
+              <div className="container-fluid">
+                <h1 className="mt-4">Edit Holiday</h1>
+                <ol className="breadcrumb mb-4">
+                  <li className="breadcrumb-item">
                     <a href="/">Master page</a>
                   </li>
-                  <li class="breadcrumb-item active">Edit Holiday</li>
+                  <li className="breadcrumb-item active">Edit Holiday</li>
                 </ol>
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <NavLink class="btn btn-success" to="/list_holiday">
+                <div className="card mb-4">
+                  <div className="card-header">
+                    <NavLink className="btn btn-success" to="/list_holiday">
                       Back to list
                     </NavLink>
                   </div>
@@ -129,7 +129,12 @@ export class EditHoliday extends Component {
                             type="date"
                             name="StartDate"
                             placeholder="Start Date"
-                            defaultValue={this.state.holiday.StartDate}
+                            value={Moment(this.state.StartDate).format(
+                              "YYYY-MM-DD"
+                            )}
+                            onChange={(e) =>
+                              this.setState({ StartDate: e.target.value })
+                            }
                           />
                         </Form.Group>
 
@@ -139,7 +144,12 @@ export class EditHoliday extends Component {
                             type="date"
                             name="EndDate"
                             placeholder="End Date"
-                            defaultValue={this.state.holiday.EndDate}
+                            value={Moment(this.state.EndDate).format(
+                              "YYYY-MM-DD"
+                            )}
+                            onChange={(e) =>
+                              this.setState({ EndDate: e.target.value })
+                            }
                           />
                         </Form.Group>
 
@@ -165,7 +175,7 @@ export class EditHoliday extends Component {
                             }
                           />
                         </Form.Group>
-                        
+
                         <Form.Group controlId="LocationId">
                           <Form.Label>LocationId</Form.Label>
                           <Form.Control

@@ -4,6 +4,7 @@ import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { Form, FormControl } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Moment from "moment";
 
 export class ListEvent extends Component {
   constructor(props) {
@@ -35,10 +36,6 @@ export class ListEvent extends Component {
 
   handleEditEvent(content) {
     this.props.handleEditEventId(content);
-  }
-
-  handleCategoryEvent(content) {
-    this.props.handleCategoryEventId(content);
   }
 
   deleteEvent(eventId) {
@@ -101,11 +98,10 @@ export class ListEvent extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by name"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>
@@ -139,8 +135,12 @@ export class ListEvent extends Component {
                                 <td>{item._id}</td>
                                 <td>{item.Name}</td>
                                 <td>{item.Type}</td>
-                                <td>{item.StartDate}</td>
-                                <td>{item.EndDate}</td>
+                                <td>
+                                  {Moment(item.StartDate).format("D/MM/yy")}
+                                </td>
+                                <td>
+                                  {Moment(item.EndDate).format("D/MM/yy")}
+                                </td>
                                 <td>{item.Status}</td>
                                 <td>{item.PlaceId}</td>
                                 <td>

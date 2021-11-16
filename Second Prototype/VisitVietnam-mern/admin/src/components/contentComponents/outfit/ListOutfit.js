@@ -37,10 +37,6 @@ export class ListOutfit extends Component {
     this.props.handleEditOutfitId(content);
   }
 
-  handleCategoryOutfit(content) {
-    this.props.handleCategoryOutfitId(content);
-  }
-
   deleteOutfit(outfitId) {
     if (window.confirm("Are you sure?")) {
       axios
@@ -104,11 +100,10 @@ export class ListOutfit extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by name"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>

@@ -37,10 +37,6 @@ export class ListFood extends Component {
     this.props.handleEditFoodId(content);
   }
 
-  handleCategoryFood(content) {
-    this.props.handleCategoryFoodId(content);
-  }
-
   deleteFood(foodId) {
     if (window.confirm("Are you sure?")) {
       axios
@@ -89,10 +85,7 @@ export class ListFood extends Component {
                   <div className="card-header">
                     <div className="row">
                       <div className="col-md-6 col-xs-12">
-                        <NavLink
-                          className="btn btn-success"
-                          to="/create_food"
-                        >
+                        <NavLink className="btn btn-success" to="/create_food">
                           Create new
                         </NavLink>
                       </div>
@@ -104,11 +97,10 @@ export class ListFood extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by name"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>
@@ -160,9 +152,7 @@ export class ListFood extends Component {
                                     <Button
                                       variant="danger"
                                       className="p-1"
-                                      onClick={() =>
-                                        this.deleteFood(item._id)
-                                      }
+                                      onClick={() => this.deleteFood(item._id)}
                                     >
                                       Delete
                                     </Button>

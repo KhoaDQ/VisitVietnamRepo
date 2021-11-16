@@ -68,7 +68,6 @@ export class Navigation extends Component {
               value={this.state.strSearch}
               type="text"
               placeholder="Search"
-              ref="search"
               className="Form p-0 m-0"
               onChange={this.handleChange}
             />

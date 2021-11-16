@@ -37,10 +37,6 @@ export class ListReview extends Component {
     this.props.handleEditReviewId(content);
   }
 
-  handleCategoryReview(content) {
-    this.props.handleCategoryReviewId(content);
-  }
-
   deleteReview(reviewId) {
     if (window.confirm("Are you sure?")) {
       axios
@@ -104,11 +100,10 @@ export class ListReview extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by name"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>
