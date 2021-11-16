@@ -1,0 +1,52 @@
+.Mall {
+  margin-top: 20px;
+}
+
+.Outfit #slider {
+  background-image: -webkit-linear-gradient(
+      left,
+      rgba(0, 0, 0, 0.6),
+      rgb(255, 255, 255, 0.1),
+      rgb(255, 255, 255, 0.1)
+    ),
+    url("../../assets/img/shopping_1.jpg");
+}
+
+.Container__background {
+  background: url("../../assets/img/backgroundshopping.jpg");
+  background-size: cover;
+  scroll-behavior: smooth;
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Container__Content .member-item .item-content {
+  background-color: #fff;
+  color: #000;
+}
+
+.Container__Content .Content__Brand .member-item-content {
+  min-height: none;
+}
+
+.Container__Content .Content__Mall .Mall {
+  display: inline-block;
+}
+
+.Container__Content .Load-Mores {
+  width: 5%;
+  border-radius: 10px;
+  background-color: black !important;
+  color: #fff;
+}
+
+.Content__Brand .member-img {
+  min-height: 250px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.Outfit .Content__Product .member-img {
+  height: 430px;
+}

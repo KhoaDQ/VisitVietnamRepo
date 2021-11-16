@@ -327,7 +327,7 @@ export default class App extends Component {
                 <Route
                   path="/edit_outfit"
                   render={(props) => (
-                    <EditOutfit {...props} foodId={this.state.editOutfitId} />
+                    <EditOutfit {...props} outfitId={this.state.editOutfitId} />
                   )}
                 />
                 <Route

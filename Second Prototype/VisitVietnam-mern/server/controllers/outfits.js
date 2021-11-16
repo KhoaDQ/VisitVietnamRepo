@@ -34,6 +34,26 @@ export const updateOutfit = async (req, res) => {
   }
 };
 
+
+export const getAllBrand = async (req, res) => {
+  try {
+    const brands = await OutfitModel.find({
+      Type: "Brand",
+    });
+    res.status(200).json(brands);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+export const getAllOutfit = async (req, res) => { 
+  try { const brands = await OutfitModel.find({ 
+    Type: { $nin: ["Brand"] }, 
+  }); 
+  res.status(200).json(brands); 
+} catch (err) { res.status(500).json({ error: err }); 
+} 
+};
+
 export const deleteOutfit = async (req, res) => {
   try {
     await OutfitModel.findByIdAndRemove(req.params.id);
