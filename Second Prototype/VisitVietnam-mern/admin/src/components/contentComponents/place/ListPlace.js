@@ -97,11 +97,10 @@ export class ListPlace extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by name"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>

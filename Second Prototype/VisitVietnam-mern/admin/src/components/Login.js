@@ -41,7 +41,7 @@ export class Login extends Component {
     console.log(this.state.token);
     if (
       this.state.token != null ||
-      (this.state.username == "admin" && this.state.password == "admin")
+      (this.state.username === "admin" && this.state.password === "admin")
     ) {
       this.setState({ isAdmin: true });
     }

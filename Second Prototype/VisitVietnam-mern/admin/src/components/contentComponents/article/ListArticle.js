@@ -37,10 +37,6 @@ export class ListArticle extends Component {
     this.props.handleEditArticleId(content);
   }
 
-  handleCategoryArticle(content) {
-    this.props.handleCategoryArticleId(content);
-  }
-
   deleteArticle(articleId) {
     if (window.confirm("Are you sure?")) {
       axios
@@ -104,11 +100,10 @@ export class ListArticle extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by name"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>

@@ -37,10 +37,6 @@ export class ListResidence extends Component {
     this.props.handleEditResidenceId(content);
   }
 
-  handleCategoryResidence(content) {
-    this.props.handleCategoryResidenceId(content);
-  }
-
   deleteResidence(residenceId) {
     if (window.confirm("Are you sure?")) {
       axios
@@ -104,11 +100,10 @@ export class ListResidence extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by type"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>

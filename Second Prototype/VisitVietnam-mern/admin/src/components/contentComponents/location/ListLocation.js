@@ -37,10 +37,6 @@ export class ListLocation extends Component {
     this.props.handleEditLocationId(content);
   }
 
-  handleCategoryLocation(content) {
-    this.props.handleCategoryLocationId(content);
-  }
-
   deleteLocation(locationId) {
     if (window.confirm("Are you sure?")) {
       axios
@@ -104,11 +100,10 @@ export class ListLocation extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by city"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>

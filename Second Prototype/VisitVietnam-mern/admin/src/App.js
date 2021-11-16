@@ -170,7 +170,7 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <div className="sb-nav-fixed">
-          {this.state.isAdmin == false && (
+          {this.state.isAdmin === false && (
             <div>
               <Login handleAdminLogin={this.handleAdminLoginFunction} />
             </div>
@@ -282,7 +282,10 @@ export default class App extends Component {
                 <Route
                   path="/edit_holiday"
                   render={(props) => (
-                    <EditHoliday {...props} foodId={this.state.editHolidayId} />
+                    <EditHoliday
+                      {...props}
+                      holidayId={this.state.editHolidayId}
+                    />
                   )}
                 />
                 <Route
@@ -290,8 +293,8 @@ export default class App extends Component {
                   render={(props) => (
                     <ListLocation
                       {...props}
-                      handleEditHolidayId={this.handleEditLocationIdFunction}
-                      handleDetailHolidayId={
+                      handleEditLocationId={this.handleEditLocationIdFunction}
+                      handleDetailLocationId={
                         this.handleDetailLocationIdFunction
                       }
                     />
@@ -306,7 +309,7 @@ export default class App extends Component {
                   render={(props) => (
                     <EditLocation
                       {...props}
-                      foodId={this.state.editLocationId}
+                      locationId={this.state.editLocationId}
                     />
                   )}
                 />
@@ -351,7 +354,7 @@ export default class App extends Component {
                   render={(props) => (
                     <EditResidence
                       {...props}
-                      foodId={this.state.editResidenceId}
+                      residenceId={this.state.editResidenceId}
                     />
                   )}
                 />
@@ -372,7 +375,7 @@ export default class App extends Component {
                 <Route
                   path="/edit_review"
                   render={(props) => (
-                    <EditReview {...props} foodId={this.state.editReviewId} />
+                    <EditReview {...props} reviewId={this.state.editReviewId} />
                   )}
                 />
                 <Route
@@ -396,7 +399,7 @@ export default class App extends Component {
                   render={(props) => (
                     <EditSouvenir
                       {...props}
-                      foodId={this.state.editSouvenirId}
+                      souvenirId={this.state.editSouvenirId}
                     />
                   )}
                 />

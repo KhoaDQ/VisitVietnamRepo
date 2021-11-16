@@ -4,6 +4,7 @@ import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { Form, FormControl } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Moment from "moment";
 
 export class ListHoliday extends Component {
   constructor(props) {
@@ -35,10 +36,6 @@ export class ListHoliday extends Component {
 
   handleEditHoliday(content) {
     this.props.handleEditHolidayId(content);
-  }
-
-  handleCategoryHoliday(content) {
-    this.props.handleCategoryHolidayId(content);
   }
 
   deleteHoliday(holidayId) {
@@ -104,11 +101,10 @@ export class ListHoliday extends Component {
                                 value={this.state.strSearch}
                                 type="text"
                                 placeholder="Search by name"
-                                ref="search"
                                 onChange={this.handleChange}
                               />
                             </div>
-                            <div class="col-md-5">Update Soon</div>
+                            <div className="col-md-5" />
                           </div>
                         </Form>
                       </div>
@@ -146,8 +142,12 @@ export class ListHoliday extends Component {
                                 <td>{item.Type}</td>
                                 <td>{item.Description}</td>
                                 <td>{item.Details}</td>
-                                <td>{item.StartDate}</td>
-                                <td>{item.EndDate}</td>
+                                <td>
+                                  {Moment(item.StartDate).format("D/MM/yy")}
+                                </td>
+                                <td>
+                                  {Moment(item.EndDate).format("D/MM/yy")}
+                                </td>
                                 <td>{item.Status}</td>
                                 <td>{item.PlaceId}</td>
                                 <td>
