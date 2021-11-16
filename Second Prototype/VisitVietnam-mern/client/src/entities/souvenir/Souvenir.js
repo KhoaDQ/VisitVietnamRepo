@@ -1,4 +1,4 @@
-import { Button, ButtonToolbar, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import React, { Component } from "react";
 import "../../assets/css/base.css";
 import "./Souvenir.css";
@@ -18,9 +18,7 @@ export class Souvenir extends Component {
     this.loadMoreP = this.loadMoreP.bind(this);
   }
 
-  callback(key) {
-    console.log(key);
-  }
+  callback(key) {}
 
   // Call API
   refreshList() {
@@ -63,18 +61,7 @@ export class Souvenir extends Component {
   }
 
   render() {
-    const {
-      souvenirs,
-      places,
-      locations,
-      Id,
-      Name,
-      Type,
-      Price,
-      Note,
-      attachment,
-      PlaceId,
-    } = this.state;
+    const { souvenirs, places, locations } = this.state;
 
     return (
       <div className="Container Souvenir">
@@ -105,8 +92,8 @@ export class Souvenir extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list ml-3 mr-3">
                 {places.slice(0, this.state.Mall_visible).map((place) => (
-                  <div class="col-sm-4 member-item mt-5">
-                    <div key={place.Id} className="member-item-content">
+                  <div key={place._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={place.attachment}
                         alt={place.attachment}
@@ -117,35 +104,27 @@ export class Souvenir extends Component {
                         <div className="item-slogan">{place.Slogan}</div>
                         <Collapse className="mt-2" onChange={this.callback}>
                           <Panel header="Overview" key="1">
-                            <p>
-                              <div className="item-overview">
-                                {place.Overview}
-                              </div>
-                            </p>
+                            <div className="item-overview">
+                              {place.Overview}
+                            </div>
                           </Panel>
                           <Panel header="Contact" key="2">
-                            <p>
-                              <div className="item-info">{place.Phone}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Email}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Facebook}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.LinkWeb}</div>
-                            </p>
+                            <div>
+                              <p className="item-info">{place.Phone}</p>
+                              <p className="item-info">{place.Email}</p>
+                              <p className="item-info">{place.Facebook}</p>
+                              <p className="item-info">{place.LinkWeb}</p>
+                            </div>
                           </Panel>
                           <Panel header="Address" key="3">
-                            <p>
+                            <div>
                               <div className="location-list mt-3">
                                 {locations.map((location) => (
                                   <div
-                                    key={location.Id}
+                                    key={location._id}
                                     className="d-inline mt-2"
                                   >
-                                    {location.PlaceId == place.Id && (
+                                    {location.PlaceId === place._id && (
                                       <div>
                                         - {location.Details},{location.Street},
                                         {location.Ward},{location.District},
@@ -155,7 +134,7 @@ export class Souvenir extends Component {
                                   </div>
                                 ))}
                               </div>
-                            </p>
+                            </div>
                           </Panel>
                         </Collapse>
                       </div>
@@ -186,8 +165,11 @@ export class Souvenir extends Component {
                 {souvenirs
                   .slice(0, this.state.Product_visible)
                   .map((souvenir) => (
-                    <div class="col-sm-4 member-item mt-5">
-                      <div key={souvenir.Id} className="member-item-content">
+                    <div
+                      key={souvenir._id}
+                      className="col-sm-4 member-item mt-5"
+                    >
+                      <div className="member-item-content">
                         <img
                           src={souvenir.attachment}
                           alt={souvenir.attachment}
@@ -199,24 +181,24 @@ export class Souvenir extends Component {
                             Price: {souvenir.Price}
                           </div>
                           {places.map((place) => (
-                            <div>
-                              <div key={souvenir.Id} className="d-inline mt-2">
-                                {souvenir.PlaceId == place.Id && (
+                            <div key={place._id}>
+                              <div className="d-inline mt-2">
+                                {souvenir.PlaceId === place._id && (
                                   <div>
                                     <div className="mt-1">
                                       Shop: {place.Name}
                                     </div>
                                     <Collapse className="mt-1">
                                       <Panel header="Address" key="1">
-                                        <p>
+                                        <div>
                                           <div className="location-list mt-3">
                                             {locations.map((location) => (
                                               <div
-                                                key={location.Id}
+                                                key={location._id}
                                                 className="d-inline mt-2"
                                               >
-                                                {location.PlaceId ==
-                                                  place.Id && (
+                                                {location.PlaceId ===
+                                                  place._id && (
                                                   <div>
                                                     - {location.Details},
                                                     {location.Street},
@@ -228,7 +210,7 @@ export class Souvenir extends Component {
                                               </div>
                                             ))}
                                           </div>
-                                        </p>
+                                        </div>
                                       </Panel>
                                     </Collapse>
                                   </div>

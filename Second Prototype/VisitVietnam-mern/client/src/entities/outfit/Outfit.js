@@ -1,4 +1,4 @@
-import { Button, ButtonToolbar, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import React, { Component } from "react";
 import "../../assets/css/base.css";
 import "./Outfit.css";
@@ -25,9 +25,7 @@ export class Outfit extends Component {
     this.loadMoreP = this.loadMoreP.bind(this);
   }
 
-  callback(key) {
-    console.log(key);
-  }
+  callback(key) {}
 
   getAllPlacesOutfit() {
     fetch(process.env.REACT_APP_API + "/places/getAllPlacesOutfit")
@@ -96,23 +94,11 @@ export class Outfit extends Component {
       locations,
       Id,
       Name,
-      Type,
-      Gender,
-      RangeAge,
-      Price,
       Note,
-      attachment,
-      PlaceId,
+      PicFileName,
       Status,
     } = this.state;
     let DetailsModalClose = () => this.setState({ DetailsModalShow: false });
-    let addModalClose = () => this.setState({ addModalShow: false });
-    let editModalClose = () => this.setState({ editModalShow: false });
-
-    let styleAdmin = {};
-    if (this.props.isAdmin) {
-      styleAdmin = { display: "block" };
-    }
 
     return (
       <div className="Container Outfit">
@@ -139,8 +125,8 @@ export class Outfit extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list ml-3 mr-3">
                 {places.slice(0, this.state.Mall_visible).map((place) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={place._id} className="member-item-content">
+                  <div key={place._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={place.attachment}
                         alt={place.attachment}
@@ -151,35 +137,27 @@ export class Outfit extends Component {
                         <div className="item-slogan">{place.Slogan}</div>
                         <Collapse className="mt-2" onChange={this.callback}>
                           <Panel header="Overview" key="1">
-                            <p>
-                              <div className="item-overview">
-                                {place.Overview}
-                              </div>
-                            </p>
+                            <div className="item-overview">
+                              {place.Overview}
+                            </div>
                           </Panel>
                           <Panel header="Contact" key="2">
-                            <p>
-                              <div className="item-info">{place.Phone}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Email}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.Facebook}</div>
-                            </p>
-                            <p>
-                              <div className="item-info">{place.LinkWeb}</div>
-                            </p>
+                            <div>
+                              <p className="item-info">{place.Phone}</p>
+                              <p className="item-info">{place.Email}</p>
+                              <p className="item-info">{place.Facebook}</p>
+                              <p className="item-info">{place.LinkWeb}</p>
+                            </div>
                           </Panel>
                           <Panel header="Address" key="3">
-                            <p>
+                            <div>
                               <div className="location-list mt-3">
                                 {locations.map((location) => (
                                   <div
                                     key={location._id}
                                     className="d-inline mt-2"
                                   >
-                                    {location.PlaceId == place._id && (
+                                    {location.PlaceId === place._id && (
                                       <div>
                                         - {location.Details},{location.Street},
                                         {location.Ward},{location.District},
@@ -189,7 +167,7 @@ export class Outfit extends Component {
                                   </div>
                                 ))}
                               </div>
-                            </p>
+                            </div>
                           </Panel>
                         </Collapse>
                       </div>
@@ -218,15 +196,15 @@ export class Outfit extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list  ml-3 mr-3">
                 {brands.slice(0, this.state.Brand_visible).map((brand) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={brand._id} className="member-item-content">
+                  <div key={brand._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <div
                         onClick={() =>
                           this.setState({
                             DetailsModalShow: true,
                             Id: brand._id,
                             Name: brand.Name,
-                            attachment: brand.attachment,
+                            PicFileName: brand.attachment,
                             Note: brand.Note,
                             Status: brand.Status,
                           })
@@ -238,17 +216,20 @@ export class Outfit extends Component {
                           className="member-img border-img"
                         />
                       </div>
-                      <DetailsModal
-                        show={this.state.DetailsModalShow}
-                        onHide={() => {
-                          DetailsModalClose();
-                        }}
-                        Id={Id}
-                        Name={Name}
-                        Note={Note}
-                        attachment={attachment}
-                        Status={Status}
-                      />
+                      {this.state.DetailsModalShow &&
+                        this.state.Id === brand._id && (
+                          <DetailsModal
+                            show={this.state.DetailsModalShow}
+                            onHide={() => {
+                              DetailsModalClose();
+                            }}
+                            Id={Id}
+                            Name={Name}
+                            Note={Note}
+                            PicFileName={PicFileName}
+                            Status={Status}
+                          />
+                        )}
                     </div>
                   </div>
                 ))}
@@ -274,8 +255,8 @@ export class Outfit extends Component {
               <div className="border-bottom"></div>
               <div className="row member-list  ml-3 mr-3">
                 {outfits.slice(0, this.state.Product_visible).map((clothes) => (
-                  <div className="col-sm-4 member-item mt-5">
-                    <div key={clothes._id} className="member-item-content">
+                  <div key={clothes._id} className="col-sm-4 member-item mt-5">
+                    <div className="member-item-content">
                       <img
                         src={clothes.attachment}
                         alt={clothes.attachment}
@@ -285,21 +266,21 @@ export class Outfit extends Component {
                         <div className="item-header">{clothes.Name}</div>
                         <div className="item-info">Price: {clothes.Price}</div>
                         {places.map((place) => (
-                          <div>
-                            <div key={clothes._id} className="d-inline mt-2">
-                              {clothes.PlaceId == place._id && (
+                          <div key={place._id}>
+                            <div className="d-inline mt-2">
+                              {clothes.PlaceId === place._id && (
                                 <div>
                                   <div className="mt-1">Shop: {place.Name}</div>
                                   <Collapse className="mt-1">
                                     <Panel header="Address" key="1">
-                                      <p>
+                                      <div>
                                         <div className="location-list mt-3">
                                           {locations.map((location) => (
                                             <div
                                               key={location._id}
                                               className="d-inline mt-2"
                                             >
-                                              {location.PlaceId ==
+                                              {location.PlaceId ===
                                                 place._id && (
                                                 <div>
                                                   - {location.Details},
@@ -312,7 +293,7 @@ export class Outfit extends Component {
                                             </div>
                                           ))}
                                         </div>
-                                      </p>
+                                      </div>
                                     </Panel>
                                   </Collapse>
                                 </div>

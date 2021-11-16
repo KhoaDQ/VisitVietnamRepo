@@ -3,15 +3,13 @@ import { Modal, Button, Row, Col, Form, Image } from "react-bootstrap";
 import Moment from "moment";
 
 export class DetailsModal extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="container">
         <Modal
-          {...this.props}
+          // {...this.props}
+          show={this.props.show}
+          onHide={this.props.onHide}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
@@ -26,13 +24,25 @@ export class DetailsModal extends Component {
             <Row>
               <Col sm={6}>
                 <Form>
-                  <h1>{this.props.Name}</h1>
-                  <div>{this.props.Description}</div>
-                  <div>{this.props.Overview}</div>
-                  <div>{this.props.Details}</div>
-                  <div>{this.props.Note}</div>
-                  <div>{Moment(this.props.StartDate).format("D/MM/yy")}</div>
-                  <div>{Moment(this.props.EndDate).format("D/MM/yy")}</div>
+                  {this.props.Name !== undefined && <h1>{this.props.Name}</h1>}
+                  {this.props.Description !== undefined && (
+                    <div>{this.props.Description}</div>
+                  )}
+                  {this.props.Overview !== undefined && (
+                    <div>{this.props.Overview}</div>
+                  )}
+                  {this.props.Details !== undefined && (
+                    <div>{this.props.Details}</div>
+                  )}
+                  {this.props.Note !== undefined && (
+                    <div>{this.props.Note}</div>
+                  )}
+                  {this.props.StartDate !== undefined && (
+                    <div>{Moment(this.props.StartDate).format("D/MM/yy")}</div>
+                  )}
+                  {this.props.EndDate !== undefined && (
+                    <div>{Moment(this.props.EndDate).format("D/MM/yy")}</div>
+                  )}
                 </Form>
               </Col>
               <Col sm={6}>

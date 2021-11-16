@@ -15,15 +15,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "../assets/fonts/themify-icons/themify-icons.css";
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { scrollToTopShow: true };
-  }
-
   render() {
-    const { scrollToTopShow } = this.state;
-    let ScrollToTopHide = () => this.setState({ scrollToTopShow: false });
-
     return (
       <BrowserRouter>
         <div className="contain">
@@ -51,13 +43,7 @@ export class App extends Component {
           <FooterPage />
 
           <div className="ContainScrollTop">
-            <BackToTop
-              className="btt"
-              showOnScrollDown
-              showAt={100}
-              // speed={3000}
-              // easing="easeInOutQuint"
-            >
+            <BackToTop className="btt" showOnScrollDown showAt={100}>
               <div className="Circle-Icon">
                 <div className="ti-angle-up"></div>
               </div>
