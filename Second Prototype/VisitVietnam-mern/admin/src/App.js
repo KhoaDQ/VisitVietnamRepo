@@ -49,6 +49,7 @@ import { EditSouvenir } from "./components/contentComponents/souvenir/EditSouven
 import { CreateSouvenir } from "./components/contentComponents/souvenir/CreateSouvenir";
 
 import { Footer } from "./components/Footer";
+import axios from "axios";
 
 export default class App extends Component {
   constructor(props) {
@@ -79,11 +80,22 @@ export default class App extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log(this.state.isAdmin);
+  async componentDidMount() {
+    const token = localStorage.getItem("token");
+    const option = {
+      method: "get",
+      url: `${process.env.REACT_APP_API}/auth`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await axios(option);
+    this.setState({
+      isAdmin: response.data,
+    });
   }
 
-  //Login
   handleAdminLoginFunction = (content) => {
     this.setState({
       isAdmin: content,
@@ -176,7 +188,7 @@ export default class App extends Component {
             </div>
           )}
 
-          {this.state.isAdmin && (
+          {this.state.isAdmin === true && (
             <div>
               <Navigation handleAdminLogout={this.handleAdminLogoutFunction} />
               <LayoutSlideNav />
