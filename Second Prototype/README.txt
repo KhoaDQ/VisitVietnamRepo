@@ -10,4 +10,5 @@ Event -> Holiday
 - Update document
 - Update source code
 
-
+Libraries: nodemon jsonwebtoken bcryptjs
+Auth: JWT authen
