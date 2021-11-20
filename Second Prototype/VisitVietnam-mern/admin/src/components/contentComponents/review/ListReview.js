@@ -66,7 +66,7 @@ export class ListReview extends Component {
     const { dataReviews } = this.state;
 
     reviews = filter(dataReviews, (item) => {
-      return includes(item.Name, this.state.strSearch);
+      return includes(item.Username, this.state.strSearch);
     });
     return (
       <div>

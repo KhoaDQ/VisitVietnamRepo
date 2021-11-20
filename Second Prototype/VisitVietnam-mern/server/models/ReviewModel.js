@@ -8,15 +8,16 @@ const schema = mongoose.Schema(
     },
     Pros: {
       type: String,
-      required: true,
     },
     Cons: {
       type: String,
-      required: true,
     },
     Username: {
       type: String,
-      default: "anonymous",
+      default: "Anonymous",
+    },
+    UserId:{
+      type: String,
     },
     PlaceId: {
       type: String,

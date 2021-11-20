@@ -51,3 +51,12 @@ export const getReviewById = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const getByPlaceId = async (req, res) => {
+  try {
+    const reviews = await ReviewModel.find({ PlaceId: req.params.id});
+    res.status(200).json(reviews);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
