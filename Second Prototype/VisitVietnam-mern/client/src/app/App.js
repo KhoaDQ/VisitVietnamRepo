@@ -13,13 +13,49 @@ import { Residence } from "../entities/residence/Residence";
 import { Food } from "../entities/food/Food";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "../assets/fonts/themify-icons/themify-icons.css";
+import axios from "axios";
 
 export class App extends Component {
+  constructor(props){
+    super(props);
+    this.state={scrollToTopShow:true,
+                strSearchApp:"",
+                isAdmin:false,
+                name:"",
+    }
+  }
+
+  handleAdminLoginFunction = (content) => {
+    this.setState({
+      isAdmin: content.isAdmin,
+      name: content.name
+    })
+
+    console.log(this.state.isAdmin);
+  }
+
+  async componentDidMount() {
+    const token = localStorage.getItem("token");
+    const option = {
+      method: "get",
+      url: `${process.env.REACT_APP_API}/auth`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await axios(option);
+    this.setState({
+      isAdmin: response.data.isAdmin,
+      name: response.data.name
+    });
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div className="contain">
-          <FirstNav />
+          <FirstNav stateAdmin={this.state.isAdmin} stateName={this.state.name} handleAdminLogin={this.handleAdminLoginFunction}/>
 
           <Navigation />
 

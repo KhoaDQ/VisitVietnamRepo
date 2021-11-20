@@ -38,14 +38,15 @@ export const login = async (req, res) => {
 
 export const getCurrentUser = async (req, res, next) => {
   try {
-    let userName = null;
     if (req.user) {
       const user = await UserModel.findById(req.user.userId);
-      userName = user.Name;
-      if (user.Role == "Admin")
-        res.status(200).json(true)
-      else res.status(200).json(false);
-    } else res.status(200).json(false);
+      if (user) {
+        res.status(200).json({
+          name: user.Name,
+          isAdmin: true,
+        });
+      }
+    } else res.status(200).json({ isAdmin: false});
   } catch (err) {
     res.status(500).json({ error: err });
   }
