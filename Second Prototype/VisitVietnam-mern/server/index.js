@@ -10,6 +10,10 @@ import residences from "./routers/residences.js";
 import reviews from "./routers/reviews.js";
 import souvenirs from "./routers/souvenirs.js";
 import mongoose from "mongoose";
+  
+//apidoc
+import swaggerJsDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 
 // middleware
 import bodyParser from "body-parser";
@@ -22,9 +26,30 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const URI = process.env.ATLAS;
 
+//swagger
+const swaggerOptions = {
+  definition: {
+    components: {},
+    openapi: "3.0.0",
+    info: {
+      title: "Customer API",
+      version: "1.0.0",
+      description: "Customer API Information",
+    },
+    servers: [
+      { url: "http://localhost:5000" },
+    ],
+  },
+  apis: ["index.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 app.use(cors());
+app.use(express.json());
 
 app.use("/places", places);
 app.use("/articles", articles);

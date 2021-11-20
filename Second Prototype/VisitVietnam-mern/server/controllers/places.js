@@ -2,7 +2,7 @@ import { PlaceModel } from "../models/PlaceModel.js";
 
 export const getPlaces = async (req, res) => {
   try {
-    const places = await PlaceModel.find();
+    const places = await PlaceModel.find().limit(10);
     res.status(200).json(places);
   } catch (err) {
     res.status(500).json({ error: err });
