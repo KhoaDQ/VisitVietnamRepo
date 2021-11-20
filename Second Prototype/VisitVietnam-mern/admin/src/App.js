@@ -92,7 +92,7 @@ export default class App extends Component {
 
     const response = await axios(option);
     this.setState({
-      isAdmin: response.data,
+      isAdmin: response.data.isAdmin,
     });
   }
 
