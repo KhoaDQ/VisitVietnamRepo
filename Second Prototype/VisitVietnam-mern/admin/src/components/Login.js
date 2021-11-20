@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
+import axios from "axios";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/styles.css";
@@ -8,6 +9,9 @@ export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: "",
+      loginNotAdmin: false,
+      errorMessage:"",
       isAdmin: false,
       username: "",
       password: "",
@@ -21,39 +25,44 @@ export class Login extends Component {
   // process.env.REACT_APP_API
   async handleSubmit(e) {
     e.preventDefault();
-    // await fetch("http://localhost:5002/login", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   credentials: "include",
-    //   body: JSON.stringify({
-    //     UserName: e.target.Username.value,
-    //     Password: e.target.Password.value,
-    //   }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     this.setState({ token: data });
-    //   });
 
-    console.log(this.state.token);
-    if (
-      this.state.token != null ||
-      (this.state.username === "admin" && this.state.password === "admin")
-    ) {
-      this.setState({ isAdmin: true });
+    const data = {
+      Email: e.target.Username.value,
+      Password: e.target.Password.value,
+    };
+
+    await axios
+      .post(process.env.REACT_APP_API + "/auth/login", data)
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({ token: res.data.token });
+          this.setState({ user: res.data.user });
+        } else {
+          this.setState({ errorMessage: res.data.error });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    
+    if (this.state.token != null) {
+      if (this.state.user.Role === "Admin") {
+        this.setState({ isAdmin: true });
+        this.setState({ loginNotAdmin: false });
+        localStorage.setItem("token", this.state.token);
+        setTimeout(() => {
+          this.afterSubmit();
+        }, 100);
+      } else {
+        this.setState({ loginNotAdmin: true });
+      }
     }
-
-    setTimeout(() => {
-      this.afterSubmit();
-    }, 100);
   }
 
   afterSubmit() {
     this.props.handleAdminLogin(this.state.isAdmin);
   }
+
   usernameChange(event) {
     this.setState({ username: event.target.value });
   }
@@ -76,6 +85,10 @@ export class Login extends Component {
                         <h3 className="text-center font-weight-light my-4">
                           Login
                         </h3>
+                        {this.state.loginNotAdmin === true &&
+                          <div className="text-center text-warning">Info: You are not Admin</div>}
+                        {this.state.errorMessage !== null && this.state.errorMessage !== "" &&
+                          <div className="text-center text-danger">Error: {this.state.errorMessage}</div>}
                       </div>
                       <div className="card-body">
                         <form onSubmit={this.handleSubmit}>

@@ -9,6 +9,9 @@ import outfits from "./routers/outfits.js";
 import residences from "./routers/residences.js";
 import reviews from "./routers/reviews.js";
 import souvenirs from "./routers/souvenirs.js";
+import users from "./routers/users.js";
+import auth from "./routers/auth.js";
+
 import mongoose from "mongoose";
   
 //apidoc
@@ -61,6 +64,8 @@ app.use("/outfits", outfits);
 app.use("/residences", residences);
 app.use("/reviews", reviews);
 app.use("/souvenirs", souvenirs);
+app.use("/users", users);
+app.use("/auth", auth);
 
 mongoose
   .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })

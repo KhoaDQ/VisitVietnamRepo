@@ -7,10 +7,25 @@ export class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkAdmin: "true",
+      checkAdmin: true,
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  async handleSubmit(e) {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    this.setState({ checkAdmin: false })
+    setTimeout(() => {
+      this.afterSubmit();
+    }, 100);
+  };
+
+  afterSubmit() {
+      this.props.handleAdminLogout(this.state.checkAdmin);
+  };
+  
   render() {
     return (
       <div className="myNav">
