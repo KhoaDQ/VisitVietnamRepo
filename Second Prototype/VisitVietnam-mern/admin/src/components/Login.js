@@ -9,7 +9,8 @@ export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user:"",
+      user: "",
+      loginNotAdmin: false,
       errorMessage:"",
       isAdmin: false,
       username: "",
@@ -44,12 +45,17 @@ export class Login extends Component {
         console.log(err);
       });
     
-    if (this.state.token != null && this.state.user.Role === "Admin") {
-      this.setState({ isAdmin: true });
-      localStorage.setItem("token", this.state.token);
-      setTimeout(() => {
-        this.afterSubmit();
-      }, 100)
+    if (this.state.token != null) {
+      if (this.state.user.Role === "Admin") {
+        this.setState({ isAdmin: true });
+        this.setState({ loginNotAdmin: false });
+        localStorage.setItem("token", this.state.token);
+        setTimeout(() => {
+          this.afterSubmit();
+        }, 100);
+      } else {
+        this.setState({ loginNotAdmin: true });
+      }
     }
   }
 
@@ -79,6 +85,8 @@ export class Login extends Component {
                         <h3 className="text-center font-weight-light my-4">
                           Login
                         </h3>
+                        {this.state.loginNotAdmin === true &&
+                          <div className="text-center text-warning">Info: You are not Admin</div>}
                         {this.state.errorMessage !== null && this.state.errorMessage !== "" &&
                           <div className="text-center text-danger">Error: {this.state.errorMessage}</div>}
                       </div>
