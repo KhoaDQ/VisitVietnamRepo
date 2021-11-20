@@ -62,7 +62,7 @@ export class App extends Component {
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/holiday" render={(props) => <Holiday {...props} />} />
-            <Route path="/food" render={(props) => <Food {...props} />} />
+            <Route path="/food" render={(props) => <Food {...props} UserName = {this.state.name}/>} />
             <Route
               path="/residence"
               render={(props) => <Residence {...props} />}

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "../../assets/css/base.css";
 import "antd/dist/antd.css";
 import "./Food.css";
+import { ReviewModal } from "../../components/review/ReviewModal";
 import { Collapse } from "antd";
 const { Panel } = Collapse;
 
@@ -10,6 +11,7 @@ export class Food extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ReviewModalShow: false,
       foodies: [],
       places: [],
       isFoods: [],
@@ -124,9 +126,11 @@ export class Food extends Component {
   }
 
   render() {
-    const { foodies, places, isCakes, isFoods, isDrinks, locations } =
+    const { foodies, places, isCakes, isFoods, isDrinks, locations , PlaceId, Name} =
       this.state;
 
+    let ReviewModalClose = () => this.setState({ ReviewModalShow: false });
+    
     return (
       <div className="Container Food">
         <div id="slider" className="Banner">
@@ -157,23 +161,6 @@ export class Food extends Component {
               <li>
                 <a href="#all">all</a>
               </li>
-              <li>
-                <a href="/">
-                  More
-                  <i className="nav-arrow-down ti-angle-down"></i>
-                </a>
-                <ul className="subnav">
-                  <li>
-                    <a href="/">More</a>
-                  </li>
-                  <li>
-                    <a href="/">More</a>
-                  </li>
-                  <li>
-                    <a href="/">More</a>
-                  </li>
-                </ul>
-              </li>
             </ul>
 
             <div className="Content__Mall" id="mall">
@@ -191,6 +178,13 @@ export class Food extends Component {
                   <div key={place._id} className="col-sm-4 member-item mt-5">
                     <div className="member-item-content">
                       <img
+                        onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                         src={place.attachment}
                         alt={place.attachment}
                         className="member-img border-img"
@@ -235,6 +229,14 @@ export class Food extends Component {
                         </Collapse>
                       </div>
                     </div>
+                    {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                    />)}
                   </div>
                 ))}
               </div>
