@@ -1,0 +1,2641 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API doc of Places",
+    "description": "API doc of Places",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/challengecup/places/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    },
+    {
+      "url": "http://localhost:5000",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/places": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get places",
+        "description": "Places\n",
+        "operationId": "Places",
+        "responses": {
+          "200": {
+            "description": "A list of places log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_place"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/add": {
+      "post": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "Create a new place log",
+        "description": "Create new place",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new place",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Place"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/{id}": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "Get a place log by ID",
+        "description": "Get a place log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single place log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Place"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "Delete a place log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Place log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/places/update/{id}": {
+      "put": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "Update a place log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Exercise log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Place"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/articles": {
+      "get": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "get articles",
+        "description": "Articles\n",
+        "operationId": "articles",
+        "responses": {
+          "200": {
+            "description": "A list of articles log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_article"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/articles/add": {
+      "post": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Create a new article log",
+        "description": "Create new article",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new article",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/articles/{id}": {
+      "get": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Get a article log by ID",
+        "description": "Get a article log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single article log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Delete a article log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Article log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/articles/update/{id}": {
+      "put": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Update a article log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Article log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "get events",
+        "description": "Events\n",
+        "operationId": "Events",
+        "responses": {
+          "200": {
+            "description": "A list of events log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_event"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/events/add": {
+      "post": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Create a new event log",
+        "description": "Create new event",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new event",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/events/{id}": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get a event log by ID",
+        "description": "Get a event log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single event log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Delete a event log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/events/update/{id}": {
+      "put": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Update a event log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/foods": {
+      "get": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "get foods",
+        "description": "Foods\n",
+        "operationId": "Foods",
+        "responses": {
+          "200": {
+            "description": "A list of foods log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_food"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/foods/add": {
+      "post": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Create a new food log",
+        "description": "Create new food",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new food",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Food"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/foods/{id}": {
+      "get": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Get a food log by ID",
+        "description": "Get a food log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single food log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Food"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Delete a food log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Food log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/foods/update/{id}": {
+      "put": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "Update a food log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Food log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Food"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/holidays": {
+      "get": {
+        "tags": [
+          "Holidays"
+        ],
+        "summary": "get holidays",
+        "description": "Holidays\n",
+        "operationId": "Holidays",
+        "responses": {
+          "200": {
+            "description": "A list of holidays log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_holiday"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/holidays/add": {
+      "post": {
+        "tags": [
+          "Holidays"
+        ],
+        "summary": "Create a new holiday log",
+        "description": "Create new holiday",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new holiday",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Holiday"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/holidays/{id}": {
+      "get": {
+        "tags": [
+          "Holidays"
+        ],
+        "summary": "Get a holiday log by ID",
+        "description": "Get a holiday log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single holiday log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Holiday"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Holidays"
+        ],
+        "summary": "Delete a holiday log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Holiday log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/holidays/update/{id}": {
+      "put": {
+        "tags": [
+          "Holidays"
+        ],
+        "summary": "Update a holiday log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Holiday log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Holiday"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/locations": {
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "get locations",
+        "description": "Locations\n",
+        "operationId": "Locations",
+        "responses": {
+          "200": {
+            "description": "A list of locations log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_location"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/locations/add": {
+      "post": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Create a new location log",
+        "description": "Create new location",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new location",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/locations/{id}": {
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Get a location log by ID",
+        "description": "Get a location log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single location log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Delete a location log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Location log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/locations/update/{id}": {
+      "put": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Update a location log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "location log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/outfits": {
+      "get": {
+        "tags": [
+          "Outfits"
+        ],
+        "summary": "get outfits",
+        "description": "Outfits\n",
+        "operationId": "Outfits",
+        "responses": {
+          "200": {
+            "description": "A list of outfits log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_outfit"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/outfits/add": {
+      "post": {
+        "tags": [
+          "Outfits"
+        ],
+        "summary": "Create a new outfit log",
+        "description": "Create new outfit",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new outfit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Outfit"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/outfits/{id}": {
+      "get": {
+        "tags": [
+          "Outfits"
+        ],
+        "summary": "Get a outfit log by ID",
+        "description": "Get a outfit log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single outfit log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Outfit"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Outfits"
+        ],
+        "summary": "Delete a outfit log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Outfit log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/outfits/update/{id}": {
+      "put": {
+        "tags": [
+          "Outfits"
+        ],
+        "summary": "Update a outfit log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "outfit log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Outfit"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/residences": {
+      "get": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "get residences",
+        "description": "Residences\n",
+        "operationId": "Residences",
+        "responses": {
+          "200": {
+            "description": "A list of residences log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_residence"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/residences/add": {
+      "post": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "Create a new residence log",
+        "description": "Create new residence",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new residence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Residence"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/residences/{id}": {
+      "get": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "Get a residence log by ID",
+        "description": "Get a residence log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single residence log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Residence"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "Delete a residence log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Residence log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/residences/update/{id}": {
+      "put": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "Update a residence log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "residence log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Residence"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/reviews": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "get reviews",
+        "description": "Reviews\n",
+        "operationId": "Reviews",
+        "responses": {
+          "200": {
+            "description": "A list of review log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_review"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/reviews/add": {
+      "post": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Create a new review log",
+        "description": "Create new review",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new review",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Review"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/reviews/{id}": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get a review log by ID",
+        "description": "Get a review log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single review log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Review"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Delete a review log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Review log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/reviews/update/{id}": {
+      "put": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Update a review log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "review log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Review"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/souvenirs": {
+      "get": {
+        "tags": [
+          "Souvenirs"
+        ],
+        "summary": "get souvenirs",
+        "description": "Souvenirs\n",
+        "operationId": "Souvenirs",
+        "responses": {
+          "200": {
+            "description": "A list of souvenirs log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_souvenir"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/souvenirs/add": {
+      "post": {
+        "tags": [
+          "Souvenirs"
+        ],
+        "summary": "Create a new souvenir log",
+        "description": "Create new souvenir",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new souvenir",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Souvenir"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/souvenirs/{id}": {
+      "get": {
+        "tags": [
+          "Souvenirs"
+        ],
+        "summary": "Get a souvenir log by ID",
+        "description": "Get a souvenir log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single souvenir log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Souvenir"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Souvenirs"
+        ],
+        "summary": "Delete a souvenir log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Souvenir log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/souvenirs/update/{id}": {
+      "put": {
+        "tags": [
+          "Souvenirs"
+        ],
+        "summary": "Update a souvenir log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "souvenir log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Souvenir"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "get users",
+        "description": "Users\n",
+        "operationId": "Users",
+        "responses": {
+          "200": {
+            "description": "A list of users log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/response_user"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/users/add": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a new user log",
+        "description": "Create new user",
+        "responses": {
+          "200": {
+            "description": "Successfully created a new user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get a user log by ID",
+        "description": "Get a user log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single user log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete a user log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User log was successfully deleted."
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/users/update/{id}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update a user log by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user log was successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Have some error."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Place": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the place id",
+            "format": "id"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of place"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of place"
+          },
+          "slogan": {
+            "type": "string",
+            "description": "slogan of place"
+          },
+          "overview": {
+            "type": "string",
+            "description": "overview about place"
+          },
+          "phone": {
+            "type": "string",
+            "description": "phone of place"
+          },
+          "email": {
+            "type": "string",
+            "description": "email of place"
+          },
+          "facebook": {
+            "type": "string",
+            "description": "facebook of place"
+          },
+          "linkweb": {
+            "type": "string",
+            "description": "website of place"
+          },
+          "eventofplace": {
+            "type": "number",
+            "description": "amount of event for place"
+          },
+          "likecount": {
+            "type": "number",
+            "description": "amount interested of place"
+          },
+          "attachment": {
+            "type": "string",
+            "description": "attachment of place"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Article": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the article id",
+            "format": "id"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of article"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of article"
+          },
+          "description": {
+            "type": "string",
+            "description": "description of article"
+          },
+          "attachment": {
+            "type": "string",
+            "description": "attachment of article"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the event id",
+            "format": "id"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of event"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of event"
+          },
+          "description": {
+            "type": "string",
+            "description": "description of event"
+          },
+          "details": {
+            "type": "string",
+            "description": "details of event"
+          },
+          "startdate": {
+            "type": "string",
+            "description": "start date of event"
+          },
+          "enddate": {
+            "type": "string",
+            "description": "end date of event"
+          },
+          "status": {
+            "type": "string",
+            "description": "status of event"
+          },
+          "attachment": {
+            "type": "string",
+            "description": "attachment of event"
+          },
+          "placeid": {
+            "type": "string",
+            "description": "place id of event"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Food": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the food id",
+            "format": "id"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of food"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of food"
+          },
+          "miniType": {
+            "type": "string",
+            "description": "type of food"
+          },
+          "price": {
+            "type": "string",
+            "description": "price of food"
+          },
+          "note": {
+            "type": "string",
+            "description": "note of food"
+          },
+          "attachment": {
+            "type": "string",
+            "description": "attachment of food"
+          },
+          "placeid": {
+            "type": "string",
+            "description": "place id of food"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Holiday": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the holiday id",
+            "format": "id"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of holiday"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of holiday"
+          },
+          "description": {
+            "type": "string",
+            "description": "description of holiday"
+          },
+          "details": {
+            "type": "string",
+            "description": "details of holiday"
+          },
+          "startdate": {
+            "type": "string",
+            "description": "start date of holiday"
+          },
+          "enddate": {
+            "type": "string",
+            "description": "end date of holiday"
+          },
+          "status": {
+            "type": "string",
+            "description": "status of holiday"
+          },
+          "attachment": {
+            "type": "string",
+            "description": "attachment of holiday"
+          },
+          "locationid": {
+            "type": "string",
+            "description": "location id of holiday"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the location id",
+            "format": "id"
+          },
+          "details": {
+            "type": "string",
+            "description": "details of location"
+          },
+          "street": {
+            "type": "string",
+            "description": "street of location"
+          },
+          "ward": {
+            "type": "string",
+            "description": "ward of location"
+          },
+          "district": {
+            "type": "string",
+            "description": "district of location"
+          },
+          "city": {
+            "type": "string",
+            "description": "city of location"
+          },
+          "placeId": {
+            "type": "string",
+            "description": "place id of location"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Outfit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the outfit id",
+            "format": "id"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of outfit"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of outfit"
+          },
+          "gender": {
+            "type": "string",
+            "description": "gender of outfit"
+          },
+          "rangeAge": {
+            "type": "string",
+            "description": "range age of outfit"
+          },
+          "price": {
+            "type": "string",
+            "description": "price of outfit"
+          },
+          "note": {
+            "type": "string",
+            "description": "note of outfit"
+          },
+          "attachment": {
+            "type": "string",
+            "description": "attachment of outfit"
+          },
+          "placeId": {
+            "type": "string",
+            "description": "place id of outfit"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Residence": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the residence id",
+            "format": "id"
+          },
+          "description": {
+            "type": "string",
+            "description": "description of residence"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of residence"
+          },
+          "avgPrice": {
+            "type": "string",
+            "description": "average price of residence"
+          },
+          "attachment": {
+            "type": "string",
+            "description": "attachment of residence"
+          },
+          "placeId": {
+            "type": "string",
+            "description": "place id of residence"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Review": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the review id",
+            "format": "id"
+          },
+          "starRating": {
+            "type": "number",
+            "description": "star rating of review"
+          },
+          "pros": {
+            "type": "string",
+            "description": "pros of review"
+          },
+          "cons": {
+            "type": "string",
+            "description": "cons of review"
+          },
+          "username": {
+            "type": "string",
+            "description": "username of review"
+          },
+          "placeId": {
+            "type": "string",
+            "description": "place id of review"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "Souvenir": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the souvenir id",
+            "format": "id"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of souvenir"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of souvenir"
+          },
+          "price": {
+            "type": "string",
+            "description": "price of souvenir"
+          },
+          "note": {
+            "type": "string",
+            "description": "note of souvenir"
+          },
+          "attachment": {
+            "type": "string",
+            "description": "attachment of souvenir"
+          },
+          "placeId": {
+            "type": "string",
+            "description": "place id of souvenir"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the user id",
+            "format": "id"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of user"
+          },
+          "email": {
+            "uniqueItems": true,
+            "type": "string",
+            "description": "email of user"
+          },
+          "password": {
+            "type": "string",
+            "description": "password of user"
+          },
+          "role": {
+            "type": "string",
+            "description": "role of user"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Timestamps"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Timestamps"
+          }
+        }
+      },
+      "response_place": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Slogan": {
+            "type": "string"
+          },
+          "Overview": {
+            "type": "string"
+          },
+          "Phone": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Linkweb": {
+            "type": "string"
+          },
+          "EventOfPlace": {
+            "type": "number"
+          },
+          "likeCount": {
+            "type": "number"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_article": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_event": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Details": {
+            "type": "string"
+          },
+          "StartDate": {
+            "type": "string"
+          },
+          "EndDate": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_food": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "MiniType": {
+            "type": "string"
+          },
+          "Price": {
+            "type": "string"
+          },
+          "Note": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_holiday": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Details": {
+            "type": "string"
+          },
+          "StartDate": {
+            "type": "string"
+          },
+          "EndDate": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "LocationId": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_location": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Details": {
+            "type": "string"
+          },
+          "Street": {
+            "type": "string"
+          },
+          "Ward": {
+            "type": "string"
+          },
+          "District": {
+            "type": "string"
+          },
+          "City": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_outfit": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Gender": {
+            "type": "string"
+          },
+          "RangeAge": {
+            "type": "string"
+          },
+          "Price": {
+            "type": "string"
+          },
+          "Note": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_residence": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "AvgPrice": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_review": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "StarRating": {
+            "type": "number"
+          },
+          "Pros": {
+            "type": "string"
+          },
+          "Cons": {
+            "type": "string"
+          },
+          "Username": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_souvenir": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Price": {
+            "type": "string"
+          },
+          "Note": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_user": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string"
+          },
+          "Role": {
+            "type": "string"
+          },
+          "createAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
