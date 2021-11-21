@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 5000;
 const URI = process.env.ATLAS;
 
 const swaggerUi = require("swagger-ui-express");
-const docs = require('./docs/challengecup-web-1.0.0-resolved.json');
+const docs = require('./docs/apidoc.json');
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(docs));
 
 
