@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const schema = mongoose.Schema(
   {
@@ -29,4 +29,4 @@ const schema = mongoose.Schema(
   { timestamps: true }
 );
 
-export const FoodModel = mongoose.model("Food", schema);
+module.exports = { FoodModel: mongoose.model("Food", schema) };

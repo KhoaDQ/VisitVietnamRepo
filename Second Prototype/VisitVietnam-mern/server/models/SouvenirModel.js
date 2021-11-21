@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const schema = mongoose.Schema(
   {
@@ -25,4 +25,4 @@ const schema = mongoose.Schema(
   { timestamps: true }
 );
 
-export const SouvenirModel = mongoose.model("Souvenir", schema);
+module.exports = { SouvenirModel: mongoose.model("Souvenir", schema) };

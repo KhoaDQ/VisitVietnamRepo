@@ -1,6 +1,6 @@
-import { ReviewModel } from "../models/ReviewModel.js";
+const { ReviewModel } = require("../models/ReviewModel.js");
 
-export const getReviews = async (req, res) => {
+exports.getReviews = async (req, res) => {
   try {
     const reviews = await ReviewModel.find();
     res.status(200).json(reviews);
@@ -9,7 +9,7 @@ export const getReviews = async (req, res) => {
   }
 };
 
-export const createReview = async (req, res) => {
+exports.createReview = async (req, res) => {
   try {
     const newReview = req.body;
     const review = new ReviewModel(newReview);
@@ -20,7 +20,7 @@ export const createReview = async (req, res) => {
   }
 };
 
-export const updateReview = async (req, res) => {
+exports.updateReview = async (req, res) => {
   try {
     const updateReview = req.body;
     const review = await ReviewModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updateReview = async (req, res) => {
   }
 };
 
-export const deleteReview = async (req, res) => {
+exports.deleteReview = async (req, res) => {
   try {
     await ReviewModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -43,7 +43,7 @@ export const deleteReview = async (req, res) => {
   }
 };
 
-export const getReviewById = async (req, res) => {
+exports.getReviewById = async (req, res) => {
   try {
     const review = await ReviewModel.findById(req.params.id);
     res.status(200).json(review);

@@ -1,5 +1,5 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   getFoods,
   createFood,
   updateFood,
@@ -8,7 +8,7 @@ import {
   getAllFood,
   getAllCake,
   getAllDrink,
-} from "../controllers/foods.js";
+} = require("../controllers/foods.js");
 
 const router = express.Router();
 
@@ -23,4 +23,4 @@ router.get("/getAllDrink", getAllDrink);
 router.delete("/:id", deleteFood);
 router.get("/:id", getFoodById);
 
-export default router;
+module.exports = router;

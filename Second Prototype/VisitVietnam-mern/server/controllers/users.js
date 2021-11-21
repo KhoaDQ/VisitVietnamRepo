@@ -1,6 +1,6 @@
-import { UserModel } from "../models/UserModel.js";
+const { UserModel } = require("../models/UserModel.js");
 
-export const getUsers = async (req, res) => {
+exports.getUsers = async (req, res) => {
   try {
     const users = await UserModel.find();
     res.status(200).json(users);
@@ -9,7 +9,7 @@ export const getUsers = async (req, res) => {
   }
 };
 
-export const createUser = async (req, res) => {
+exports.createUser = async (req, res) => {
   try {
     const newUser = req.body;
     const user = new UserModel(newUser);
@@ -20,7 +20,7 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const updateUser = async (req, res) => {
+exports.updateUser = async (req, res) => {
   try {
     const updateUser = req.body;
     const user = await UserModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updateUser = async (req, res) => {
   }
 };
 
-export const deleteUser = async (req, res) => {
+exports.deleteUser = async (req, res) => {
   try {
     await UserModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -43,7 +43,7 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-export const getUserById = async (req, res) => {
+exports.getUserById = async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.id);
     res.status(200).json(user);
