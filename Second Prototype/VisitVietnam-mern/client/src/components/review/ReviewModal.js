@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button, Row, Col, Form, Image } from "react-bootstrap";
+import { Modal, Button, Row, Col, Form } from "react-bootstrap";
 import Moment from "moment";
 import "./ReviewModal.css"
 import axios from "axios";
@@ -90,19 +90,19 @@ export class ReviewModal extends Component {
                         <section className="review__content row ml-2">
                           <div className="review-content__header row w-100 mb-2" v-pre="">
                                <div className="star-rating col-5">
-                                  <span className={"icon is-small" + (review.StarRating == 1 || review.StarRating == 2 || review.StarRating == 3 || review.StarRating == 4 || review.StarRating == 5 ? ' text-warning' : ' text-light')}>
+                                  <span className={"icon is-small" + (review.StarRating === 1 || review.StarRating === 2 || review.StarRating === 3 || review.StarRating === 4 || review.StarRating === 5 ? ' text-warning' : ' text-light')}>
                                     <i className="fas fa-star"></i>
                                   </span>
-                                  <span className={"icon is-small" + (review.StarRating == 2 || review.StarRating == 3 || review.StarRating == 4 || review.StarRating == 5 ? ' text-warning' : ' text-light')}>
+                                  <span className={"icon is-small" + (review.StarRating === 2 || review.StarRating === 3 || review.StarRating === 4 || review.StarRating === 5 ? ' text-warning' : ' text-light')}>
                                     <i className="fas fa-star"></i>
                                   </span>
-                                  <span className={"icon is-small" + (review.StarRating == 3 || review.StarRating == 4 || review.StarRating == 5 ? ' text-warning' : ' text-light')}>
+                                  <span className={"icon is-small" + (review.StarRating === 3 || review.StarRating === 4 || review.StarRating === 5 ? ' text-warning' : ' text-light')}>
                                     <i className="fas fa-star"></i>
                                   </span>
-                                  <span className={"icon is-small" + (review.StarRating == 4 || review.StarRating == 5 ? ' text-warning' : ' text-light')}>
+                                  <span className={"icon is-small" + (review.StarRating === 4 || review.StarRating === 5 ? ' text-warning' : ' text-light')}>
                                     <i className="fas fa-star"></i>
                                   </span>
-                                  <span className={"icon is-small" + (review.StarRating == 5 ? ' text-warning' : ' text-light')}>
+                                  <span className={"icon is-small" + (review.StarRating === 5 ? ' text-warning' : ' text-light')}>
                                     <i className="fas fa-star"></i>
                                   </span>
                                 </div>
