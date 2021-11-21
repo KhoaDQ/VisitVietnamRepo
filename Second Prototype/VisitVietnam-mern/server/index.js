@@ -32,6 +32,11 @@ const swaggerUi = require("swagger-ui-express");
 const docs = require('./docs/apidoc.json');
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(docs));
 
+app.get("/", (req, res) => {
+  res.send(
+    "Welcome to my VisitVietnam API. Go to /api-docs for more information"
+  );
+});
 
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));

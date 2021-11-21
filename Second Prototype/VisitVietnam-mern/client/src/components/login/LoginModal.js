@@ -44,7 +44,7 @@ export class LoginModal extends Component{
                 console.log(err);
             });
     
-        if (this.state.token != null && this.state.token != "") {
+        if (this.state.token !== null && this.state.token !== "") {
             this.setState({
                 isAdmin: true,
                 errorMessage:"",
