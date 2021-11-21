@@ -1,6 +1,6 @@
-import { OutfitModel } from "../models/OutfitModel.js";
+const { OutfitModel } = require("../models/OutfitModel.js");
 
-export const getOutfits = async (req, res) => {
+exports.getOutfits = async (req, res) => {
   try {
     const outfits = await OutfitModel.find();
     res.status(200).json(outfits);
@@ -9,7 +9,7 @@ export const getOutfits = async (req, res) => {
   }
 };
 
-export const createOutfit = async (req, res) => {
+exports.createOutfit = async (req, res) => {
   try {
     const newOutfit = req.body;
     const outfit = new OutfitModel(newOutfit);
@@ -20,7 +20,7 @@ export const createOutfit = async (req, res) => {
   }
 };
 
-export const updateOutfit = async (req, res) => {
+exports.updateOutfit = async (req, res) => {
   try {
     const updateOutfit = req.body;
     const outfit = await OutfitModel.findOneAndUpdate(
@@ -35,7 +35,7 @@ export const updateOutfit = async (req, res) => {
 };
 
 
-export const getAllBrand = async (req, res) => {
+exports.getAllBrand = async (req, res) => {
   try {
     const brands = await OutfitModel.find({
       Type: "Brand",
@@ -45,7 +45,7 @@ export const getAllBrand = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
-export const getAllOutfit = async (req, res) => { 
+exports.getAllOutfit = async (req, res) => { 
   try { const brands = await OutfitModel.find({ 
     Type: { $nin: ["Brand"] }, 
   }); 
@@ -54,7 +54,7 @@ export const getAllOutfit = async (req, res) => {
 } 
 };
 
-export const deleteOutfit = async (req, res) => {
+exports.deleteOutfit = async (req, res) => {
   try {
     await OutfitModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -63,7 +63,7 @@ export const deleteOutfit = async (req, res) => {
   }
 };
 
-export const getOutfitById = async (req, res) => {
+exports.getOutfitById = async (req, res) => {
   try {
     const outfit = await OutfitModel.findById(req.params.id);
     res.status(200).json(outfit);

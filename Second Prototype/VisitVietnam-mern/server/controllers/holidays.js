@@ -1,6 +1,6 @@
-import { HolidayModel } from "../models/HolidayModel.js";
+const { HolidayModel } = require("../models/HolidayModel.js");
 
-export const getHolidays = async (req, res) => {
+exports.getHolidays = async (req, res) => {
   try {
     const holidays = await HolidayModel.find();
     res.status(200).json(holidays);
@@ -9,7 +9,7 @@ export const getHolidays = async (req, res) => {
   }
 };
 
-export const createHoliday = async (req, res) => {
+exports.createHoliday = async (req, res) => {
   try {
     const newHoliday = req.body;
     const holiday = new HolidayModel(newHoliday);
@@ -20,7 +20,7 @@ export const createHoliday = async (req, res) => {
   }
 };
 
-export const updateHoliday = async (req, res) => {
+exports.updateHoliday = async (req, res) => {
   try {
     const updateHoliday = req.body;
     const holiday = await HolidayModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updateHoliday = async (req, res) => {
   }
 };
 
-export const get4HolidayUpcoming = async (req, res) => {
+exports.get4HolidayUpcoming = async (req, res) => {
   try {
     const holidays = await HolidayModel.find({
       StartDate: {
@@ -47,7 +47,7 @@ export const get4HolidayUpcoming = async (req, res) => {
   }
 };
 
-export const deleteHoliday = async (req, res) => {
+exports.deleteHoliday = async (req, res) => {
   try {
     await HolidayModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -56,7 +56,7 @@ export const deleteHoliday = async (req, res) => {
   }
 };
 
-export const getHolidayById = async (req, res) => {
+exports.getHolidayById = async (req, res) => {
   try {
     const holiday = await HolidayModel.findById(req.params.id);
     res.status(200).json(holiday);

@@ -1,8 +1,8 @@
-import { UserModel } from "../models/UserModel.js";
-import jwt from 'jsonwebtoken';
-import bcrypt from "bcryptjs";
+const { UserModel } = require("../models/UserModel.js");
+const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
 
-export const register = async (req, res) => {
+exports.register = async (req, res) => {
   try {
     const newUser = req.body;
     const user = new UserModel(newUser);
@@ -14,7 +14,7 @@ export const register = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+exports.login = async (req, res) => {
   try {
     const user = await UserModel.findOne({
       Email: req.body.Email
@@ -36,7 +36,7 @@ export const login = async (req, res) => {
   }
 };
 
-export const getCurrentUser = async (req, res, next) => {
+exports.getCurrentUser = async (req, res, next) => {
   try {
     if (req.user) {
       const user = await UserModel.findById(req.user.userId);

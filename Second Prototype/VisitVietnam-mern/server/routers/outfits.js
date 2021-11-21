@@ -1,5 +1,5 @@
-import express from "express";
-import { getOutfits, createOutfit, updateOutfit, deleteOutfit, getOutfitById, getAllBrand, getAllOutfit } from "../controllers/outfits.js";
+const express = require("express");
+const { getOutfits, createOutfit, updateOutfit, deleteOutfit, getOutfitById, getAllBrand, getAllOutfit } = require("../controllers/outfits.js");
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router.get("/getAllOutfit", getAllOutfit);
 router.delete("/:id", deleteOutfit);
 router.get("/:id", getOutfitById);
 
-export default router;
+module.exports = router;

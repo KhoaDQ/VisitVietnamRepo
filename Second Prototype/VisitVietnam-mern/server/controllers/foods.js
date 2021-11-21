@@ -1,6 +1,6 @@
-import { FoodModel } from "../models/FoodModel.js";
+const { FoodModel } = require("../models/FoodModel.js");
 
-export const getFoods = async (req, res) => {
+exports.getFoods = async (req, res) => {
   try {
     const foods = await FoodModel.find();
     res.status(200).json(foods);
@@ -9,7 +9,7 @@ export const getFoods = async (req, res) => {
   }
 };
 
-export const createFood = async (req, res) => {
+exports.createFood = async (req, res) => {
   try {
     const newFood = req.body;
     const food = new FoodModel(newFood);
@@ -20,7 +20,7 @@ export const createFood = async (req, res) => {
   }
 };
 
-export const updateFood = async (req, res) => {
+exports.updateFood = async (req, res) => {
   try {
     const updateFood = req.body;
     const food = await FoodModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updateFood = async (req, res) => {
   }
 };
 
-export const getAllFood = async (req, res) => {
+exports.getAllFood = async (req, res) => {
   try {
     const foods = await FoodModel.find({
       Type: { $nin: ["Cake", "Drink"] },
@@ -46,7 +46,7 @@ export const getAllFood = async (req, res) => {
   }
 };
 
-export const getAllCake = async (req, res) => {
+exports.getAllCake = async (req, res) => {
   try {
     const foods = await FoodModel.find({
       $or: [{ Type: "Cake" }, { MiniType: "Cake" }],
@@ -57,7 +57,7 @@ export const getAllCake = async (req, res) => {
   }
 };
 
-export const getAllDrink = async (req, res) => {
+exports.getAllDrink = async (req, res) => {
   try {
     const foods = await FoodModel.find({
       $or: [{ Type: "Drink" }, { MiniType: "Drink" }],
@@ -68,7 +68,7 @@ export const getAllDrink = async (req, res) => {
   }
 };
 
-export const deleteFood = async (req, res) => {
+exports.deleteFood = async (req, res) => {
   try {
     await FoodModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -77,7 +77,7 @@ export const deleteFood = async (req, res) => {
   }
 };
 
-export const getFoodById = async (req, res) => {
+exports.getFoodById = async (req, res) => {
   try {
     const food = await FoodModel.findById(req.params.id);
     res.status(200).json(food);

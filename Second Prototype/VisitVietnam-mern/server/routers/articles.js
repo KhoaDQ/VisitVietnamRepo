@@ -1,5 +1,6 @@
-import express from "express";
-import {
+const  express = require("express");
+
+const  {
   getArticles,
   getArticleById,
   createArticle,
@@ -7,7 +8,7 @@ import {
   deleteArticle,
   getAllArticleTopPickMaster,
   getAllArticleEvent,
-} from "../controllers/articles.js";
+} = require("../controllers/articles.js");
 
 const router = express.Router();
 
@@ -21,4 +22,4 @@ router.get("/getAllArticleEvent", getAllArticleEvent);
 router.delete("/:id", deleteArticle);
 router.get("/:id", getArticleById);
 
-export default router;
+module.exports = router;

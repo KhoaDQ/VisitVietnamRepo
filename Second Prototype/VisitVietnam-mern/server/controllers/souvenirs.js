@@ -1,6 +1,6 @@
-import { SouvenirModel } from "../models/SouvenirModel.js";
+const { SouvenirModel } = require("../models/SouvenirModel.js");
 
-export const getSouvenirs = async (req, res) => {
+exports.getSouvenirs = async (req, res) => {
   try {
     const souvenirs = await SouvenirModel.find();
     res.status(200).json(souvenirs);
@@ -9,7 +9,7 @@ export const getSouvenirs = async (req, res) => {
   }
 };
 
-export const createSouvenir = async (req, res) => {
+exports.createSouvenir = async (req, res) => {
   try {
     const newSouvenir = req.body;
     const souvenir = new SouvenirModel(newSouvenir);
@@ -20,7 +20,7 @@ export const createSouvenir = async (req, res) => {
   }
 };
 
-export const updateSouvenir = async (req, res) => {
+exports.updateSouvenir = async (req, res) => {
   try {
     const updateSouvenir = req.body;
     const souvenir = await SouvenirModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updateSouvenir = async (req, res) => {
   }
 };
 
-export const deleteSouvenir = async (req, res) => {
+exports.deleteSouvenir = async (req, res) => {
   try {
     await SouvenirModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -43,7 +43,7 @@ export const deleteSouvenir = async (req, res) => {
   }
 };
 
-export const getSouvenirById = async (req, res) => {
+exports.getSouvenirById = async (req, res) => {
   try {
     const souvenir = await SouvenirModel.findById(req.params.id);
     res.status(200).json(souvenir);

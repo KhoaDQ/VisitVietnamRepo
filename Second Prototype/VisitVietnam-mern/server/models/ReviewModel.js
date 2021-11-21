@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const schema = mongoose.Schema(
   {
@@ -8,16 +8,15 @@ const schema = mongoose.Schema(
     },
     Pros: {
       type: String,
+      required: true,
     },
     Cons: {
       type: String,
+      required: true,
     },
     Username: {
       type: String,
-      default: "Anonymous",
-    },
-    UserId:{
-      type: String,
+      default: "anonymous",
     },
     PlaceId: {
       type: String,
@@ -27,4 +26,4 @@ const schema = mongoose.Schema(
   { timestamps: true }
 );
 
-export const ReviewModel = mongoose.model("Review", schema);
+module.exports = { ReviewModel: mongoose.model("Review", schema) };

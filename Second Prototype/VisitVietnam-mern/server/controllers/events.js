@@ -1,6 +1,6 @@
-import { EventModel } from "../models/EventModel.js";
+const { EventModel } = require("../models/EventModel.js");
 
-export const getEvents = async (req, res) => {
+exports.getEvents = async (req, res) => {
   try {
     const events = await EventModel.find();
     res.status(200).json(events);
@@ -9,7 +9,7 @@ export const getEvents = async (req, res) => {
   }
 };
 
-export const createEvent = async (req, res) => {
+exports.createEvent = async (req, res) => {
   try {
     const newEvent = req.body;
     const event = new EventModel(newEvent);
@@ -20,7 +20,7 @@ export const createEvent = async (req, res) => {
   }
 };
 
-export const updateEvent = async (req, res) => {
+exports.updateEvent = async (req, res) => {
   try {
     const updateEvent = req.body;
     const event = await EventModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updateEvent = async (req, res) => {
   }
 };
 
-export const deleteEvent = async (req, res) => {
+exports.deleteEvent = async (req, res) => {
   try {
     await EventModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -43,7 +43,7 @@ export const deleteEvent = async (req, res) => {
   }
 };
 
-export const getEventById = async (req, res) => {
+exports.getEventById = async (req, res) => {
   try {
     const event = await EventModel.findById(req.params.id);
     res.status(200).json(event);
