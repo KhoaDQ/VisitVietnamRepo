@@ -1,6 +1,6 @@
-import { PlaceModel } from "../models/PlaceModel.js";
+const { PlaceModel } = require("../models/PlaceModel.js");
 
-export const getPlaces = async (req, res) => {
+exports.getPlaces = async (req, res) => {
   try {
     const places = await PlaceModel.find();
     res.status(200).json(places);
@@ -9,7 +9,7 @@ export const getPlaces = async (req, res) => {
   }
 };
 
-export const createPlace = async (req, res) => {
+exports.createPlace = async (req, res) => {
   try {
     const newPlace = req.body;
     const place = new PlaceModel(newPlace);
@@ -20,7 +20,7 @@ export const createPlace = async (req, res) => {
   }
 };
 
-export const updatePlace = async (req, res) => {
+exports.updatePlace = async (req, res) => {
   try {
     const updatePlace = req.body;
     const place = await PlaceModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updatePlace = async (req, res) => {
   }
 };
 
-export const getPlaceBitexco = async (req, res) => {
+exports.getPlaceBitexco = async (req, res) => {
   try {
     const places = await PlaceModel.find({
       Name: "Bitexco",
@@ -45,7 +45,7 @@ export const getPlaceBitexco = async (req, res) => {
   }
 };
 
-export const getPlaceBenThanhMarket = async (req, res) => {
+exports.getPlaceBenThanhMarket = async (req, res) => {
   try {
     const places = await PlaceModel.find({
       Name: "Ben Thanh Market",
@@ -56,7 +56,7 @@ export const getPlaceBenThanhMarket = async (req, res) => {
   }
 };
 
-export const getPlaceDamSenPark = async (req, res) => {
+exports.getPlaceDamSenPark = async (req, res) => {
   try {
     const places = await PlaceModel.find({
       Name: "Dam Sen Park",
@@ -67,7 +67,7 @@ export const getPlaceDamSenPark = async (req, res) => {
   }
 };
 
-export const getPlaceTheLandmark81 = async (req, res) => {
+exports.getPlaceTheLandmark81 = async (req, res) => {
   try {
     const places = await PlaceModel.find({
       Name: "The Landmark 81",
@@ -78,7 +78,7 @@ export const getPlaceTheLandmark81 = async (req, res) => {
   }
 };
 
-export const getPlaceTheCityPostOffice = async (req, res) => {
+exports.getPlaceTheCityPostOffice = async (req, res) => {
   try {
     const places = await PlaceModel.find({
       Name: "The City Post Office",
@@ -89,7 +89,7 @@ export const getPlaceTheCityPostOffice = async (req, res) => {
   }
 };
 
-export const getPlaceTheWalkingStreet = async (req, res) => {
+exports.getPlaceTheWalkingStreet = async (req, res) => {
   try {
     const places = await PlaceModel.find({
       Name: "The Walking Street",
@@ -100,7 +100,7 @@ export const getPlaceTheWalkingStreet = async (req, res) => {
   }
 };
 
-export const getAllPlacesFood = async (req, res) => {
+exports.getAllPlacesFood = async (req, res) => {
   try {
     const places = await PlaceModel.find({
       Type: "Food",
@@ -111,7 +111,7 @@ export const getAllPlacesFood = async (req, res) => {
   }
 };
 
-export const getAllPlacesSouvenir = async (req, res) => {
+exports.getAllPlacesSouvenir = async (req, res) => {
   try {
     const places = await PlaceModel.find({
       Type: "Souvenir",
@@ -122,7 +122,7 @@ export const getAllPlacesSouvenir = async (req, res) => {
   }
 };
 
-export const getAllPlacesOutfit = async (req, res) => {
+exports.getAllPlacesOutfit = async (req, res) => {
 
   try {
 
@@ -142,7 +142,7 @@ export const getAllPlacesOutfit = async (req, res) => {
 
 };
 
-export const deletePlace = async (req, res) => {
+exports.deletePlace = async (req, res) => {
   try {
     await PlaceModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -151,7 +151,7 @@ export const deletePlace = async (req, res) => {
   }
 };
 
-export const getPlaceById = async (req, res) => {
+exports.getPlaceById = async (req, res) => {
   try {
     const place = await PlaceModel.findById(req.params.id);
     res.status(200).json(place);

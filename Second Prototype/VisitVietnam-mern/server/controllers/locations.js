@@ -1,6 +1,6 @@
-import { LocationModel } from "../models/LocationModel.js";
+const { LocationModel } = require("../models/LocationModel.js");
 
-export const getLocations = async (req, res) => {
+exports.getLocations = async (req, res) => {
   try {
     const locations = await LocationModel.find();
     res.status(200).json(locations);
@@ -9,7 +9,7 @@ export const getLocations = async (req, res) => {
   }
 };
 
-export const createLocation = async (req, res) => {
+exports.createLocation = async (req, res) => {
   try {
     const newLocation = req.body;
     const location = new LocationModel(newLocation);
@@ -20,7 +20,7 @@ export const createLocation = async (req, res) => {
   }
 };
 
-export const updateLocation = async (req, res) => {
+exports.updateLocation = async (req, res) => {
   try {
     const updateLocation = req.body;
     const location = await LocationModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updateLocation = async (req, res) => {
   }
 };
 
-export const deleteLocation = async (req, res) => {
+exports.deleteLocation = async (req, res) => {
   try {
     await LocationModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -43,7 +43,7 @@ export const deleteLocation = async (req, res) => {
   }
 };
 
-export const getLocationById = async (req, res) => {
+exports.getLocationById = async (req, res) => {
   try {
     const location = await LocationModel.findById(req.params.id);
     res.status(200).json(location);

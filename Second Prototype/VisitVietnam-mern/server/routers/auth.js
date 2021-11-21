@@ -1,10 +1,10 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   register,
   login,
   getCurrentUser
-} from "../controllers/auth.js";
-import {checkCurrentUser} from '../middlewares/checkCurrentUser.js'
+} = require("../controllers/auth.js");
+const {checkCurrentUser} = require('../middlewares/checkCurrentUser.js');
 
 const router = express.Router();
 
@@ -12,4 +12,4 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/", checkCurrentUser, getCurrentUser);
 
-export default router;
+module.exports = router;

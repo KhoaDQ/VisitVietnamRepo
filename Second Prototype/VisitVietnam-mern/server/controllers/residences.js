@@ -1,7 +1,7 @@
-import { ResidenceModel } from "../models/ResidenceModel.js";
-import { PlaceModel } from "../models/PlaceModel.js";
+const { ResidenceModel } = require("../models/ResidenceModel.js");
+const { PlaceModel } = require("../models/PlaceModel.js");
 
-export const getResidences = async (req, res) => {
+exports.getResidences = async (req, res) => {
   try {
     const residences = await ResidenceModel.find();
     res.status(200).json(residences);
@@ -10,7 +10,7 @@ export const getResidences = async (req, res) => {
   }
 };
 
-export const createResidence = async (req, res) => {
+exports.createResidence = async (req, res) => {
   try {
     const newResidence = req.body;
     const residence = new ResidenceModel(newResidence);
@@ -21,7 +21,7 @@ export const createResidence = async (req, res) => {
   }
 };
 
-export const getAllHotel = async (req, res) => {
+exports.getAllHotel = async (req, res) => {
   try {
     const residences = await ResidenceModel.find({
       Type: "Hotel",
@@ -56,7 +56,7 @@ export const getAllHotel = async (req, res) => {
   }
 };
 
-export const getAllHostel = async (req, res) => {
+exports.getAllHostel = async (req, res) => {
   try {
     const residences = await ResidenceModel.find({
       Type: "Hostel",
@@ -93,7 +93,7 @@ export const getAllHostel = async (req, res) => {
   }
 };
 
-export const getAllHomestay = async (req, res) => {
+exports.getAllHomestay = async (req, res) => {
   try {
     const residences = await ResidenceModel.find({
       Type: "Homestay",
@@ -130,7 +130,7 @@ export const getAllHomestay = async (req, res) => {
   }
 };
 
-export const getAllVilla = async (req, res) => {
+exports.getAllVilla = async (req, res) => {
   try {
     const residences = await ResidenceModel.find({
       Type: "Villa",
@@ -167,7 +167,7 @@ export const getAllVilla = async (req, res) => {
   }
 };
 
-export const getAllBungalow = async (req, res) => {
+exports.getAllBungalow = async (req, res) => {
   try {
     const residences = await ResidenceModel.find({
       Type: "Bungalow",
@@ -204,7 +204,7 @@ export const getAllBungalow = async (req, res) => {
   }
 };
 
-export const getAllResort = async (req, res) => {
+exports.getAllResort = async (req, res) => {
   try {
     const residences = await ResidenceModel.find({
       Type: "Resort",
@@ -241,7 +241,7 @@ export const getAllResort = async (req, res) => {
   }
 };
 
-export const updateResidence = async (req, res) => {
+exports.updateResidence = async (req, res) => {
   try {
     const updateResidence = req.body;
     const residence = await ResidenceModel.findOneAndUpdate(
@@ -255,7 +255,7 @@ export const updateResidence = async (req, res) => {
   }
 };
 
-export const deleteResidence = async (req, res) => {
+exports.deleteResidence = async (req, res) => {
   try {
     await ResidenceModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -264,7 +264,7 @@ export const deleteResidence = async (req, res) => {
   }
 };
 
-export const getResidenceById = async (req, res) => {
+exports.getResidenceById = async (req, res) => {
   try {
     const residence = await ResidenceModel.findById(req.params.id);
     res.status(200).json(residence);

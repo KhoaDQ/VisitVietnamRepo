@@ -1,6 +1,6 @@
-import { ArticleModel } from "../models/ArticleModel.js";
+const { ArticleModel } = require("../models/ArticleModel.js");
 
-export const getArticles = async (req, res) => {
+exports.getArticles = async (req, res) => {
   try {
     const articles = await ArticleModel.find();
     res.status(200).json(articles);
@@ -9,7 +9,7 @@ export const getArticles = async (req, res) => {
   }
 };
 
-export const createArticle = async (req, res) => {
+exports.createArticle = async (req, res) => {
   try {
     const newArticle = req.body;
     const article = new ArticleModel(newArticle);
@@ -20,7 +20,7 @@ export const createArticle = async (req, res) => {
   }
 };
 
-export const updateArticle = async (req, res) => {
+exports.updateArticle = async (req, res) => {
   try {
     const updateArticle = req.body;
     const article = await ArticleModel.findOneAndUpdate(
@@ -34,7 +34,7 @@ export const updateArticle = async (req, res) => {
   }
 };
 
-export const getAllArticleTopPickMaster = async (req, res) => {
+exports.getAllArticleTopPickMaster = async (req, res) => {
   try {
     const articles = await ArticleModel.find({
       Type: "Master",
@@ -45,7 +45,7 @@ export const getAllArticleTopPickMaster = async (req, res) => {
   }
 };
 
-export const getAllArticleEvent = async (req, res) => {
+exports.getAllArticleEvent = async (req, res) => {
   try {
     const articles = await ArticleModel.find({
       Type: "Event",
@@ -56,7 +56,7 @@ export const getAllArticleEvent = async (req, res) => {
   }
 };
 
-export const deleteArticle = async (req, res) => {
+exports.deleteArticle = async (req, res) => {
   try {
     await ArticleModel.findByIdAndRemove(req.params.id);
     res.status(200).json("Deleted");
@@ -65,7 +65,7 @@ export const deleteArticle = async (req, res) => {
   }
 };
 
-export const getArticleById = async (req, res) => {
+exports.getArticleById = async (req, res) => {
   try {
     const article = await ArticleModel.findById(req.params.id);
     res.status(200).json(article);

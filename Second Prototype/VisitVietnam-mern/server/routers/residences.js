@@ -1,5 +1,5 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   getResidences,
   createResidence,
   updateResidence,
@@ -11,7 +11,7 @@ import {
   getAllVilla,
   getAllBungalow,
   getAllResort,
-} from "../controllers/residences.js";
+} = require("../controllers/residences.js");
 
 const router = express.Router();
 
@@ -29,4 +29,4 @@ router.get("/getAllResort", getAllResort);
 router.delete("/:id", deleteResidence);
 router.get("/:id", getResidenceById);
 
-export default router;
+module.exports = router;

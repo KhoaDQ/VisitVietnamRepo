@@ -1,5 +1,6 @@
-import express from "express";
-import {
+const  express = require("express");
+
+const {
   getPlaces,
   getPlaceById,
   createPlace,
@@ -14,7 +15,7 @@ import {
   getAllPlacesFood,
   getAllPlacesSouvenir,
   getAllPlacesOutfit,
-} from "../controllers/places.js";
+} = require("../controllers/places.js");
 
 const router = express.Router();
 
@@ -35,4 +36,4 @@ router.get("/getAllPlacesOutfit", getAllPlacesOutfit);
 router.delete("/:id", deletePlace);
 router.get("/:id", getPlaceById);
 
-export default router;
+module.exports = router;
