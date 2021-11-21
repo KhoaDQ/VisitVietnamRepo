@@ -13,6 +13,7 @@
     "bootstrap-css-only": "^4.4.1",
     "dotenv": "^10.0.0",
     "mdbreact": "^5.1.0",
+    "postcss": "^8.3.11",
     "react": "^17.0.2",
     "react-back-to-top-button": "^0.0.14",
     "react-bootstrap": "^2.0.1",
