@@ -32,14 +32,21 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_place"
+                    "$ref": "#/components/schemas/inline_response_200"
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "bad input parameter"
+            "description": "bad input parameter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_400"
+                }
+              }
+            }
           }
         }
       }
@@ -51,19 +58,22 @@
         ],
         "summary": "Create a new place log",
         "description": "Create new place",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new place",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Place"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/places_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new place"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -165,6 +175,258 @@
         }
       }
     },
+    "/places/getPlaceBitexco": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get place of Bitexco",
+        "description": "Place of Bitexco\n",
+        "operationId": "617e614158d5ae4aac34708c",
+        "responses": {
+          "200": {
+            "description": "Information place of Bitexco log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/getPlaceBenThanhMarket": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get place of Ben Thanh market",
+        "description": "Place of Ben Thanh market\n",
+        "operationId": "6185ee0db597ff9050ace5d8",
+        "responses": {
+          "200": {
+            "description": "Information place of Ben Thanh market log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/getPlaceDamSenPark": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get place of Dam Sen park",
+        "description": "Place of Dam Sen park\n",
+        "operationId": "6185ee40b597ff9050ace5d9",
+        "responses": {
+          "200": {
+            "description": "Information place of Dam Sen park log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/getPlaceTheLandmark81": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get place of The Landmark81",
+        "description": "Place of The Landmark81\n",
+        "operationId": "6185ee61b597ff9050ace5da",
+        "responses": {
+          "200": {
+            "description": "Information place of The Landmark81 log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/getPlaceTheCityPostOffice": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get place of The City Post Office",
+        "description": "Place of The City Post Office\n",
+        "operationId": "6185f505b597ff9050ace5db",
+        "responses": {
+          "200": {
+            "description": "Information place of The City Post Office log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/getPlaceTheWalkingStreet": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get place of The Walking Street",
+        "description": "Place of The Walking Street\n",
+        "operationId": "6186958578c76ac32a8edf2f",
+        "responses": {
+          "200": {
+            "description": "Information place of The Walking Street log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/getAllPlacesFood": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get all places of Food",
+        "description": "All places of Food\n",
+        "operationId": "getAllPlacesFood",
+        "responses": {
+          "200": {
+            "description": "All places of Food log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/getAllPlacesSouvenir": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get all places Souvenir",
+        "description": "All places of Souvenir\n",
+        "operationId": "getAllPlacesSouvenir",
+        "responses": {
+          "200": {
+            "description": "All places of Souvenir log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/places/getAllPlacesOutfit": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "get all places Outfit",
+        "description": "All places of Outfit\n",
+        "operationId": "getAllPlacesOutfit",
+        "responses": {
+          "200": {
+            "description": "All places of Outfit log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/articles": {
       "get": {
         "tags": [
@@ -181,7 +443,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_article"
+                    "$ref": "#/components/schemas/inline_response_200_1"
                   }
                 }
               }
@@ -200,19 +462,22 @@
         ],
         "summary": "Create a new article log",
         "description": "Create new article",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new article",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Article"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/articles_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new article"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -314,6 +579,62 @@
         }
       }
     },
+    "/articles/getAllArticleTopPickMaster": {
+      "get": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "get All Article Top Pick Master",
+        "description": "All Article Top Pick Master\n",
+        "operationId": "getAllArticleTopPickMaster",
+        "responses": {
+          "200": {
+            "description": "All Article Top Pick Master log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_1"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/articles/getAllArticleEvent": {
+      "get": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "get All Article Event",
+        "description": "All Article Event\n",
+        "operationId": "getAllArticleEvent",
+        "responses": {
+          "200": {
+            "description": "All Article Event log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_1"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/events": {
       "get": {
         "tags": [
@@ -330,7 +651,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_event"
+                    "$ref": "#/components/schemas/inline_response_200_2"
                   }
                 }
               }
@@ -349,19 +670,22 @@
         ],
         "summary": "Create a new event log",
         "description": "Create new event",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new event",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Event"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/events_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new event"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -479,7 +803,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_food"
+                    "$ref": "#/components/schemas/inline_response_200_3"
                   }
                 }
               }
@@ -498,19 +822,22 @@
         ],
         "summary": "Create a new food log",
         "description": "Create new food",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new food",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Food"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/foods_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new food"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -612,6 +939,90 @@
         }
       }
     },
+    "/foods/getAllFood": {
+      "get": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "get All Foods",
+        "description": "All Foods\n",
+        "operationId": "getAllFood",
+        "responses": {
+          "200": {
+            "description": "All foods log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_3"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/foods/getAllCake": {
+      "get": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "get All Cakes",
+        "description": "All Cakes\n",
+        "operationId": "getAllCake",
+        "responses": {
+          "200": {
+            "description": "All cakes log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_3"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/foods/getAllDrink": {
+      "get": {
+        "tags": [
+          "Foods"
+        ],
+        "summary": "get All Drink",
+        "description": "All Drink\n",
+        "operationId": "getAllDrink",
+        "responses": {
+          "200": {
+            "description": "All drink log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_3"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/holidays": {
       "get": {
         "tags": [
@@ -628,7 +1039,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_holiday"
+                    "$ref": "#/components/schemas/inline_response_200_4"
                   }
                 }
               }
@@ -647,19 +1058,22 @@
         ],
         "summary": "Create a new holiday log",
         "description": "Create new holiday",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new holiday",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Holiday"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/holidays_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new holiday"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -761,6 +1175,34 @@
         }
       }
     },
+    "/holidays/get4HolidayUpcoming": {
+      "get": {
+        "tags": [
+          "Holidays"
+        ],
+        "summary": "get for holiday upcoming",
+        "description": "Holidays upcoming\n",
+        "operationId": "get4HolidayUpcoming",
+        "responses": {
+          "200": {
+            "description": "A list of holidays upcoming log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_4"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/locations": {
       "get": {
         "tags": [
@@ -777,7 +1219,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_location"
+                    "$ref": "#/components/schemas/inline_response_200_5"
                   }
                 }
               }
@@ -796,19 +1238,22 @@
         ],
         "summary": "Create a new location log",
         "description": "Create new location",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new location",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Location"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/locations_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new location"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -926,7 +1371,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_outfit"
+                    "$ref": "#/components/schemas/inline_response_200_6"
                   }
                 }
               }
@@ -945,19 +1390,22 @@
         ],
         "summary": "Create a new outfit log",
         "description": "Create new outfit",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new outfit",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Outfit"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/outfits_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new outfit"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -1059,6 +1507,62 @@
         }
       }
     },
+    "/outfits/getAllBrand": {
+      "get": {
+        "tags": [
+          "Outfits"
+        ],
+        "summary": "get all brands",
+        "description": "All brands\n",
+        "operationId": "getAllBrand",
+        "responses": {
+          "200": {
+            "description": "A list of all brands log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_6"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/outfits/getAllOutfit": {
+      "get": {
+        "tags": [
+          "Outfits"
+        ],
+        "summary": "get all outfits",
+        "description": "All outfits\n",
+        "operationId": "getAllOutfit",
+        "responses": {
+          "200": {
+            "description": "A list of all outfits log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_6"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/residences": {
       "get": {
         "tags": [
@@ -1075,7 +1579,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_residence"
+                    "$ref": "#/components/schemas/inline_response_200_7"
                   }
                 }
               }
@@ -1094,19 +1598,22 @@
         ],
         "summary": "Create a new residence log",
         "description": "Create new residence",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new residence",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Residence"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/residences_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new residence"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -1208,6 +1715,174 @@
         }
       }
     },
+    "/residences/getAllHotel": {
+      "get": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "get all hotel",
+        "description": "All hotel\n",
+        "operationId": "getAllHotel",
+        "responses": {
+          "200": {
+            "description": "A list of all hotel log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_7"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/residences/getAllHostel": {
+      "get": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "get all hostel",
+        "description": "All hostel\n",
+        "operationId": "getAllHostel",
+        "responses": {
+          "200": {
+            "description": "A list of all hostel log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_7"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/residences/getAllHomestay": {
+      "get": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "get all homestay",
+        "description": "All homestay\n",
+        "operationId": "getAllHomestay",
+        "responses": {
+          "200": {
+            "description": "A list of all homestay log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_7"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/residences/getAllVilla": {
+      "get": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "get all villa",
+        "description": "All villa\n",
+        "operationId": "getAllVilla",
+        "responses": {
+          "200": {
+            "description": "A list of all villa log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_7"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/residences/getAllBungalow": {
+      "get": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "get all bungalow",
+        "description": "All bungalow\n",
+        "operationId": "getAllBungalow",
+        "responses": {
+          "200": {
+            "description": "A list of all bungalow log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_7"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/residences/getAllResort": {
+      "get": {
+        "tags": [
+          "Residences"
+        ],
+        "summary": "get all resort",
+        "description": "All resort\n",
+        "operationId": "getAllResort",
+        "responses": {
+          "200": {
+            "description": "A list of all resort log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_7"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
     "/reviews": {
       "get": {
         "tags": [
@@ -1224,7 +1899,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_review"
+                    "$ref": "#/components/schemas/inline_response_200_8"
                   }
                 }
               }
@@ -1243,19 +1918,22 @@
         ],
         "summary": "Create a new review log",
         "description": "Create new review",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new review",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Review"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/reviews_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new review"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -1373,7 +2051,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_souvenir"
+                    "$ref": "#/components/schemas/inline_response_200_9"
                   }
                 }
               }
@@ -1392,19 +2070,22 @@
         ],
         "summary": "Create a new souvenir log",
         "description": "Create new souvenir",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new souvenir",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Souvenir"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/souvenirs_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new souvenir"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -1522,7 +2203,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/response_user"
+                    "$ref": "#/components/schemas/inline_response_200_10"
                   }
                 }
               }
@@ -1541,19 +2222,22 @@
         ],
         "summary": "Create a new user log",
         "description": "Create new user",
-        "responses": {
-          "200": {
-            "description": "Successfully created a new user",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/users_add_body"
               }
             }
           },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new user"
+          },
           "400": {
-            "description": "bad input parameter"
+            "description": "Invalid request"
           }
         }
       }
@@ -1651,6 +2335,88 @@
           },
           "400": {
             "description": "Have some error."
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Create a new auth log",
+        "description": "Create new auth",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/auth_register_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new auth"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login",
+        "description": "Login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/auth_login_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created a new auth"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "get auth",
+        "description": "Auth\n",
+        "operationId": "Auth",
+        "responses": {
+          "200": {
+            "description": "A list of auth log.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_10"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
           }
         }
       }
@@ -2197,7 +2963,7 @@
           }
         }
       },
-      "response_place": {
+      "inline_response_200": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2247,7 +3013,53 @@
           }
         }
       },
-      "response_article": {
+      "inline_response_400": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "places_add_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Slogan": {
+            "type": "string"
+          },
+          "Overview": {
+            "type": "string"
+          },
+          "Phone": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Facebook": {
+            "type": "string"
+          },
+          "LinkWeb": {
+            "type": "string"
+          },
+          "EventOfPlace": {
+            "type": "number"
+          },
+          "likeCount": {
+            "type": "number"
+          },
+          "attachment": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_1": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2282,7 +3094,27 @@
           }
         }
       },
-      "response_event": {
+      "articles_add_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_2": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2329,7 +3161,39 @@
           }
         }
       },
-      "response_food": {
+      "events_add_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Details": {
+            "type": "string"
+          },
+          "StartDate": {
+            "type": "string"
+          },
+          "EndDate": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_3": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2370,7 +3234,33 @@
           }
         }
       },
-      "response_holiday": {
+      "foods_add_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "MiniType": {
+            "type": "string"
+          },
+          "Price": {
+            "type": "string"
+          },
+          "Note": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_4": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2417,7 +3307,39 @@
           }
         }
       },
-      "response_location": {
+      "holidays_add_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Details": {
+            "type": "string"
+          },
+          "StartDate": {
+            "type": "string"
+          },
+          "EndDate": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "LocationId": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_5": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2455,7 +3377,30 @@
           }
         }
       },
-      "response_outfit": {
+      "locations_add_body": {
+        "type": "object",
+        "properties": {
+          "Details": {
+            "type": "string"
+          },
+          "Street": {
+            "type": "string"
+          },
+          "Ward": {
+            "type": "string"
+          },
+          "District": {
+            "type": "string"
+          },
+          "City": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_6": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2499,7 +3444,36 @@
           }
         }
       },
-      "response_residence": {
+      "outfits_add_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Gender": {
+            "type": "string"
+          },
+          "RangeAge": {
+            "type": "string"
+          },
+          "Price": {
+            "type": "string"
+          },
+          "Note": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_7": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2534,7 +3508,27 @@
           }
         }
       },
-      "response_review": {
+      "residences_add_body": {
+        "type": "object",
+        "properties": {
+          "Description": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "AvgPrice": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_8": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2569,7 +3563,27 @@
           }
         }
       },
-      "response_souvenir": {
+      "reviews_add_body": {
+        "type": "object",
+        "properties": {
+          "StarRating": {
+            "type": "number"
+          },
+          "Pros": {
+            "type": "string"
+          },
+          "Cons": {
+            "type": "string"
+          },
+          "Username": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_9": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2607,7 +3621,30 @@
           }
         }
       },
-      "response_user": {
+      "souvenirs_add_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Price": {
+            "type": "string"
+          },
+          "Note": {
+            "type": "string"
+          },
+          "attachment": {
+            "type": "string"
+          },
+          "PlaceId": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_10": {
         "type": "object",
         "properties": {
           "_id": {
@@ -2633,6 +3670,57 @@
           },
           "__v": {
             "type": "integer"
+          }
+        }
+      },
+      "users_add_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string"
+          },
+          "Role": {
+            "type": "string"
+          }
+        }
+      },
+      "auth_register_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string"
+          },
+          "Role": {
+            "type": "string"
+          }
+        }
+      },
+      "auth_login_body": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string"
+          },
+          "Role": {
+            "type": "string"
           }
         }
       }
