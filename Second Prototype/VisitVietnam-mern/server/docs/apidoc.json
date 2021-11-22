@@ -7,6 +7,10 @@
   },
   "servers": [
     {
+      "url": "https://visitvietnam-api.herokuapp.com",
+      "description": "SwaggerHub API VisitVietnam"
+    },
+    {
       "url": "https://virtserver.swaggerhub.com/challengecup/places/1.0.0",
       "description": "SwaggerHub API Auto Mocking"
     },
