@@ -14,9 +14,14 @@ export class Navigation extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSearch() {}
+  handleSearch() {
+    console.log(this.state.strSearch);
+    this.props.handleSearchContent(this.state.strSearch);
+  }
 
-  handleChange(event) {}
+  handleChange(event) {
+    this.setState({ strSearch: event.target.value });
+  }
 
   render() {
     return (
@@ -52,7 +57,7 @@ export class Navigation extends Component {
                 className="d-inline px-3 bg-white text-dark text-uppercase font-weight-bold btn"
                 to="/outfit"
               >
-                Outfit
+                Fashion
               </NavLink>
               <NavLink
                 className="d-inline px-3 bg-white text-dark text-uppercase font-weight-bold btn"

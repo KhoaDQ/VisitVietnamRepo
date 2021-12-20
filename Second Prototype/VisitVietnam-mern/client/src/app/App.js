@@ -5,7 +5,7 @@ import { Navigation } from "../components/navigation/Navigation";
 import { FooterPage } from "../components/footerPage/FooterPage";
 import { FirstNav } from "../components/firstNav/FirstNav";
 import { Home } from "../home/Home";
-import { Search } from "../search/Search";
+import { Search } from "../components/search/Search";
 import { Holiday } from "../entities/holiday/Holiday";
 import { Souvenir } from "../entities/souvenir/Souvenir";
 import { Outfit } from "../entities/outfit/Outfit";
@@ -34,6 +34,12 @@ export class App extends Component {
     console.log(this.state.isAdmin);
   }
 
+  handleSearchFunction = (content) => {
+    this.setState({
+      strSearchApp:content,
+    })
+  }
+
   async componentDidMount() {
     const token = localStorage.getItem("token");
     const option = {
@@ -57,7 +63,7 @@ export class App extends Component {
         <div className="contain">
           <FirstNav stateAdmin={this.state.isAdmin} stateName={this.state.name} handleAdminLogin={this.handleAdminLoginFunction}/>
 
-          <Navigation />
+          <Navigation handleSearchContent={this.handleSearchFunction}/>
 
           <Switch>
             <Route path="/" component={Home} exact />
@@ -65,14 +71,14 @@ export class App extends Component {
             <Route path="/food" render={(props) => <Food {...props} UserName = {this.state.name}/>} />
             <Route
               path="/residence"
-              render={(props) => <Residence {...props} />}
+              render={(props) => <Residence {...props} UserName = {this.state.name}/>}
             />
-            <Route path="/outfit" render={(props) => <Outfit {...props} />} />
+            <Route path="/outfit" render={(props) => <Outfit {...props} UserName = {this.state.name}/>} />
             <Route
               path="/souvenir"
-              render={(props) => <Souvenir {...props} />}
+              render={(props) => <Souvenir {...props} UserName = {this.state.name}/>}
             />
-            <Route path="/search" render={(props) => <Search {...props} />} />
+            <Route path="/search" render={(props) => <Search {...props} strSearch={this.state.strSearchApp} />} />
           </Switch>
 
           <div className="border-bottom"></div>

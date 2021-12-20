@@ -2,6 +2,8 @@ import { Button } from "react-bootstrap";
 import React, { Component } from "react";
 import "../../assets/css/base.css";
 import "./Souvenir.css";
+import { ReviewModal } from "../../components/review/ReviewModal";
+
 import { Collapse } from "antd";
 const { Panel } = Collapse;
 
@@ -9,6 +11,7 @@ export class Souvenir extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ReviewModalShow: false,
       souvenirs: [],
       places: [],
       locations: [],
@@ -61,7 +64,8 @@ export class Souvenir extends Component {
   }
 
   render() {
-    const { souvenirs, places, locations } = this.state;
+    const { souvenirs, places, locations, PlaceId, Name} = this.state;
+    let ReviewModalClose = () => this.setState({ ReviewModalShow: false });
 
     return (
       <div className="Container Souvenir">
@@ -95,6 +99,13 @@ export class Souvenir extends Component {
                   <div key={place._id} className="col-sm-4 member-item mt-5">
                     <div className="member-item-content">
                       <img
+                        onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                         src={place.attachment}
                         alt={place.attachment}
                         className="member-img border-img"
@@ -139,6 +150,14 @@ export class Souvenir extends Component {
                         </Collapse>
                       </div>
                     </div>
+                    {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                    />)}
                   </div>
                 ))}
               </div>

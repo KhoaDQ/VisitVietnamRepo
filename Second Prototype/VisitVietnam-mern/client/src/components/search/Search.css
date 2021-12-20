@@ -1,0 +1,15 @@
+.Search .title-search{
+    margin-top: 100px;
+}
+
+.Search .member-img{
+    height: 150px;
+}
+
+.Search .Container__Content .Content__Product .member-item-content {
+    min-height: 150px;
+}
+
+.Search .Container__Content{
+    margin-bottom: 100px;
+}

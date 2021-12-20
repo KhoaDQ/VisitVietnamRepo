@@ -2,6 +2,8 @@ import { Button } from "react-bootstrap";
 import React, { Component } from "react";
 import "../../assets/css/base.css";
 import "./Residence.css";
+import { ReviewModal } from "../../components/review/ReviewModal";
+
 import { Collapse } from "antd";
 const { Panel } = Collapse;
 
@@ -9,6 +11,7 @@ export class Residence extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ReviewModalShow: false,
       Places: [],
       PlaceEvents: [],
       Locations: [],
@@ -159,7 +162,11 @@ export class Residence extends Component {
       Villas,
       Bungalows,
       Resorts,
+      PlaceId,
+      Name,
     } = this.state;
+
+    let ReviewModalClose = () => this.setState({ ReviewModalShow: false });
 
     return (
       <div className="Container Residence">
@@ -190,22 +197,19 @@ export class Residence extends Component {
                 <a href="#Homestay">Homestay</a>
               </li>
               <li>
-                <a href="#Villa">Villa</a>
-              </li>
-              <li>
                 <a href="/">
                   More
                   <i className="nav-arrow-down ti-angle-down"></i>
                 </a>
                 <ul className="subnav">
+              <li>
+                <a href="#Villa">Villa</a>
+              </li>
                   <li>
                     <a href="#Bungalow">Bungalow</a>
                   </li>
                   <li>
                     <a href="#Resort">Resort</a>
-                  </li>
-                  <li>
-                    <a href="/">More</a>
                   </li>
                 </ul>
               </li>
@@ -227,6 +231,13 @@ export class Residence extends Component {
                   <div key={place._id} className="col-sm-4 member-item mt-5">
                     <div className="member-item-content">
                       <img
+                        onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                         src={place.PlaceAttachment}
                         alt={place.PlaceAttachment}
                         className="member-img border-img"
@@ -271,6 +282,14 @@ export class Residence extends Component {
                         </Collapse>
                       </div>
                     </div>
+                    {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                    />)}
                   </div>
                 ))}
               </div>
@@ -300,6 +319,13 @@ export class Residence extends Component {
                   <div key={place._id} className="col-sm-4 member-item mt-5">
                     <div className="member-item-content">
                       <img
+                        onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                         src={place.PlaceAttachment}
                         alt={place.PlaceAttachment}
                         className="member-img border-img"
@@ -344,6 +370,14 @@ export class Residence extends Component {
                         </Collapse>
                       </div>
                     </div>
+                    {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                    />)}
                   </div>
                 ))}
               </div>
@@ -374,6 +408,13 @@ export class Residence extends Component {
                     <div key={place._id} className="col-sm-4 member-item mt-5">
                       <div className="member-item-content">
                         <img
+                          onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                           src={place.PlaceAttachment}
                           alt={place.PlaceAttachment}
                           className="member-img border-img"
@@ -418,6 +459,14 @@ export class Residence extends Component {
                           </Collapse>
                         </div>
                       </div>
+                      {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                      />)}
                     </div>
                   )
                 )}
@@ -451,6 +500,13 @@ export class Residence extends Component {
                   <div key={place._id} className="col-sm-4 member-item mt-5">
                     <div className="member-item-content">
                       <img
+                        onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                         src={place.PlaceAttachment}
                         alt={place.PlaceAttachment}
                         className="member-img border-img"
@@ -495,6 +551,14 @@ export class Residence extends Component {
                         </Collapse>
                       </div>
                     </div>
+                    {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                    />)}
                   </div>
                 ))}
               </div>
@@ -525,6 +589,13 @@ export class Residence extends Component {
                     <div key={place._id} className="col-sm-4 member-item mt-5">
                       <div className="member-item-content">
                         <img
+                          onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                           src={place.PlaceAttachment}
                           alt={place.PlaceAttachment}
                           className="member-img border-img"
@@ -569,6 +640,14 @@ export class Residence extends Component {
                           </Collapse>
                         </div>
                       </div>
+                      {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                      />)}
                     </div>
                   )
                 )}
@@ -602,6 +681,13 @@ export class Residence extends Component {
                   <div key={place._id} className="col-sm-4 member-item mt-5">
                     <div className="member-item-content">
                       <img
+                        onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                         src={place.PlaceAttachment}
                         alt={place.PlaceAttachment}
                         className="member-img border-img"
@@ -646,6 +732,14 @@ export class Residence extends Component {
                         </Collapse>
                       </div>
                     </div>
+                    {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                    />)}
                   </div>
                 ))}
               </div>

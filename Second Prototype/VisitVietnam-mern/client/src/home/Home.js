@@ -469,16 +469,16 @@ export class Home extends Component {
                 id="sliderFoodHighlights"
                 className="Banner mt-5 border-img-full"
               >
-                <div className="text-content">
+                <div className="text-content ml-3">
                   <h2 className="text-heading text-dark">
                     Where high rating food review
                   </h2>
                   <div className="row ml-1">
                     <h3 className="text-desc text-dark">Read more</h3>
-                    <NavLink to="/foody">
+                    <NavLink to="/food">
                       <button
                         className="text-red ti-angle-double-right ml-2"
-                        to="/foody"
+                        to="/food"
                       ></button>
                     </NavLink>
                   </div>
@@ -497,19 +497,19 @@ export class Home extends Component {
               {/* <div className="border-bottom"></div> */}
 
               <div id="sliderShopping" className="Banner mt-5 border-img-full">
-                <div className="text-content">
+                <div className="text-content ml-3">
                   <h2 className="text-heading text-dark">
                     Discover Vietnamese brands appeared{" "}
                   </h2>
                   <div className="row ml-1">
                     <h3 className="text-desc text-dark">Fashion</h3>
-                    <NavLink to="/clothes">
+                    <NavLink to="/outfit">
                       <button className="text-red ti-angle-double-right ml-2"></button>
                     </NavLink>
                   </div>
                   <div className="row ml-1">
                     <h3 className="text-desc text-dark">Souvenir</h3>
-                    <NavLink to="/gift">
+                    <NavLink to="/souvenir">
                       <button className="text-red ti-angle-double-right ml-2"></button>
                     </NavLink>
                   </div>

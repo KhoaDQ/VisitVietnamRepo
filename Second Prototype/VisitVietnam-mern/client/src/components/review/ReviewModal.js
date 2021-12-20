@@ -81,10 +81,10 @@ export class ReviewModal extends Component {
                 <div>
                   {this.props.Name !== undefined && <h1 className="text-center">{this.props.Name}</h1>}
                   {reviews !== null && reviews.length !== 0 && reviews.slice(0, this.state.Review_visible).map((review) => (
-                    <div key={review._id} className="col-sm-12 member-item">
+                    <div key={review._id} className="col-sm-12">
                       <div className="review-card col-sm-12 mb-3">
                         <div className="review__consumer-information row mb-2 ml-2">
-                            <img className="Circle-Icon d-inline m-2" src="./public-img/icon_restaurant.png" alt=""/> 
+                            <img className="Circle-Icon d-inline m-2" src="./public-img/anonymous.png" alt=""/> 
                             <div className="mt-3 font-weight-bold">{review.Username}</div>
                         </div>
                         <section className="review__content row ml-2">

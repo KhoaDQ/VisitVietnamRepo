@@ -50,7 +50,7 @@ exports.getAllHotel = async (req, res) => {
 
     setTimeout(() => {
       res.status(200).json(residencePlaces);
-    }, 1000);
+    }, 2000);
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -87,7 +87,7 @@ exports.getAllHostel = async (req, res) => {
 
     setTimeout(() => {
       res.status(200).json(residencePlaces);
-    }, 1000);
+    }, 2000);
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -124,7 +124,7 @@ exports.getAllHomestay = async (req, res) => {
 
     setTimeout(() => {
       res.status(200).json(residencePlaces);
-    }, 1000);
+    }, 2000);
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -161,7 +161,7 @@ exports.getAllVilla = async (req, res) => {
 
     setTimeout(() => {
       res.status(200).json(residencePlaces);
-    }, 1000);
+    }, 2000);
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -198,7 +198,7 @@ exports.getAllBungalow = async (req, res) => {
 
     setTimeout(() => {
       res.status(200).json(residencePlaces);
-    }, 1000);
+    }, 2000);
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -235,7 +235,7 @@ exports.getAllResort = async (req, res) => {
 
     setTimeout(() => {
       res.status(200).json(residencePlaces);
-    }, 1000);
+    }, 2000);
   } catch (err) {
     res.status(500).json({ error: err });
   }

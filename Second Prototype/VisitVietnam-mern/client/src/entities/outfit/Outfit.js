@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "../../assets/css/base.css";
 import "./Outfit.css";
 import { DetailsModal } from "../../components/DetailsIModal";
+import { ReviewModal } from "../../components/review/ReviewModal";
 
 import { Collapse } from "antd";
 const { Panel } = Collapse;
@@ -11,6 +12,7 @@ export class Outfit extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ReviewModalShow: false,
       outfits: [],
       places: [],
       brands: [],
@@ -96,15 +98,16 @@ export class Outfit extends Component {
       Name,
       Note,
       PicFileName,
-      Status,
+      Status, PlaceId,
     } = this.state;
     let DetailsModalClose = () => this.setState({ DetailsModalShow: false });
+    let ReviewModalClose = () => this.setState({ ReviewModalShow: false });
 
     return (
       <div className="Container Outfit">
         <div id="slider">
           <div className="text-content">
-            <div className="text-heading">Clothes</div>
+            <div className="text-heading">Fashion</div>
             <div className="text-desc">
               Someplace or brands which you can find what your need
             </div>
@@ -128,6 +131,13 @@ export class Outfit extends Component {
                   <div key={place._id} className="col-sm-4 member-item mt-5">
                     <div className="member-item-content">
                       <img
+                        onClick={() =>
+                            this.setState({
+                              ReviewModalShow: true,
+                              PlaceId: place._id,
+                              Name: place.Name
+                            })
+                          }
                         src={place.attachment}
                         alt={place.attachment}
                         className="member-img border-img"
@@ -172,6 +182,14 @@ export class Outfit extends Component {
                         </Collapse>
                       </div>
                     </div>
+                    {this.state.ReviewModalShow && this.state.PlaceId === place._id
+                      && (<ReviewModal
+                      show={this.state.ReviewModalShow}
+                      onHide={() => { ReviewModalClose() }}
+                      PlaceId={PlaceId}
+                      Name={Name}
+                      UserName={this.props.UserName}
+                    />)}
                   </div>
                 ))}
               </div>
