@@ -64,11 +64,9 @@ exports.getAllHostel = async (req, res) => {
     const residencePlaces = [];
 
     residences.forEach(async (x) => {
-      const place = await PlaceModel.find({
-        _id: x.PlaceId,
-      });
+      var place = await PlaceModel.findById(x.PlaceId);
 
-      const residencePlace = {
+      var residencePlace = {
         _id: place._id,
         Name: place.Name,
         Slogan: place.Slogan,
@@ -101,11 +99,9 @@ exports.getAllHomestay = async (req, res) => {
     const residencePlaces = [];
 
     residences.forEach(async (x) => {
-      const place = await PlaceModel.find({
-        _id: x.PlaceId,
-      });
+      var place = await PlaceModel.findById(x.PlaceId);
 
-      const residencePlace = {
+      var residencePlace = {
         _id: place._id,
         Name: place.Name,
         Slogan: place.Slogan,
@@ -138,11 +134,9 @@ exports.getAllVilla = async (req, res) => {
     const residencePlaces = [];
 
     residences.forEach(async (x) => {
-      const place = await PlaceModel.find({
-        _id: x.PlaceId,
-      });
+      var place = await PlaceModel.findById(x.PlaceId);
 
-      const residencePlace = {
+      var residencePlace = {
         _id: place._id,
         Name: place.Name,
         Slogan: place.Slogan,
@@ -175,11 +169,9 @@ exports.getAllBungalow = async (req, res) => {
     const residencePlaces = [];
 
     residences.forEach(async (x) => {
-      const place = await PlaceModel.find({
-        _id: x.PlaceId,
-      });
+      var place = await PlaceModel.findById(x.PlaceId);
 
-      const residencePlace = {
+      var residencePlace = {
         _id: place._id,
         Name: place.Name,
         Slogan: place.Slogan,
@@ -212,11 +204,9 @@ exports.getAllResort = async (req, res) => {
     const residencePlaces = [];
 
     residences.forEach(async (x) => {
-      const place = await PlaceModel.find({
-        _id: x.PlaceId,
-      });
+      var place = await PlaceModel.findById(x.PlaceId);
 
-      const residencePlace = {
+      var residencePlace = {
         _id: place._id,
         Name: place.Name,
         Slogan: place.Slogan,
